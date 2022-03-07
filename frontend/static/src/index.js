@@ -7,6 +7,8 @@ import App from './App';
 import Login from './components/login';
 import Register from './components/register';
 import reportWebVitals from './reportWebVitals';
+import CreateProfile  from './components/createProfile'
+import Home from './components/home'
 
 
 ReactDOM.render(
@@ -14,8 +16,11 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}>
+          <Route path='' element={<Home/>}/>
+          <Route path='home' element={<Home/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path='register' element={<Register/>}/>
+          <Route path='create' element={<CreateProfile/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -3,6 +3,7 @@ import { InlineWidget } from "react-calendly";
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
+import Header from './components/header';
 
 function App() {
   const navigate = useNavigate()
@@ -48,6 +49,7 @@ function App() {
 
   return (
     <>
+      <Header setCreateDoula={setCreateDoula}/>
       <div className="App">
         <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com'>Link Calandly Account</a>
         <button type='button' onClick={() => getToken}>Get token</button>
