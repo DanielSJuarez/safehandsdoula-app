@@ -9,6 +9,7 @@ import Register from './components/register';
 import reportWebVitals from './reportWebVitals';
 import CreateProfile  from './components/createProfile'
 import Home from './components/home'
+import DoulaProfile from './components/doulaProfile'
 
 
 ReactDOM.render(
@@ -21,6 +22,7 @@ ReactDOM.render(
           <Route path='login' element={<Login/>}/>
           <Route path='register' element={<Register/>}/>
           <Route path='create' element={<CreateProfile/>}/>
+          <Route path='profile' element={<DoulaProfile/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
