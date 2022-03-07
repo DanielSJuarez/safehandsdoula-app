@@ -3,13 +3,17 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function Register(props){
-    const [auth, setAuth, navigate, createDoula , setCreateDoula] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula] = useOutletContext();
     const [newState, setNewState] = useState({
         username: '',
         email: '',
         password1: '',
         password2: '',
     })
+
+    const doula = () => {
+        setCreateDoula(!createDoula)
+    }
 
     const handleError = (err) => {
         console.log(err);
@@ -58,14 +62,16 @@ function Register(props){
                 password2: '',
             })
         }
-        if (createDoula) {
-            navigate('/profile')
+        console.log(createDoula)
+        if (createDoula == true) {
+            navigate('/create')
         } else {
             navigate('/home')
         }
     }
 
         return (
+        <>
         <div className='loginPlacholder'>
             <form onSubmit={handleCreateSubmit}>
                 <div className='col loginField'>
@@ -78,17 +84,25 @@ function Register(props){
                 </div>
                 <div className='col loginField'>
                     <label htmlFor='password1'>Password</label>
-                    <input className='inputField' type='password' name='password1' id='password' placeholder='password' onChange={newHandleInput} required value={newState.password1}></input>
+                    <input className='inputField' type='password' name='password1' id='password' placeholder='password' onChange={newHandleInput} required value={newState.password1}/>
                 </div>
                 <div className='col loginField'>
                     <label htmlFor='password2'>Confirm Password</label>
-                    <input className='inputField' type='password' name='password2' id='password' placeholder='password' onChange={newHandleInput} required value={newState.password2}></input>
+                    <input className='inputField' type='password' name='password2' id='password' placeholder='password' onChange={newHandleInput} required value={newState.password2}/>
+                </div>
+                <div>
+                <label htmlFor='checkbox'>Are you a doula?</label>
+                    <input type='checkbox' onChange={() => doula()}/>
                 </div>
                 <div className='col loginField'>
                     <button className='loginRegisterButton' type='submit'>Create Account</button>
                 </div>
             </form>
         </div>
+        <div>
+            <p>Instasdfasflsadjf;lskajf;alskjf;lsdkjf;lsdakfj;alsdkfj;sladkfjasd;lkfjasdl;kf</p>
+        </div>
+        </>
         )
 }
 

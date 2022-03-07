@@ -1,8 +1,8 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
-function Login(props){
+function Login(props) {
     const [auth, setAuth, navigate] = useOutletContext();
     const [state, setState] = useState({
         username: '',
@@ -10,7 +10,7 @@ function Login(props){
     })
     const handleError = (err) => {
         console.log(err);
-      }
+    }
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -38,7 +38,7 @@ function Login(props){
                 username: '',
                 password: ''
             })
-                navigate('/home')     
+            navigate('/home')
         }
     }
 
@@ -53,6 +53,7 @@ function Login(props){
     }
 
     return (
+        <>
         <div className='loginPlacholder'>
             <form onSubmit={handleSubmit}>
                 <div className='col loginField'>
@@ -61,14 +62,18 @@ function Login(props){
                 </div>
                 <div className='col loginField'>
                     <label htmlFor='password'>Password</label>
-                    <input type='password' className='inputField' name='password' id='password' placeholder='password' onChange={handleInput} required value={state.password}></input>
+                    <input type='password' className='inputField' name='password' id='password' placeholder='password' onChange={handleInput} required value={state.password}/>
                 </div>
                 <div className='col loginField'>
-                    <button className='loginRegisterButton' type='button' onClick={() => navigate('/articles')}>Back</button>
+                    <button className='loginRegisterButton' type='button' onClick={() => navigate('/home')}>Back</button>
                     <button className='loginRegisterButton' type='submit'>Login</button>
                 </div>
             </form>
         </div>
+        <div>
+            <p>Instasdfasflsadjf;lskajf;alskjf;lsdkjf;lsdakfj;alsdkfj;sladkfjasd;lkfjasdl;kf</p>
+        </div>
+        </>
     )
 }
 

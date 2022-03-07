@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from .models import Profile, DoulaProfile
+from .models import Profile, DoulaProfile, Feedback
 from rest_framework import generics
-from .serializers import DoulaProfileSerializer, ProfileSerializer
+from .serializers import DoulaProfileSerializer, ProfileSerializer, FeedbackSerializer
 from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
-class DoulaProfileListAPIView(generics.CreateListAPIView):
+class DoulaProfileListAPIView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = DoulaProfileSerializer
     queryset = DoulaProfile.objects.all()
@@ -26,7 +26,7 @@ class DoulaProfileEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
         serializer.save(user=self.request.user)
 
 
-class ProfileListAPIView(generics.CreateListAPIView):
+class ProfileListAPIView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = ProfileSerializer
 
@@ -36,3 +36,12 @@ class ProfileListAPIView(generics.CreateListAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class FeedbackListAPIView(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = FeedbackSerializer
+    queryset = Feedback.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+

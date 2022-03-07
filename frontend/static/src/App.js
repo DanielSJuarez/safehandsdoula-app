@@ -1,15 +1,16 @@
 import './App.css';
 import { InlineWidget } from "react-calendly";
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import Header from './components/header';
 
 function App() {
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate()
-  const [code, setCode] = useState('')
   const [createDoula, setCreateDoula] = useState(false)
   const [auth, setAuth] = useState(!!Cookies.get('Authorization'));
+  const [isDoula, setIsDoula] = useState(false)
 
   // fetch('https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com', {
   //   "method": "GET",
@@ -25,13 +26,15 @@ function App() {
   //   })
 
   const getToken = async () => {
+    const code = searchParams.get('code')
+
     fetch("https://auth.calendly.com/oauth/token", {
       "method": "POST",
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       "body": {
-        code: 'fAo-sweuOmCiyHpe3qvduqDPKKmbpJG1de23qtpH3vM',
+        code: code,
         client_id: 'JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg',
         client_secret: 'OhevgwurwaW6Werlv9o3WPYMvyJuEP7PZkxqVKRkPYY',
         redirect_uri: 'https://safehandsdoula.com',
@@ -49,7 +52,7 @@ function App() {
 
   return (
     <>
-      <Header setCreateDoula={setCreateDoula}/>
+      <Header setCreateDoula={setCreateDoula} isDoula={isDoula} setIsDoula={setIsDoula} auth={auth} setAuth={setAuth} navigate={navigate}/>
       <div className="App">
         <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com'>Link Calandly Account</a>
         <button type='button' onClick={() => getToken}>Get token</button>

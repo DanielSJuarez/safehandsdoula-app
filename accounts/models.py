@@ -20,7 +20,8 @@ class DoulaProfile(models.Model):
     twitter = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
     calendly = models.URLField(blank=True)
-    refresh_token = models.CharField(max_length=255)
+    refresh_token = models.CharField(max_length=255, blank=True)
+    is_doula = models.BooleanField(default=True, null=True)
 
 
     def __str__(self):
@@ -29,10 +30,22 @@ class DoulaProfile(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
+    is_doula = models.BooleanField(default=False, null=False)
 
     def __str__(self):
         return self.user.username
 
 
-# class Feedback(models.Model)
+class Feedback(models.Model):
+        doula = models.ForeignKey(DoulaProfile, on_delete=models.CASCADE)
+        name = models.CharField(max_length=255)
+        user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
+        email = models.EmailField()
+        phone_number = models.CharField(max_length=255)
+        question = models.TextField(blank=True)
+
+        def __str__(self):
+            return self.user.username
+
+        
    
