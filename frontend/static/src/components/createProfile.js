@@ -43,6 +43,8 @@ function CreateProfile() {
         formData.append('facebook', facebook);
         formData.append('twitter', twitter);
         formData.append('instagram', instagram);
+        formData.append('is_doula', true)
+        formData.append('certification', certification)
 
         const options = {
             method: 'POST',

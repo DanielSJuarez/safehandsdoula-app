@@ -8,19 +8,23 @@ function Header(props) {
         console.log(err);
     }
 
-    // useEffect(() => {
-    //     const isDoula = async () => {
-    //         const response = await fetch('/rest-auth/user/').catch(handleError);
-    //         if (!response.ok) {
-    //             throw new Error('Netword response was not OK!')
-    //         } else {
-    //             const data = await response.json();
-    //             if (data.is_Doula == true)
-    //                 props.setIsDoula(true)
-    //         }
-    //     }
-    //     isDoula();
-    // }, []);
+    useEffect(() => {
+        const isDoula = async () => {
+            const response = await fetch('/api/v1/accounts/doula/').catch(handleError);
+            if (!response.ok) {
+                throw new Error('Netword response was not OK!')
+            } else {
+                const data = await response.json();
+                console.log(data)
+                console.log(data.is_Doula)
+                if (data.is_Doula == true){
+                    console.log('hi')
+                    props.setIsDoula(true)
+                }
+            }
+        }
+        isDoula();
+    }, []);
 
     const handleLogout = async event => {
         event.preventDefault();
@@ -56,9 +60,6 @@ function Header(props) {
                 <NavLink className='navLinks' to='/how'>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/yourplan'>Your Plan</NavLink>
-            </li>
-            <li className='col navLinkButton mx-0'>
                 <NavLink className='navLinks' to='/doula'>Doula's</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
@@ -79,7 +80,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/how'>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/yourplan'>Your Plan</NavLink>
+                <NavLink className='navLinks' to='/profile'>Profile</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <NavLink className='navLinks' to='/doula'>Doula's</NavLink>

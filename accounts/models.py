@@ -22,6 +22,7 @@ class DoulaProfile(models.Model):
     calendly = models.URLField(blank=True)
     refresh_token = models.CharField(max_length=255, blank=True)
     is_doula = models.BooleanField(default=True, null=True)
+    certification = models.TextField(blank=True)
 
 
     def __str__(self):
