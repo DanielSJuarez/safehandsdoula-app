@@ -1,5 +1,9 @@
-function ProfileDetail({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, preview, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification , id, setPreview, setAddImage}) {
-    
+import {useState} from 'react'
+import { InlineWidget } from "react-calendly";
+
+function ProfileDetail({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, preview, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification , id, setPreview, setAddImage, calendly}) {
+    const [token, setToken] = useState('')
+    const [schedule, setSchedule] = useState('')
     const edit = (e) => {
         e.preventDefault(); 
         editProfile(id)
@@ -38,6 +42,7 @@ function ProfileDetail({ name, about, services, why, website, image, facebook, t
             <p className='summary'>{about}</p>
             <p className='summary'>{services}</p>
             <p className='summary'>{why}</p>
+            {/* <InlineWidget url={calendly} /> */}
             <button onClick={() => setIsEditing(true)}>Edit Profile</button>
         </section>
     )
