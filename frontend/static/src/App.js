@@ -97,7 +97,7 @@ function App() {
             <InlineWidget url='https://calendly.com/chandler-enok/30-minutes' />
           </div>
         </div>
-        <Outlet context={[auth, setAuth, navigate, createDoula, setCreateDoula]} />
+        <Outlet context={[auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula]} />
       </>
     );
   }

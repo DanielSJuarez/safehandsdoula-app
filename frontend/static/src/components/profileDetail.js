@@ -1,12 +1,26 @@
-import { useOutletContext } from "react-router-dom";
-
-function ProfileDetail({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, handleSubmit, preview, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification , id}) {
+function ProfileDetail({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, preview, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification , id, setPreview, setAddImage}) {
     
     const edit = (e) => {
         e.preventDefault(); 
-        handleSubmit(id)
+        editProfile(id)
         setIsEditing(false)
         e.target.reset();
+    }
+
+    const cancel = () => {
+        setPreview('');
+        setAddImage('');
+        setNewIsName('');
+        setNewAbout('');
+        setNewStarted('');
+        setNewServices('');
+        setNewWhy('');
+        setNewWebsite('');
+        setNewFacebook('');
+        setNewTwitter('');
+        setNewInstagram('');
+        setNewCertification('')
+        setIsEditing(false)
     }
 
     const displayMode = (
@@ -84,9 +98,9 @@ function ProfileDetail({ name, about, services, why, website, image, facebook, t
                 <div className='col loginField'>
                     <input className='inputField' type='text' name='why' placeholder='why you' onChange={(e)=> setNewWhy(e.target.value)} value={newWhy}/>
                 </div>
+                <button onClick={() => cancel()}>Cancel</button>
                 <button className='loginRegisterButton create' type='submit'>Save Profile</button>
             </form>
-            <button onClick={() => setIsEditing(false)}>Cancel</button>
             </>
     )
 

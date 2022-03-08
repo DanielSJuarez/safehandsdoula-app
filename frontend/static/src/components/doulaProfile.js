@@ -34,7 +34,7 @@ function DoulaProfile() {
         reader.readAsDataURL(file);
     }
 
-    const handleSubmit = async (id) => {
+    const editProfile = async (id) => {
 
         const updatedprofile = {
             name: newIsName,
@@ -114,14 +114,18 @@ function DoulaProfile() {
     }
 
     const profileDetail = profile.map((profile) => (
-        <ProfileDetail key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} handleSubmit={handleSubmit} preview={preview} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
-        />
+        <ProfileDetail key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} preview={preview} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
+        setAddImage={setAddImage} setPreview={setPreview}/>
     ))
 
     return (
+        <>
+        <div>feedback</div>
         <div>
             {profileDetail}
         </div>
+        <div>Rating</div>
+        </>
     )
 }
 

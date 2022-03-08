@@ -15,10 +15,7 @@ function Header(props) {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                console.log(data)
-                console.log(data.is_Doula)
-                if (data.is_Doula == true){
-                    console.log('hi')
+                if (data[0].is_doula == true) {
                     props.setIsDoula(true)
                 }
             }
@@ -119,9 +116,9 @@ function Header(props) {
     )
 
     return (
-        <div>
+        <nav>
             {props.auth ? props.isDoula ? doulaUser : user : visitor}
-        </div>
+        </nav>
     )
 }
 

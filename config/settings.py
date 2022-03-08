@@ -59,6 +59,21 @@ INSTALLED_APPS = [
 
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated', 
+    ],
+    'DEFAULT_AUTHENICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthenitication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+# REST_AUTH_SERIALIZERS = {
+#     'USER_DETAILS_SERIALIZER' : 'accounts.serializers.UserDetailsSerializer',
+#     'TOKEN_SERIALIZER' : 'accounts.serializers.TokenSerializer',
+# }
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',

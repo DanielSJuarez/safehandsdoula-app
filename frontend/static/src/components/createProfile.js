@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+import Cookies, {attributes} from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function CreateProfile() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula] = useOutletContext();
     const [addImage, setAddImage] = useState(null);
     const [isName, setIsName] = useState('');
     const [about, setAbout] = useState('');
@@ -43,8 +43,8 @@ function CreateProfile() {
         formData.append('facebook', facebook);
         formData.append('twitter', twitter);
         formData.append('instagram', instagram);
-        formData.append('is_doula', true)
-        formData.append('certification', certification)
+        formData.append('is_doula', true);
+        formData.append('certification', certification);
 
         const options = {
             method: 'POST',
@@ -69,6 +69,7 @@ function CreateProfile() {
         setInstagram('');
         setCertification('')
         setCreateDoula(false);
+        setIsDoula(true);
         navigate('/home')
     }
 
