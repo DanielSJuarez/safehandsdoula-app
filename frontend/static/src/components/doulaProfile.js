@@ -106,18 +106,19 @@ function DoulaProfile() {
             } else {
                 const data = await response.json();
                 setProfile(data);
-                if (data.calendly == !null){
-                    setLinked(true)
-                    setNewIsName(data.name);
-                    setNewAbout(data.about);
-                    setNewStarted(data.started);
-                    setNewServices(data.services);
-                    setNewWhy(data.why);
-                    setNewWebsite(data.website);
-                    setNewFacebook(data.facebook);
-                    setNewTwitter(data.twitter);
-                    setNewInstagram(data.instagram);
-                    setNewCertification(data.certification);
+                setNewIsName(data[0].name);
+                setNewAbout(data[0].about);
+                setNewStarted(data[0].started);
+                setNewServices(data[0].services);
+                setNewWhy(data[0].why);
+                setNewWebsite(data[0].website);
+                setNewFacebook(data[0].facebook);
+                setNewTwitter(data[0].twitter);
+                setNewInstagram(data[0].instagram);
+                setNewCertification(data[0].certification);
+                
+                if (data[0].calendly == !null){
+                    setLinked(true) 
                 }
             }
         }
