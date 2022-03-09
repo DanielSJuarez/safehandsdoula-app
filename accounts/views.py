@@ -1,3 +1,4 @@
+import pdb
 from django.shortcuts import render
 from .models import Profile, DoulaProfile, Feedback
 from rest_framework import generics
@@ -12,7 +13,7 @@ class DoulaProfileListAPIView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
+        
     def get_queryset(self):
         user = self.request.user
         return DoulaProfile.objects.filter(user=user)
@@ -24,6 +25,15 @@ class DoulaProfileEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         return DoulaProfile.objects.filter(user=user)
+
+    def perform_update(self, serializer):
+        if not self.request.data['image']:
+            # import pdb 
+            # pdb.set_trace()
+            # return self.save('beef_taco.jpeg')
+            serializer.save(image='doula/beef_taco.jpeg')
+        else:
+            serializer.save()
 
 class ProfileListAPIView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)

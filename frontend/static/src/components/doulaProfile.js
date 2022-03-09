@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProfileDetail from './profileDetail';
-import Cookies, { attributes } from 'js-cookie';
+import Cookies from 'js-cookie';
 
 function DoulaProfile() {
     const [isEditing, setIsEditing] = useState(false)
@@ -53,9 +53,7 @@ function DoulaProfile() {
 
         const formData = new FormData();
         for (const [key, value] of Object.entries(updatedprofile)) {
-            if (value) {
                 formData.append(key, value)
-            }
         }
 
         const options = {
@@ -75,12 +73,12 @@ function DoulaProfile() {
         const data = await response.json();
 
         const updateProfile = profile.map((profile) => {
-            if (profile.id == id) {
+            if (profile.id === id) {
                 return data
             }
         })
         setProfile(updateProfile)
-        setPreview('');
+        // setPreview('');
         // setAddImage('');
         // setNewIsName('');
         // setNewAbout('');
@@ -95,8 +93,6 @@ function DoulaProfile() {
         setLinked(false)
     }
 
-
-
     useEffect(() => {
         const getProfile = async () => {
             const response = await fetch('/api/v1/accounts/doula/').catch(handleError);
@@ -106,6 +102,7 @@ function DoulaProfile() {
             } else {
                 const data = await response.json();
                 setProfile(data);
+                // console.log(data[0].calendly)
                 setNewIsName(data[0].name);
                 setNewAbout(data[0].about);
                 setNewStarted(data[0].started);
@@ -116,8 +113,11 @@ function DoulaProfile() {
                 setNewTwitter(data[0].twitter);
                 setNewInstagram(data[0].instagram);
                 setNewCertification(data[0].certification);
+                setPreview(data[0].image)
+                setAddImage(data[0].image)
                 
-                if (data[0].calendly == !null){
+                if (data[0].calendly === !''){
+                    console.log('yes')
                     setLinked(true) 
                 }
             }

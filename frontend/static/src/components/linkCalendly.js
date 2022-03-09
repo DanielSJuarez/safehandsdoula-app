@@ -7,7 +7,7 @@ function Calendly() {
     return (
         <>
         <div className='col loginField'>
-            <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec&response_type=code&redirect_uri=http://localhost:3000/'></a>
+            <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec&response_type=code&redirect_uri=http://localhost:3000/'>Link Calendly Account</a>
         </div>
         <button type='button' onClick={()=>  navigate('/home')}>Later</button>
         </>

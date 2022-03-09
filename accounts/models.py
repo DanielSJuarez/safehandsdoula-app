@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
@@ -9,7 +10,7 @@ class User(AbstractUser):
 
 class DoulaProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
-    image = models.ImageField(upload_to='doula/', null=True)
+    image = models.ImageField(upload_to='doula/', null=True, default='beef_taco.jpeg')
     name = models.CharField(max_length=255)
     about = models.TextField(blank=True)
     services = models.TextField(blank=True)
@@ -20,7 +21,6 @@ class DoulaProfile(models.Model):
     twitter = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
     calendly = models.URLField(blank=True)
-    refresh_token = models.CharField(max_length=255, blank=True)
     is_doula = models.BooleanField(default=True, null=True)
     certification = models.TextField(blank=True)
 
