@@ -100,7 +100,7 @@ function Register(props){
             </form>
         </div>
         <div>
-            <p>Instasdfasflsadjf;lskajf;alskjf;lsdkjf;lsdakfj;alsdkfj;sladkfjasd;lkfjasdl;kf</p>
+            <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
         </div>
         </>
         )

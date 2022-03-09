@@ -11,6 +11,7 @@ import CreateProfile  from './components/createProfile'
 import Home from './components/home'
 import DoulaProfile from './components/doulaProfile'
 import ProfilesList from './components/profilesList'
+import Calendly from './components/linkCalendly';
 
 
 ReactDOM.render(
@@ -25,6 +26,7 @@ ReactDOM.render(
           <Route path='create' element={<CreateProfile/>}/>
           <Route path='profile' element={<DoulaProfile/>}/>
           <Route path='areadoula' element={<ProfilesList/>}/>
+          <Route path='calendly' element={<Calendly/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

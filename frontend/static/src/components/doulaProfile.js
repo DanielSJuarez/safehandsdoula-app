@@ -17,6 +17,7 @@ function DoulaProfile() {
     const [newWebsite, setNewWebsite] = useState('')
     const [newServices, setNewServices] = useState('')
     const [newWhy, setNewWhy] = useState('')
+    const [linked, setLinked] = useState(false)
 
     const handleError = (err) => {
         console.log(err);
@@ -80,17 +81,18 @@ function DoulaProfile() {
         })
         setProfile(updateProfile)
         setPreview('');
-        setAddImage('');
-        setNewIsName('');
-        setNewAbout('');
-        setNewStarted('');
-        setNewServices('');
-        setNewWhy('');
-        setNewWebsite('');
-        setNewFacebook('');
-        setNewTwitter('');
-        setNewInstagram('');
-        setNewCertification('')
+        // setAddImage('');
+        // setNewIsName('');
+        // setNewAbout('');
+        // setNewStarted('');
+        // setNewServices('');
+        // setNewWhy('');
+        // setNewWebsite('');
+        // setNewFacebook('');
+        // setNewTwitter('');
+        // setNewInstagram('');
+        // setNewCertification('')
+        setLinked(false)
     }
 
 
@@ -104,6 +106,19 @@ function DoulaProfile() {
             } else {
                 const data = await response.json();
                 setProfile(data);
+                if (data.calendly == !null){
+                    setLinked(true)
+                    setNewIsName(data.name);
+                    setNewAbout(data.about);
+                    setNewStarted(data.started);
+                    setNewServices(data.services);
+                    setNewWhy(data.why);
+                    setNewWebsite(data.website);
+                    setNewFacebook(data.facebook);
+                    setNewTwitter(data.twitter);
+                    setNewInstagram(data.instagram);
+                    setNewCertification(data.certification);
+                }
             }
         }
         getProfile();
@@ -115,7 +130,7 @@ function DoulaProfile() {
 
     const profileDetail = profile.map((profile) => (
         <ProfileDetail key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} preview={preview} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
-        setAddImage={setAddImage} setPreview={setPreview}/>
+        setAddImage={setAddImage} setPreview={setPreview} linked={linked} setLinked={setLinked}/>
     ))
 
     return (

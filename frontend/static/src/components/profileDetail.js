@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import { InlineWidget } from "react-calendly";
 
-function ProfileDetail({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, preview, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification , id, setPreview, setAddImage, calendly}) {
+function ProfileDetail({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, preview, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification , id, setPreview, setAddImage, calendly, linked, setLinked}) {
     const [token, setToken] = useState('')
     const [schedule, setSchedule] = useState('')
     const edit = (e) => {
@@ -13,19 +13,30 @@ function ProfileDetail({ name, about, services, why, website, image, facebook, t
 
     const cancel = () => {
         setPreview('');
-        setAddImage('');
-        setNewIsName('');
-        setNewAbout('');
-        setNewStarted('');
-        setNewServices('');
-        setNewWhy('');
-        setNewWebsite('');
-        setNewFacebook('');
-        setNewTwitter('');
-        setNewInstagram('');
-        setNewCertification('')
-        setIsEditing(false)
+        // setAddImage('');
+        // setNewIsName('');
+        // setNewAbout('');
+        // setNewStarted('');
+        // setNewServices('');
+        // setNewWhy('');
+        // setNewWebsite('');
+        // setNewFacebook('');
+        // setNewTwitter('');
+        // setNewInstagram('');
+        // setNewCertification('');
+        setIsEditing(false);
+        setLinked(false);
     }
+
+    const addCalendly = (
+        <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec&response_type=code&redirect_uri=http://localhost:3000/'></a>
+    )
+
+    const updateCalendly = (
+        <div className='col loginField'>
+            <input className='inputField' type='text' name='calendly' placeholder='calendly'  value={calendly}/>
+        </div>
+    )
 
     const displayMode = (
         <section className='col article'>
@@ -42,6 +53,7 @@ function ProfileDetail({ name, about, services, why, website, image, facebook, t
             <p className='summary'>{about}</p>
             <p className='summary'>{services}</p>
             <p className='summary'>{why}</p>
+            <p>{calendly}</p>
             {/* <InlineWidget url={calendly} /> */}
             <button onClick={() => setIsEditing(true)}>Edit Profile</button>
         </section>
@@ -49,7 +61,7 @@ function ProfileDetail({ name, about, services, why, website, image, facebook, t
 
     const editMode = (
             <>
-            <section className='col article'>
+            {/* <section className='col article'>
                 <div className='imgHolder'>
                     <img src={image} alt={name} />
                 </div>
@@ -63,7 +75,7 @@ function ProfileDetail({ name, about, services, why, website, image, facebook, t
                 <p className='summary'>{about}</p>
                 <p className='summary'>{services}</p>
                 <p className='summary'>{why}</p>
-             </section>
+             </section> */}
     
             <form onSubmit={edit}>
                 <div className='col loginField'>
@@ -95,6 +107,7 @@ function ProfileDetail({ name, about, services, why, website, image, facebook, t
                     <input className='inputField' type='url' name='website' placeholder='website url' onChange={(e)=> setNewWebsite(e.target.value)} value={newWebsite}/>
                 </div>
                 <div className='col loginField'>
+                    {linked ? updateCalendly : addCalendly}
                     <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com'>Link Calandly Account</a>
                 </div>
                 <div className='col loginField'>

@@ -9,10 +9,13 @@ from rest_framework.permissions import IsAuthenticated
 class DoulaProfileListAPIView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = DoulaProfileSerializer
-    queryset = DoulaProfile.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def get_queryset(self):
+        user = self.request.user
+        return DoulaProfile.objects.filter(user=user)
 
 class DoulaProfileEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
