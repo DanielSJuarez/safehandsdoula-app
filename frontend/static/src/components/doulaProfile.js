@@ -1,28 +1,25 @@
 import { useState, useEffect } from 'react'
 import ProfileDetail from './profileDetail';
 import Cookies from 'js-cookie';
+import { useOutletContext } from "react-router-dom";
 
 function DoulaProfile() {
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
     const [isEditing, setIsEditing] = useState(false)
-    const [profile, setProfile] = useState(null)
-    const [addImage, setAddImage] = useState(null);
+    const [profile, setProfile] = useState(null);
+    const [addImage, setAddImage] = useState('');
     const [newIsName, setNewIsName] = useState('');
     const [newAbout, setNewAbout] = useState('');
     const [newStarted, setNewStarted] = useState('');
-    const [preview, setPreview] = useState('');
-    const [newCertification, setNewCertification] = useState('')
-    const [newFacebook, setNewFacebook] = useState('')
-    const [newTwitter, setNewTwitter] = useState('')
-    const [newInstagram, setNewInstagram] = useState('')
-    const [newWebsite, setNewWebsite] = useState('')
-    const [newServices, setNewServices] = useState('')
-    const [newWhy, setNewWhy] = useState('')
-    const [linked, setLinked] = useState(false)
-
-    const handleError = (err) => {
-        console.log(err);
-    }
-
+    const [newCertification, setNewCertification] = useState('');
+    const [newFacebook, setNewFacebook] = useState('');
+    const [newTwitter, setNewTwitter] = useState('');
+    const [newInstagram, setNewInstagram] = useState('');
+    const [newWebsite, setNewWebsite] = useState('');
+    const [newServices, setNewServices] = useState('');
+    const [newWhy, setNewWhy] = useState('');
+    const [linked, setLinked] = useState(false);
+    // console.log(addImage)
     const handleImage = e => {
 
         const file = e.target.files[0];
@@ -41,7 +38,7 @@ function DoulaProfile() {
             name: newIsName,
             about: newAbout,
             started: newStarted,
-            image: addImage,
+            // image: addImage,
             services: newServices,
             why: newWhy,
             website: newWebsite,
@@ -53,7 +50,10 @@ function DoulaProfile() {
 
         const formData = new FormData();
         for (const [key, value] of Object.entries(updatedprofile)) {
-                formData.append(key, value)
+            // if (value) {
+            //     formData.append(key, value)
+            // }
+            formData.append(key, value)
         }
 
         const options = {
@@ -68,29 +68,75 @@ function DoulaProfile() {
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
-        } 
-           
+        }
+
         const data = await response.json();
 
+        const updateProfile = profile.map((profile) => {
+            if (profile.id === id) {
+                console.log(data)
+                return data
+            }
+        })
+        setProfile(updateProfile)
+        // setProfileImg(data.image)
+        setLinked(false)
+    }
+
+    const updateImage = async (id) => {
+        const formData = new FormData();
+        formData.append('image', addImage);
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: formData,
+        }
+
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network response was not OK');
+        }
+        const data = await response.json();
         const updateProfile = profile.map((profile) => {
             if (profile.id === id) {
                 return data
             }
         })
         setProfile(updateProfile)
-        // setPreview('');
-        // setAddImage('');
-        // setNewIsName('');
-        // setNewAbout('');
-        // setNewStarted('');
-        // setNewServices('');
-        // setNewWhy('');
-        // setNewWebsite('');
-        // setNewFacebook('');
-        // setNewTwitter('');
-        // setNewInstagram('');
-        // setNewCertification('')
-        setLinked(false)
+        setPreview(data.image);
+        setProfileImg(data.image)
+    }
+
+    const removeImage = async (id) => {
+        const formData = new FormData();
+        formData.append('image', new File([], ''));
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: formData,
+        }
+
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network response was not OK');
+        }
+        const data = await response.json();
+        const updateProfile = profile.map((profile) => {
+            if (profile.id === id) {
+                return data
+            }
+        })
+        setProfile(updateProfile)
+        setPreview(data.image);
+        setProfileImg(data.image)
     }
 
     useEffect(() => {
@@ -102,7 +148,6 @@ function DoulaProfile() {
             } else {
                 const data = await response.json();
                 setProfile(data);
-                // console.log(data[0].calendly)
                 setNewIsName(data[0].name);
                 setNewAbout(data[0].about);
                 setNewStarted(data[0].started);
@@ -114,11 +159,11 @@ function DoulaProfile() {
                 setNewInstagram(data[0].instagram);
                 setNewCertification(data[0].certification);
                 setPreview(data[0].image)
-                setAddImage(data[0].image)
-                
-                if (data[0].calendly === !''){
+                // setAddImage(data[0].image)
+
+                if (data[0].calendly === !'') {
                     console.log('yes')
-                    setLinked(true) 
+                    setLinked(true)
                 }
             }
         }
@@ -130,17 +175,17 @@ function DoulaProfile() {
     }
 
     const profileDetail = profile.map((profile) => (
-        <ProfileDetail key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} preview={preview} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
-        setAddImage={setAddImage} setPreview={setPreview} linked={linked} setLinked={setLinked}/>
+        <ProfileDetail key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
+            linked={linked} setLinked={setLinked} preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage}/>
     ))
 
     return (
         <>
-        <div>feedback</div>
-        <div>
-            {profileDetail}
-        </div>
-        <div>Rating</div>
+            <div>feedback</div>
+            <div>
+                {profileDetail}
+            </div>
+            <div>Rating</div>
         </>
     )
 }

@@ -1,5 +1,5 @@
 import './App.css';
-import { InlineWidget } from "react-calendly";
+// import { InlineWidget } from "react-calendly";
 import { Outlet, useNavigate, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
@@ -11,9 +11,11 @@ function App() {
   const [createDoula, setCreateDoula] = useState(false)
   const [auth, setAuth] = useState(!!Cookies.get('Authorization'));
   const [isDoula, setIsDoula] = useState(false)
-  const [token, setToken] = useState('')
-  const [schedule, setSchedule] = useState('')
-  const [code, setCode] = useState('')
+  const [preview, setPreview] = useState('');
+  const [profileImg, setProfileImg] = useState(null)
+  // const [token, setToken] = useState('')
+  // const [schedule, setSchedule] = useState('')
+  // const [code, setCode] = useState('')
 
   const handleError = (err) => {
     console.log(err);
@@ -87,7 +89,7 @@ function App() {
   // }
   return (
     <>
-      <Header setCreateDoula={setCreateDoula} isDoula={isDoula} setIsDoula={setIsDoula} auth={auth} setAuth={setAuth} navigate={navigate} />
+      <Header setCreateDoula={setCreateDoula} isDoula={isDoula} setIsDoula={setIsDoula} auth={auth} setAuth={setAuth} navigate={navigate} profileImg={profileImg} setProfileImg={setProfileImg} handleError={handleError}/>
       <div className="App">
         {/* <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec&response_type=code&redirect_uri=http://localhost:3000/'>Link Calandly Account</a> */}
         {/* <button type='button' onClick={() => getToken()}>Get token</button>
@@ -97,7 +99,7 @@ function App() {
           {/* <InlineWidget url='https://calendly.com/juarezdsv' /> */}
         </div>
       </div>
-      <Outlet context={[auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams]} />
+      <Outlet context={[auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg]} />
     </>
   );
 }

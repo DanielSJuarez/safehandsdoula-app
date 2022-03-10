@@ -1,90 +1,20 @@
-import { useState, useEffect } from 'react';
-import Cookies, { attributes } from 'js-cookie';
+import { useState }from 'react';
+import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function CreateProfile() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview] = useOutletContext();
     const [addImage, setAddImage] = useState(null);
     const [isName, setIsName] = useState('');
     const [about, setAbout] = useState('');
     const [started, setStarted] = useState('');
-    const [preview, setPreview] = useState('');
-    const [certification, setCertification] = useState('')
-    const [facebook, setFacebook] = useState('')
-    const [twitter, setTwitter] = useState('')
-    const [instagram, setInstagram] = useState('')
-    const [website, setWebsite] = useState('')
-    const [services, setServices] = useState('')
-    const [why, setWhy] = useState('')
-    // const [token, setToken] = useState('')
-    // const [schedule, setSchedule] = useState('')
-    // const [code, setCode] = useState('')
-
-    const handleError = (err) => {
-        console.log(err);
-    }
-
-    // useEffect(() => {
-    //     const getToken = async () => {
-    //         // const code = searchParams.get('code')
-    //         setCode(searchParams.get('code'))
-
-
-    //         const data = new URLSearchParams(code);
-    //         data.append('code', code);
-    //         data.append('client_id', 'UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec');
-    //         data.append('client_secret', 'nFNB3IGLpLUQYOmtb4c_AZldv1NvuSTSVg_19ncy8kU');
-    //         data.append('redirect_uri', 'http://localhost:3000/');
-    //         data.append('grant_type', 'authorization_code')
-
-    //         const options = {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/x-www-form-urlencoded",
-    //             },
-    //             body: data
-    //         }
-
-    //         const response = await fetch('https://auth.calendly.com/oauth/token', options).catch(
-    //             handleError
-    //         )
-
-    //         if (!response.ok) {
-    //             throw new Error('Network response not ok!');
-    //         } else {
-    //             const data = await response.json();
-    //             console.log(data)
-    //             setToken(data.access_token)
-    //             getSchedule();
-    //         }
-    //     }
-
-    //     const getSchedule = async () => {
-    //         const options = {
-    //             method: "GET",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Authorization": `Bearer ${token}`,
-    //             },
-    //         }
-
-    //         const response = await fetch('https://api.calendly.com/users/me', options).catch(
-    //             handleError
-    //         )
-
-    //         if (!response.ok) {
-    //             throw new Error('Network response not ok!');
-    //         } else {
-    //             const data = await response.json();
-    //             setSchedule(data.resource.scheduling_url)
-    //         }
-    //     }
-    //     if (searchParams.get('code') != null) {
-    //         getToken();
-    //     }
-    //     // getToken();
-    // }, []);
-
+    const [certification, setCertification] = useState('');
+    const [facebook, setFacebook] = useState('');
+    const [twitter, setTwitter] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [website, setWebsite] = useState('');
+    const [services, setServices] = useState('');
+    const [why, setWhy] = useState('');
 
     const handleImage = e => {
 
@@ -109,7 +39,6 @@ function CreateProfile() {
         formData.append('why', why);
         formData.append('website', website);
         formData.append('facebook', facebook);
-        // formData.append('calendly', schedule)
         formData.append('twitter', twitter);
         formData.append('instagram', instagram);
         formData.append('is_doula', true);
@@ -136,7 +65,7 @@ function CreateProfile() {
         setFacebook('');
         setTwitter('');
         setInstagram('');
-        setCertification('')
+        setCertification('');
         setCreateDoula(false);
         setIsDoula(true);
         navigate('/calendly')

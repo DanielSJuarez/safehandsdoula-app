@@ -1,22 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Cookies from 'js-cookie';
 import { NavLink, Link } from 'react-router-dom';
 
 function Header(props) {
 
-    const handleError = (err) => {
-        console.log(err);
-    }
-
     useEffect(() => {
         const isDoula = async () => {
-            const response = await fetch('/api/v1/accounts/doula/').catch(handleError);
+            const response = await fetch('/api/v1/accounts/doula/').catch(props.handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                if (data[0].is_doula == true) {
+                if (data[0].is_doula === true) {
                     props.setIsDoula(true)
+                    props.setProfileImg(data[0].image)
                 }
             }
         }
@@ -35,7 +32,7 @@ function Header(props) {
         }
 
         const response = await fetch('/rest-auth/logout/', options).catch(
-            handleError
+            props.handleError
         )
 
         const data = await response.json();
@@ -84,6 +81,11 @@ function Header(props) {
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
+            </li>
+            <li>
+                <div className='imgHolder'>
+                    <img src={props.profileImg} alt='profile image' />
+                </div>
             </li>
         </ul>
     )

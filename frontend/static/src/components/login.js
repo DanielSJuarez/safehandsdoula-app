@@ -2,15 +2,12 @@ import { useState } from 'react'
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
-function Login(props) {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula] = useOutletContext();
+function Login() {
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
     const [state, setState] = useState({
         username: '',
         password: ''
-    })
-    const handleError = (err) => {
-        console.log(err);
-    }
+    });
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -38,10 +35,9 @@ function Login(props) {
                 username: '',
                 password: ''
             })
-            navigate('/home')
+            navigate('/home');
         }
     }
-
 
     const handleInput = (event) => {
         const { name, value } = event.target;

@@ -1,26 +1,14 @@
 import { useOutletContext } from "react-router-dom";
 import { useState,useEffect } from 'react';
-import Cookies, { attributes } from 'js-cookie';
+import Cookies from 'js-cookie';
 
 function Home() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
     const [token, setToken] = useState('')
     const [schedule, setSchedule] = useState('')
     const [code, setCode] = useState('')
     const [id, setId] = useState(null)
-    const [addImage, setAddImage] = useState(null);
-    const [newIsName, setNewIsName] = useState('');
-    const [newAbout, setNewAbout] = useState('');
-    const [newStarted, setNewStarted] = useState('');
-    const [newCertification, setNewCertification] = useState('')
-    const [newFacebook, setNewFacebook] = useState('')
-    const [newTwitter, setNewTwitter] = useState('')
-    const [newInstagram, setNewInstagram] = useState('')
-    const [newWebsite, setNewWebsite] = useState('')
-    const [newServices, setNewServices] = useState('')
-    const [newWhy, setNewWhy] = useState('')
-
-
+  
     const handleError = (err) => {
         console.log(err);
     }
@@ -32,7 +20,7 @@ function Home() {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                if (data[0].is_doula == true) {
+                if (data[0].is_doula === true) {
                     setIsDoula(true)
                     setId(data[0].id)
                 }
@@ -70,8 +58,8 @@ function Home() {
                 throw new Error('Network response not ok!');
             } else {
                 const data = await response.json();
-                console.log(data)
-                setToken(data.access_token)
+                console.log(data);
+                setToken(data.access_token);
                 getSchedule();
             }
         }
@@ -94,7 +82,7 @@ function Home() {
             } else {
                 const data = await response.json();
                 setSchedule(data.resource.scheduling_url)
-                editProfile(id)
+                setCalendly(id)
             }
         }
         if (searchParams.get('code') != null) {
@@ -103,29 +91,10 @@ function Home() {
     }, []);
 
 
-    const editProfile = async (id) => {
-
-        const updatedprofile = {
-            name: newIsName,
-            about: newAbout,
-            started: newStarted,
-            image: addImage,
-            services: newServices,
-            why: newWhy,
-            calendly: schedule,
-            website: newWebsite,
-            facebook: newFacebook,
-            twitter: newTwitter,
-            instagram: newInstagram,
-            certification: newCertification,
-        }
+    const setCalendly = async (id) => {
 
         const formData = new FormData();
-        for (const [key, value] of Object.entries(updatedprofile)) {
-            if (value) {
-                formData.append(key, value)
-            }
-        }
+        formData.append('calendly', schedule);
 
         const options = {
             method: 'PATCH',
@@ -140,17 +109,6 @@ function Home() {
         if (!response.ok) {
             throw new Error('Network response was not OK');
         } 
-        setAddImage('');
-        setNewIsName('');
-        setNewAbout('');
-        setNewStarted('');
-        setNewServices('');
-        setNewWhy('');
-        setNewWebsite('');
-        setNewFacebook('');
-        setNewTwitter('');
-        setNewInstagram('');
-        setNewCertification('')
         setCode(null)
         setSchedule('')
         setToken('')

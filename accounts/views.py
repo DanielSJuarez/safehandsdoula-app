@@ -27,13 +27,16 @@ class DoulaProfileEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
         return DoulaProfile.objects.filter(user=user)
 
     def perform_update(self, serializer):
-        if not self.request.data['image']:
-            # import pdb 
-            # pdb.set_trace()
-            # return self.save('beef_taco.jpeg')
-            serializer.save(image='doula/beef_taco.jpeg')
+        # import pdb 
+        # pdb.set_trace()
+        if self.request.data.get('image'):
+            if not self.request.data['image']:
+                serializer.save(image='doula/beef_taco.jpeg')
+            else:
+                super().perform_update(serializer)
         else:
-            serializer.save()
+            super().perform_update(serializer)
+
 
 class ProfileListAPIView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)

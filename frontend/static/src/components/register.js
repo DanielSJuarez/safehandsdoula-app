@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
-function Register(props){
-    const [auth, setAuth, navigate, createDoula, setCreateDoula] = useOutletContext();
+function Register(){
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
     const [newState, setNewState] = useState({
         username: '',
         email: '',
@@ -14,10 +14,6 @@ function Register(props){
     const doula = () => {
         setCreateDoula(!createDoula)
     }
-
-    const handleError = (err) => {
-        console.log(err);
-      }
 
     const newHandleInput = (event) => {
         const { name, value } = event.target;
@@ -60,13 +56,13 @@ function Register(props){
                 email: '',
                 password1: '',
                 password2: '',
-            })
+            });
         }
         console.log(createDoula)
-        if (createDoula == true) {
-            navigate('/create')
+        if (createDoula === true) {
+            navigate('/create');
         } else {
-            navigate('/home')
+            navigate('/home');
         }
     }
 
