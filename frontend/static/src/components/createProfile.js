@@ -34,7 +34,7 @@ function CreateProfile() {
         formData.append('name', isName);
         formData.append('about', about);
         formData.append('started', started);
-        formData.append('image', addImage);
+        // formData.append('image', addImage);
         formData.append('services', services);
         formData.append('why', why);
         formData.append('website', website);
@@ -83,10 +83,10 @@ function CreateProfile() {
                     <div className='col loginField'>
                         <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} />
                     </div>
-                    <div classname='col loginField'>
+                    <div className='col loginField'>
                         <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setAbout(e.target.value)} value={about} />
                     </div>
-                    <div classname='col loginField'>
+                    <div className='col loginField'>
                         <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setStarted(e.target.value)} value={started} />
                     </div>
                     <div className='col loginField'>
@@ -104,10 +104,10 @@ function CreateProfile() {
                     <div className='col loginField'>
                         <input className='inputField' type='url' name='website' placeholder='website url' onChange={(e) => setWebsite(e.target.value)} value={website} />
                     </div>
-                    <div classname='col loginField'>
+                    <div className='col loginField'>
                         <input className='inputField' type='text' name='services' placeholder='services/pricing' onChange={(e) => setServices(e.target.value)} value={services} />
                     </div>
-                    <div classname='col loginField'>
+                    <div className='col loginField'>
                         <input className='inputField' type='text' name='why' placeholder='why you' onChange={(e) => setWhy(e.target.value)} value={why} />
                     </div>
                     <button className='loginRegisterButton create' type='submit'>Save Profile</button>

@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 import { useState } from 'react';
 

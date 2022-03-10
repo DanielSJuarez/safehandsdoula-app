@@ -1,8 +1,7 @@
-import pdb
 from django.shortcuts import render
-from .models import Profile, DoulaProfile, Feedback
+from .models import Profile, DoulaProfile
 from rest_framework import generics
-from .serializers import DoulaProfileSerializer, ProfileSerializer, FeedbackSerializer
+from .serializers import DoulaProfileSerializer, ProfileSerializer
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 # Create your views here.
@@ -41,11 +40,11 @@ class ProfileListAPIView(generics.ListAPIView):
     serializer_class = DoulaProfileSerializer
     queryset = DoulaProfile.objects.all()
 
-class FeedbackListAPIView(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
-    serializer_class = FeedbackSerializer
-    queryset = Feedback.objects.all()
+# class ContactListAPIView(generics.ListCreateAPIView):
+#     permission_classes = (IsAuthenticated,)
+#     serializer_class = ContactSerializer
+#     queryset = Contact.objects.all()
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+#     def perform_create(self, serializer):
+#         serializer.save(user=self.request.user)
 

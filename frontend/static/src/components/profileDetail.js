@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProfileCrud from './profileCrud';
+import ContactDetail from './contactDetail'
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function ProfileDetail() {
     const [newServices, setNewServices] = useState('');
     const [newWhy, setNewWhy] = useState('');
     const [linked, setLinked] = useState(false);
+    const [contacts, setContacts] = useState(null)
     // console.log(addImage)
     const handleImage = e => {
 
@@ -38,7 +40,6 @@ function ProfileDetail() {
             name: newIsName,
             about: newAbout,
             started: newStarted,
-            // image: addImage,
             services: newServices,
             why: newWhy,
             website: newWebsite,
@@ -135,6 +136,26 @@ function ProfileDetail() {
         setProfileImg(data.image)
     }
 
+    const getContacts = async (id) => {
+
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+        
+        const response = await fetch(`/api/v1/doula/${id}/contacts/`).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Netword response was not OK!')
+        } else {
+            const data = await response.json();
+            setContacts(data);
+        }
+    }
+   
+
     useEffect(() => {
         const getProfile = async () => {
             const response = await fetch('/api/v1/accounts/doula/').catch(handleError);
@@ -144,6 +165,7 @@ function ProfileDetail() {
             } else {
                 const data = await response.json();
                 setProfile(data);
+                console.log(data)
                 setNewIsName(data[0].name);
                 setNewAbout(data[0].about);
                 setNewStarted(data[0].started);
@@ -155,8 +177,8 @@ function ProfileDetail() {
                 setNewInstagram(data[0].instagram);
                 setNewCertification(data[0].certification);
                 setPreview(data[0].image)
+                getContacts(data[0].id);
                 // setAddImage(data[0].image)
-
                 if (data[0].calendly === !'') {
                     console.log('yes')
                     setLinked(true)
@@ -172,12 +194,41 @@ function ProfileDetail() {
 
     const profileDetail = profile.map((profile) => (
         <ProfileCrud key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
-            linked={linked} setLinked={setLinked} preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage}/>
+            linked={linked} setLinked={setLinked} preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} />
+    ))
+
+    // const getContacts = async () => {
+
+    //     const options = {
+    //         method: "GET",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     }
+        
+    //     const response = await fetch('/api/v1/doula/contacts/').catch(handleError);
+
+    //     if (!response.ok) {
+    //         throw new Error('Netword response was not OK!')
+    //     } else {
+    //         const data = await response.json();
+    //         setContacts(data);
+    //     }
+    // }
+
+    if (!contacts) {
+        return <div>Fetching contact data....</div>
+    }
+
+    const contactList = contacts.map((contact) => (
+        <ContactDetail key={contact.id} {...contact} />
     ))
 
     return (
         <>
-            <div>feedback</div>
+            <div>
+                {contactList}
+            </div>
             <div>
                 {profileDetail}
             </div>

@@ -10,19 +10,19 @@ class User(AbstractUser):
 
 class DoulaProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
-    image = models.ImageField(upload_to='doula/', null=True, default='beef_taco.jpeg')
+    image = models.ImageField(upload_to='doula/', null=True, default='doula/beef_taco.jpeg')
     name = models.CharField(max_length=255)
-    about = models.TextField(blank=True)
-    services = models.TextField(blank=True)
-    why = models.TextField(blank=True)
-    started = models.DateField(blank=True)
-    website = models.URLField(blank=True)
-    facebook = models.URLField(blank=True)
-    twitter = models.URLField(blank=True)
-    instagram = models.URLField(blank=True)
-    calendly = models.URLField(blank=True)
+    about = models.TextField(null=True, blank=True)
+    services = models.TextField(null=True, blank=True)
+    why = models.TextField(null=True, blank=True)
+    started = models.DateField(null=True, blank=True)
+    website = models.URLField(null=True, blank=True)
+    facebook = models.URLField(null=True, blank=True)
+    twitter = models.URLField(null=True, blank=True)
+    instagram = models.URLField(null=True, blank=True)
+    calendly = models.URLField(null=True, blank=True)
     is_doula = models.BooleanField(default=True, null=True)
-    certification = models.TextField(blank=True)
+    certification = models.TextField(null=True, blank=True)
 
 
     def __str__(self):
@@ -37,16 +37,16 @@ class Profile(models.Model):
         return self.user.username
 
 
-class Feedback(models.Model):
-        doula = models.ForeignKey(DoulaProfile, on_delete=models.CASCADE)
-        name = models.CharField(max_length=255)
-        user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
-        email = models.EmailField()
-        phone_number = models.CharField(max_length=255)
-        question = models.TextField(blank=True)
+# class Contact(models.Model):
+#         doula = models.ForeignKey(DoulaProfile, on_delete=models.CASCADE)
+#         name = models.CharField(max_length=255)
+#         user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
+#         email = models.EmailField()
+#         phone_number = models.CharField(max_length=255)
+#         question = models.TextField(blank=True)
 
-        def __str__(self):
-            return self.user.username
+#         def __str__(self):
+#             return self.user.username
 
         
    

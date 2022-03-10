@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Profile, DoulaProfile, Feedback
+from .models import Profile, DoulaProfile
 from rest_auth.serializers import UserDetailsSerializer, TokenSerializer, TokenModel
 
 
@@ -13,10 +13,10 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('id', 'user')
 
-class FeedbackSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = Feedback
-        fields = '__all__'
+# class ContactSerializer(serializers.ModelSerializer):
+#     class Meta: 
+#         model = Contact
+#         fields = '__all__'
 
 class UserDetailsSerializer(UserDetailsSerializer):
     class Meta(UserDetailsSerializer.Meta):

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProfilesDiplayView from './profileDisplayView';
 import ProfileView from './profileView';
-import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function ProfilesList(){

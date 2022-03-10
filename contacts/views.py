@@ -1,0 +1,38 @@
+from django.shortcuts import render
+from .models import Contact
+from rest_framework import generics
+from .serializers import ContactSerializer
+from rest_framework.permissions import IsAuthenticated
+
+# Create your views here.
+
+class ContactListAPIView(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class ContactControlListAPIView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()
+
+class ContactDoulaListAPIView(generics.ListAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ContactSerializer
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return Contact.objects.filter(doula=user)
+
+    def get_queryset(self):
+        '''
+        This view should return a list of all contacts by the doula passed in the url
+        '''
+
+        doula = self.kwargs['doula'] 
+        return Contact.objects.filter(doula=doula) 
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

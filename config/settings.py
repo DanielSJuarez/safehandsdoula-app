@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'api.apps.ApiConfig',
     'accounts.apps.AccountsConfig',
+    'contacts.apps.ContactsConfig',
     'safehands.apps.SafehandsConfig',
     'frontend.apps.FrontendConfig',
 
