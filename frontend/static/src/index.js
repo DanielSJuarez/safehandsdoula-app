@@ -9,7 +9,7 @@ import Register from './components/register';
 import reportWebVitals from './reportWebVitals';
 import CreateProfile  from './components/createProfile'
 import Home from './components/home'
-import DoulaProfile from './components/doulaProfile'
+import ProfileDetail from './components/profileDetail'
 import ProfilesList from './components/profilesList'
 import Calendly from './components/linkCalendly';
 
@@ -24,8 +24,8 @@ ReactDOM.render(
           <Route path='login' element={<Login/>}/>
           <Route path='register' element={<Register/>}/>
           <Route path='create' element={<CreateProfile/>}/>
-          <Route path='profile' element={<DoulaProfile/>}/>
-          <Route path='areadoula' element={<ProfilesList/>}/>
+          <Route path='profile' element={<ProfileDetail/>}/>
+          <Route path='doula' element={<ProfilesList/>}/>
           <Route path='calendly' element={<Calendly/>}/>
         </Route>
       </Routes>

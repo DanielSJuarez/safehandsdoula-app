@@ -1,150 +1,188 @@
+import { useState, useEffect } from 'react'
+import ProfileCrud from './profileCrud';
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
-import { useState } from 'react';
 
-function ProfileDetail({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification, id, calendly, linked, setLinked, addImage, updateImage, removeImage}) {
+function ProfileDetail() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
-    const [isImage, setIsImage] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
+    const [profile, setProfile] = useState(null);
+    const [addImage, setAddImage] = useState('');
+    const [newIsName, setNewIsName] = useState('');
+    const [newAbout, setNewAbout] = useState('');
+    const [newStarted, setNewStarted] = useState('');
+    const [newCertification, setNewCertification] = useState('');
+    const [newFacebook, setNewFacebook] = useState('');
+    const [newTwitter, setNewTwitter] = useState('');
+    const [newInstagram, setNewInstagram] = useState('');
+    const [newWebsite, setNewWebsite] = useState('');
+    const [newServices, setNewServices] = useState('');
+    const [newWhy, setNewWhy] = useState('');
+    const [linked, setLinked] = useState(false);
+    // console.log(addImage)
+    const handleImage = e => {
 
-    const edit = (e) => {
-        e.preventDefault();
-        editProfile(id);
-        setIsEditing(false);
-        e.target.reset();
+        const file = e.target.files[0];
+        setAddImage(file);
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreview(reader.result)
+        }
+        reader.readAsDataURL(file);
     }
 
-    const update = (e) => {
-        e.preventDefault()
-        updateImage(id)
-        setIsImage(false)
-        e.target.reset();
+    const editProfile = async (id) => {
+
+        const updatedprofile = {
+            name: newIsName,
+            about: newAbout,
+            started: newStarted,
+            // image: addImage,
+            services: newServices,
+            why: newWhy,
+            website: newWebsite,
+            facebook: newFacebook,
+            twitter: newTwitter,
+            instagram: newInstagram,
+            certification: newCertification,
+        }
+
+        const formData = new FormData();
+        for (const [key, value] of Object.entries(updatedprofile)) {
+            formData.append(key, value)
+        }
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: formData
+        }
+
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network response was not OK');
+        }
+
+        const data = await response.json();
+
+        const updateProfile = profile.map((profile) => {
+            if (profile.id === id) {
+                console.log(data)
+                return data
+            }
+        })
+        setProfile(updateProfile)
+        setLinked(false)
     }
 
-    const remove = (e) => {
-        e.preventDefault()
-        removeImage(id)
-        setIsImage(false)
+    const updateImage = async (id) => {
+        const formData = new FormData();
+        formData.append('image', addImage);
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: formData,
+        }
+
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network response was not OK');
+        }
+        const data = await response.json();
+        const updateProfile = profile.map((profile) => {
+            if (profile.id === id) {
+                return data
+            }
+        })
+        setProfile(updateProfile)
+        setPreview(data.image);
+        setProfileImg(data.image)
     }
 
-    const cancel = () => {
-        setIsEditing(false);
-        setLinked(false);
+    const removeImage = async (id) => {
+        const formData = new FormData();
+        formData.append('image', new File([], ''));
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: formData,
+        }
+
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network response was not OK');
+        }
+        const data = await response.json();
+        const updateProfile = profile.map((profile) => {
+            if (profile.id === id) {
+                return data
+            }
+        })
+        setProfile(updateProfile)
+        setPreview(data.image);
+        setProfileImg(data.image)
     }
 
-    const keep = () => {
-        setIsImage(false)
-        setPreview(profileImg)
+    useEffect(() => {
+        const getProfile = async () => {
+            const response = await fetch('/api/v1/accounts/doula/').catch(handleError);
+
+            if (!response.ok) {
+                throw new Error('Netword response was not OK!')
+            } else {
+                const data = await response.json();
+                setProfile(data);
+                setNewIsName(data[0].name);
+                setNewAbout(data[0].about);
+                setNewStarted(data[0].started);
+                setNewServices(data[0].services);
+                setNewWhy(data[0].why);
+                setNewWebsite(data[0].website);
+                setNewFacebook(data[0].facebook);
+                setNewTwitter(data[0].twitter);
+                setNewInstagram(data[0].instagram);
+                setNewCertification(data[0].certification);
+                setPreview(data[0].image)
+                // setAddImage(data[0].image)
+
+                if (data[0].calendly === !'') {
+                    console.log('yes')
+                    setLinked(true)
+                }
+            }
+        }
+        getProfile();
+    }, []);
+
+    if (!profile) {
+        return <div>Fetching profile data....</div>
     }
 
-    const addCalendly = (
-        <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec&response_type=code&redirect_uri=http://localhost:3000/'>Link Calendly Account</a>
-    )
-
-    const updateCalendly = (
-        <div className='col loginField'>
-            <input className='inputField' type='text' name='calendly' placeholder='calendly' value={calendly} />
-        </div>
-    )
-
-    const imageMode = (
-        <>
-            <div className='imgHolder'>
-                <img src={image} alt={name} />
-            </div>
-            <button onClick={() => setIsImage(true)}>Edit</button>
-        </>
-    )
-
-    const changeImageMode = (
-        <>
-            <form onSubmit={update}>
-                <div className='col loginField'>
-                    <input className='inputField' type='file' name='profileImage' onChange={handleImage} />
-                    {preview && <img src={preview} alt='' />}
-                    <button onClick={() => keep()}>Cancel</button>
-                    <button className='loginRegisterButton create' type='submit'>Save Profile</button>
-                </div>
-            </form>
-            <button type='button' onClick={remove}>Remove</button>
-        </>
-    )
-
-    const displayMode = (
-        <section className='col article'>
-            {/* <div className='imgHolder'>
-                <img src={image} alt={name} />
-            </div> */}
-            <h2>{name}</h2>
-            <p>{started}</p>
-            <a target='blank' href={facebook}>{facebook}</a>
-            <a target='blank' href={twitter}>{twitter}</a>
-            <a target='blank' href={instagram}>{instagram}</a>
-            <a target='blank' href={website}>{website}</a>
-            <p>{certification}</p>
-            <p className='summary'>{about}</p>
-            <p className='summary'>{services}</p>
-            <p className='summary'>{why}</p>
-            <p>{calendly}</p>
-            {/* <CalendlyWidget calendly={calendly}/> */}
-            {/* <InlineWidget url={calendly} /> */}
-            <button onClick={() => setIsEditing(true)}>Edit Profile</button>
-        </section>
-    )
-    // console.log(linked)
-
-    const editMode = (
-        <>
-            <form onSubmit={edit}>
-                {/* <div className='col loginField'>
-                    <input className='inputField' type='file' name='profileImage' onChange={handleImage} />
-                    {preview && <img src={preview} alt='' />}
-                </div> */}
-                {/* <button type='button' onClick={() => removeImage(id)}>Remove Image</button> */}
-                <div className='col loginField'>
-                    <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setNewIsName(e.target.value)} value={newIsName} />
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setNewAbout(e.target.value)} value={newAbout} />
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setNewStarted(e.target.value)} value={newStarted} />
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type='text' name='certification' placeholder='certifications' onChange={(e) => setNewCertification(e.target.value)} value={newCertification} />
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type='url' name='facebook' placeholder='facebook url' onChange={(e) => setNewFacebook(e.target.value)} value={newFacebook} />
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type='url' name='twitter' placeholder='twitter url' onChange={(e) => setNewTwitter(e.target.value)} value={newTwitter} />
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type='url' name='instagram' placeholder='instagram url' onChange={(e) => setNewInstagram(e.target.value)} value={newInstagram} />
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type='url' name='website' placeholder='website url' onChange={(e) => setNewWebsite(e.target.value)} value={newWebsite} />
-                </div>
-                <div className='col loginField'>
-                    {linked ? updateCalendly : addCalendly}
-                    {/* <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com'>Link Calandly Account</a> */}
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type='text' name='services' placeholder='services/pricing' onChange={(e) => setNewServices(e.target.value)} value={newServices} />
-                </div>
-                <div className='col loginField'>
-                    <input className='inputField' type='text' name='why' placeholder='why you' onChange={(e) => setNewWhy(e.target.value)} value={newWhy} />
-                </div>
-                <button onClick={() => cancel()}>Cancel</button>
-                <button className='loginRegisterButton create' type='submit'>Save Profile</button>
-            </form>
-        </>
-    )
+    const profileDetail = profile.map((profile) => (
+        <ProfileCrud key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
+            linked={linked} setLinked={setLinked} preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage}/>
+    ))
 
     return (
-        <div>
-            {isImage ? changeImageMode : imageMode}
-            {isEditing ? editMode : displayMode}
-        </div>
+        <>
+            <div>feedback</div>
+            <div>
+                {profileDetail}
+            </div>
+            <div>Rating</div>
+        </>
     )
 }
 

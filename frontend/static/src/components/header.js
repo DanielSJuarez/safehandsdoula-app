@@ -54,7 +54,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/how'>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/areadoula'>Doula's</NavLink>
+                <NavLink className='navLinks' to='/doula'>Doula's</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
@@ -77,7 +77,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/profile'>Profile</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/areadoula'>Doula's</NavLink>
+                <NavLink className='navLinks' to='/doula'>Doula's</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
@@ -105,7 +105,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/yourplan'>Your Plan</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/areadoula'>Doula's</NavLink>
+                <NavLink className='navLinks' to='/doula'>Doula's</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <Link className='navLinks' to='/login'>Login</Link>
