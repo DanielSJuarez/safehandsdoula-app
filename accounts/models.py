@@ -30,6 +30,7 @@ class DoulaProfile(models.Model):
     is_doula = models.BooleanField(default=True, null=True)
     certification = models.TextField(null=True, blank=True)
     is_active = models.CharField(max_length=3, choices=STATUS, default='ACT')
+    linked = models.BooleanField(null=False, default=False)
 
 
     def __str__(self):

@@ -41,7 +41,8 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
 
     const updateCalendly = (
         <div className='col loginField'>
-            <input className='inputField' type='text' name='calendly' placeholder='calendly' value={calendly} />
+            <p>Calendly: {calendly}</p>
+            {/* <input className='inputField' type='text' name='calendly' placeholder='calendly' value={calendly} /> */}
         </div>
     )
 

@@ -85,6 +85,7 @@ function Home() {
     const setCalendly = async (id, schedule) => {
         const formData = new FormData();
         formData.append('calendly', schedule);
+        formData.append('linked', true);
 
         const options = {
             method: 'PATCH',

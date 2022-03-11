@@ -19,7 +19,6 @@ function ProfileDetail() {
     const [newWebsite, setNewWebsite] = useState('');
     const [newServices, setNewServices] = useState('');
     const [newWhy, setNewWhy] = useState('');
-    const [linked, setLinked] = useState(false);
     const [contacts, setContacts] = useState(null)
     const [pk, setPk] = useState('')
     const [status, setStatus] = useState(null)
@@ -79,7 +78,6 @@ function ProfileDetail() {
             }
         })
         setProfile(updateProfile)
-        setLinked(false)
     }
 
     const updateImage = async (id) => {
@@ -215,10 +213,6 @@ function ProfileDetail() {
                 setPk(data[0].id)
                 setStatus(data[0].is_active)
                 setProfileImg(data[0].image)
-                if (data[0].calendly === !'') {
-                    console.log('yes')
-                    setLinked(true)
-                }
             }
         }
         getProfile();
@@ -230,7 +224,7 @@ function ProfileDetail() {
 
     const profileDetail = profile.map((profile) => (
         <ProfileCrud key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
-            linked={linked} setLinked={setLinked} preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} />
+         preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} />
     ))
 
     if (!contacts) {
