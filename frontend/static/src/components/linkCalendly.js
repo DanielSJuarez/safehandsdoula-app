@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useOutletContext } from "react-router-dom";
 
 function Calendly() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
 
     return (
         <>

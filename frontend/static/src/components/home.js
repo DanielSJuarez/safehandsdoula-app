@@ -3,12 +3,8 @@ import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 function Home() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
   
-    const handleError = (err) => {
-        console.log(err);
-    }
-
     useEffect(() => {
         let id = ''
         const isDoula = async () => {
@@ -20,6 +16,7 @@ function Home() {
                 if (data[0].is_doula === true) {
                     setIsDoula(true)
                     id = data[0].id
+                    setProfileImg(data[0].image)
                     if (searchParams.get('code') != null) {
                         getToken(id);
                     }
