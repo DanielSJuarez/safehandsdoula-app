@@ -22,6 +22,7 @@ function ProfileDetail() {
     const [linked, setLinked] = useState(false);
     const [contacts, setContacts] = useState(null)
     const [pk, setPk] = useState('')
+    const [status, setStatus] = useState(null)
     
     const handleImage = e => {
 
@@ -156,6 +157,38 @@ function ProfileDetail() {
         }
     }
    
+    const accountStatus = async (pk) => {
+        let isStatus = ''
+        
+        if (status === 'ACT') {
+            isStatus = 'INA'
+        } else if (status === 'INA') {
+            isStatus = 'ACT'
+        }
+
+        const changeAccount = {
+            is_active : isStatus,
+        }
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify(changeAccount)
+        }
+        const response = await fetch(`/api/v1/accounts/${pk}/doula/`, options)
+        
+        if (!response.ok) {
+            throw new Error('Network response was not OK');
+        }
+        const data = await response.json();
+
+        setStatus(data.is_active)
+    }
+    
+   
 
     useEffect(() => {
         const getProfile = async () => {
@@ -180,6 +213,7 @@ function ProfileDetail() {
                 setPreview(data[0].image)
                 getContacts(data[0].id);
                 setPk(data[0].id)
+                setStatus(data[0].is_active)
                 // setAddImage(data[0].image)
                 if (data[0].calendly === !'') {
                     console.log('yes')
@@ -221,6 +255,8 @@ function ProfileDetail() {
 
     return (
         <>
+            <p>Account Status: {status}</p>
+            <button type='button' onClick={() => accountStatus(pk)}>Activate/Inactivate Account</button>
             <div>
                 <p>New</p>
                 {contactNewList}

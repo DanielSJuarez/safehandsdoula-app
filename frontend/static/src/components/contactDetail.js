@@ -4,14 +4,7 @@ import Cookies from 'js-cookie';
 
 function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts }) {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
-    // const [contacted, setContacted] = useState('')
-
-    // if (contact_status === 'NEW') {
-    //     setContacted('CON')
-    // } else if (contact_status === 'CON') {
-    //     setContacted('NEW')
-    // }
-
+    
     const contact = async (id) => {
         let contact = ''
 
