@@ -18,6 +18,7 @@ class Contact(models.Model):
         phone_number = models.CharField(max_length=255)
         question = models.TextField(blank=True)
         contact_status = models.CharField(max_length=3, choices=CONTACT, default='NEW')
+        reported = models.BooleanField(null=False, default=False)
 
         def __str__(self):
             return self.user.username

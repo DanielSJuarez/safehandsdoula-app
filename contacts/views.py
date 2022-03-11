@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Contact
 from rest_framework import generics
-from .serializers import ContactSerializer
-from rest_framework.permissions import IsAuthenticated
+from .serializers import ContactSerializer, AdminSerializer
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 # Create your views here.
 
@@ -36,3 +36,14 @@ class ContactDoulaListAPIView(generics.ListAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class AdminContactEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAdminUser,)
+    serializer_class = AdminSerializer
+    queryset = Contact.objects.all()
+
+
+class AdminContactListAPIView(generics.ListAPIView):
+     permission_classes = (IsAdminUser,)
+     serializer_class = AdminSerializer
+     queryset = Contact.objects.all()
