@@ -3,7 +3,7 @@ import { InlineWidget } from "react-calendly";
 import { useOutletContext } from "react-router-dom";
 import ContactDoula from './contactDoula'
 
-function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, setIsSummary , id}) {
+function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, setIsSummary , id, calendly}) {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
     const [isAuthenicated, setIsAuthenicated] = useState(false)
 
@@ -14,7 +14,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     const notIsLogin = (
         <p>Please create an account or login to contact this doula</p>
     )
-
+    // const what = 'https://calendly.com/juarezdsv'
     return (
         <section className='col article'>
             <div className='imgHolder'>
@@ -36,7 +36,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <button onClick={() => setIsSummary(false)} >Back to Doula's</button>
             <p>Contact</p>
             {auth ? isLogin : notIsLogin}
-             <InlineWidget url='https://calendly.com/juarezdsv' />
+             {/* <InlineWidget url={calendly} /> */}
         </section>
     )
 }

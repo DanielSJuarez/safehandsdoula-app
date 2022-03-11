@@ -1,19 +1,16 @@
 import { useOutletContext } from "react-router-dom";
-import { useState,useEffect } from 'react';
+import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 function Home() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
-    const [token, setToken] = useState('')
-    const [schedule, setSchedule] = useState('')
-    const [code, setCode] = useState('')
-    const [id, setId] = useState(null)
   
     const handleError = (err) => {
         console.log(err);
     }
 
     useEffect(() => {
+        let id = ''
         const isDoula = async () => {
             const response = await fetch('/api/v1/accounts/doula/').catch(handleError);
             if (!response.ok) {
@@ -22,19 +19,17 @@ function Home() {
                 const data = await response.json();
                 if (data[0].is_doula === true) {
                     setIsDoula(true)
-                    setId(data[0].id)
+                    id = data[0].id
+                    if (searchParams.get('code') != null) {
+                        getToken(id);
+                    }
                 }
             }
         }
-        isDoula();
-    }, []);
+        const getToken = async (id) => {
 
-
-    useEffect(() => {
-        const getToken = async () => {
-            // const code = searchParams.get('code')
-            setCode(searchParams.get('code'))
-
+            const code = searchParams.get('code')
+            
             const data = new URLSearchParams(code);
             data.append('code', code);
             data.append('client_id', 'UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec');
@@ -58,41 +53,39 @@ function Home() {
                 throw new Error('Network response not ok!');
             } else {
                 const data = await response.json();
-                console.log(data);
-                setToken(data.access_token);
-                getSchedule();
+                const token = data.access_token
+                getSchedule(token, id);
             }
         }
-        console.log(token)
-        const getSchedule = async () => {
-            const options = {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
-                },
-            }
-
-            const response = await fetch('https://api.calendly.com/users/me', options).catch(
-                handleError
-            )
-
-            if (!response.ok) {
-                throw new Error('Network response not ok!');
-            } else {
-                const data = await response.json();
-                setSchedule(data.resource.scheduling_url)
-                setCalendly(id)
-            }
-        }
-        if (searchParams.get('code') != null) {
-            getToken();
+        if (auth){
+            isDoula();
         }
     }, []);
 
+    const getSchedule = async (token, id) => {
+        let schedule = ''
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+        }
 
-    const setCalendly = async (id) => {
+        const response = await fetch('https://api.calendly.com/users/me', options).catch(
+            handleError
+        )
 
+        if (!response.ok) {
+            throw new Error('Network response not ok!');
+        } else {
+            const data = await response.json();
+            schedule = data.resource.scheduling_url
+            setCalendly(id, schedule)
+        }
+    }
+
+    const setCalendly = async (id, schedule) => {
         const formData = new FormData();
         formData.append('calendly', schedule);
 
@@ -109,9 +102,6 @@ function Home() {
         if (!response.ok) {
             throw new Error('Network response was not OK');
         } 
-        setCode(null)
-        setSchedule('')
-        setToken('')
     }
 
     return (

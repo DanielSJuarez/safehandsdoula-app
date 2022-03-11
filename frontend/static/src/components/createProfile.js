@@ -34,7 +34,7 @@ function CreateProfile() {
         formData.append('name', isName);
         formData.append('about', about);
         formData.append('started', started);
-        // formData.append('image', addImage);
+        formData.append('image', addImage);
         formData.append('services', services);
         formData.append('why', why);
         formData.append('website', website);

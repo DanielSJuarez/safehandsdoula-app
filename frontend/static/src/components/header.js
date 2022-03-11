@@ -11,13 +11,19 @@ function Header(props) {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
+                // console.log(data)
                 if (data[0].is_doula === true) {
                     props.setIsDoula(true)
+                    // console.log(data[0].image)
                     props.setProfileImg(data[0].image)
                 }
             }
         }
-        isDoula();
+        if (props.auth){
+            // console.log(props.auth)
+            isDoula();
+        }
+        // isDoula();
     }, []);
 
     const handleLogout = async event => {

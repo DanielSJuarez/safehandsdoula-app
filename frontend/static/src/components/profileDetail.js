@@ -214,7 +214,7 @@ function ProfileDetail() {
                 getContacts(data[0].id);
                 setPk(data[0].id)
                 setStatus(data[0].is_active)
-                // setAddImage(data[0].image)
+                setProfileImg(data[0].image)
                 if (data[0].calendly === !'') {
                     console.log('yes')
                     setLinked(true)
