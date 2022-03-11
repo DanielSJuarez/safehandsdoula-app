@@ -36,6 +36,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <button onClick={() => setIsSummary(false)} >Back to Doula's</button>
             <p>Contact</p>
             {auth ? isLogin : notIsLogin}
+             <InlineWidget url='https://calendly.com/juarezdsv' />
         </section>
     )
 }
