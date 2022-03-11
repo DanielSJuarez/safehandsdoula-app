@@ -32,7 +32,11 @@ function ProfilesList(){
         profiles.id === getId        
     ))
 
-    const profileSummaryHTML = profiles.map((profiles) => (
+    const activeFilter = profiles.filter(profiles => (
+        profiles.is_active === 'ACT'
+    ))
+
+    const profileSummaryHTML = activeFilter.map((profiles) => (
         <ProfilesDiplayView key={profiles.id} {...profiles} setGetId={setGetId} setIsSummary={setIsSummary}/>
     ))
 

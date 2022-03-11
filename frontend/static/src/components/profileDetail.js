@@ -21,7 +21,8 @@ function ProfileDetail() {
     const [newWhy, setNewWhy] = useState('');
     const [linked, setLinked] = useState(false);
     const [contacts, setContacts] = useState(null)
-    // console.log(addImage)
+    const [pk, setPk] = useState('')
+    
     const handleImage = e => {
 
         const file = e.target.files[0];
@@ -178,6 +179,7 @@ function ProfileDetail() {
                 setNewCertification(data[0].certification);
                 setPreview(data[0].image)
                 getContacts(data[0].id);
+                setPk(data[0].id)
                 // setAddImage(data[0].image)
                 if (data[0].calendly === !'') {
                     console.log('yes')
@@ -197,37 +199,33 @@ function ProfileDetail() {
             linked={linked} setLinked={setLinked} preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} />
     ))
 
-    // const getContacts = async () => {
-
-    //     const options = {
-    //         method: "GET",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //     }
-        
-    //     const response = await fetch('/api/v1/doula/contacts/').catch(handleError);
-
-    //     if (!response.ok) {
-    //         throw new Error('Netword response was not OK!')
-    //     } else {
-    //         const data = await response.json();
-    //         setContacts(data);
-    //     }
-    // }
-
     if (!contacts) {
         return <div>Fetching contact data....</div>
     }
 
-    const contactList = contacts.map((contact) => (
-        <ContactDetail key={contact.id} {...contact} />
+    const contactNewFilter = contacts.filter(contact => (
+        contact.contact_status === 'NEW'
+    ))
+
+    const contactNewList = contactNewFilter.map((contact) => (
+        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk}/>
+    ))
+
+    const contactContactedFilter = contacts.filter(contact => (
+        contact.contact_status === 'CON'
+    ))
+
+    const contactContactedList = contactContactedFilter.map((contact) => (
+        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk}/>
     ))
 
     return (
         <>
             <div>
-                {contactList}
+                <p>New</p>
+                {contactNewList}
+                <p>Contacted</p>
+                {contactContactedList}
             </div>
             <div>
                 {profileDetail}

@@ -9,6 +9,12 @@ class User(AbstractUser):
     pass
 
 class DoulaProfile(models.Model):
+
+    STATUS = (
+        ('ACT', 'Active'),
+        ('INA', 'Inactive'),
+    )
+
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
     image = models.ImageField(upload_to='doula/', null=True, default='doula/beef_taco.jpeg')
     name = models.CharField(max_length=255)
@@ -23,6 +29,7 @@ class DoulaProfile(models.Model):
     calendly = models.URLField(null=True, blank=True)
     is_doula = models.BooleanField(default=True, null=True)
     certification = models.TextField(null=True, blank=True)
+    is_active = models.CharField(max_length=3, choices=STATUS, default='ACT')
 
 
     def __str__(self):
