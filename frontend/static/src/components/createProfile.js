@@ -81,13 +81,13 @@ function CreateProfile() {
                         {preview && <img src={preview} alt='' />}
                     </div>
                     <div className='col loginField'>
-                        <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} />
+                        <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} required/>
                     </div>
                     <div className='col loginField'>
                         <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setAbout(e.target.value)} value={about} />
                     </div>
                     <div className='col loginField'>
-                        <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setStarted(e.target.value)} value={started} />
+                        <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setStarted(e.target.value)} value={started} required/>
                     </div>
                     <div className='col loginField'>
                         <input className='inputField' type='text' name='certification' placeholder='certifications' onChange={(e) => setCertification(e.target.value)} value={certification} />

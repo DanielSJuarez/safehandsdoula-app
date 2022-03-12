@@ -103,7 +103,8 @@
 .image{
   width: 100%;
   border-radius: 50%;
-  height: 100%
+  height: 100%;
+  border : solid 2px #57394a;
 }
 
 .userHeader{
@@ -113,6 +114,85 @@
 .calendly{
   background-color: #57394a;
   border: solid 5px #b2481b;
+  height: auto;
 }
 
+.profile{
+  background-color: #dbb0a0;
+}
 
+/* .info{
+  background-color: #eab586;
+  border: solid 1px #57394a
+} */
+
+.header{
+  background-color: #dbb0a0;
+  list-style-type: none;
+  height: 50px;
+  padding: 0;
+  border-bottom: solid 1px #57394a;
+}
+
+/* .header{
+  list-style-type: none;
+  height: 50px;
+  padding: 0;
+} */
+
+/* .navLinkButton{
+  background-color: #4b6700;
+  list-style-type: none;
+  margin: 0px 5px;
+  border-radius: 5px;
+  border: 1px solid #212638;
+} */
+
+.navLinks{
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: #57394a;
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+  /* border-left: solid 1px #e0c2c0;
+  border-right: solid 1px #e0c2c0; */
+  /* margin-top: 10px; */
+} 
+
+/* .navLinks:active{
+  background-color: black;
+} */
+a:hover{
+  text-decoration: none;
+  color: white;
+}
+
+.logout{
+  border: none;
+  background-color: #57394a;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 5px;
+}
+
+.headImg{
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.headImgHolder{
+  width: 46px;
+  height: 40px;
+  margin: 2px; 
+  padding: 0px
+}
+
+.profileTopInfo{
+  text-align: center;
+  padding-top: 75px;
+}
