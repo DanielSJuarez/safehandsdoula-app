@@ -1,17 +1,19 @@
-function profilesDiplayView({ image, name, started, setGetId, id, setIsSummary}) {
+function profilesDiplayView({ image, name, started, setGetId, id, setIsSummary }) {
 
     const detail = (id) => {
         setIsSummary(true)
         setGetId(id)
     }
-   
+
     return (
-        <section onClick={() => detail(id)}>
+        <section onClick={() => detail(id)} className='col-lg-3 summaryView'>
             <div className='imgHolder'>
-                <img src={image} alt={name} />
+                <img src={image} alt={name} className='image' />
             </div>
-            <h2>{name}</h2>
-            <p>{started}</p>
+            <div className="userHeader">
+                <h2>{name}</h2>
+                <p>{started}</p>
+            </div>
         </section>
     )
 }

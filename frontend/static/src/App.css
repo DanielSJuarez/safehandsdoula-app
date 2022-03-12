@@ -36,3 +36,83 @@
     transform: rotate(360deg);
   }
 }
+
+.loginField{
+  text-align: center;
+  margin: 50px 0px
+}
+
+.loginPlacholder{
+  margin: 100px auto;
+  border: solid 3px #57394a;
+  max-width: 1000px;
+  background-color: #eab586;
+}
+
+.inputField{
+  width: 80%;
+  margin-left: 10px;
+}
+
+.inputField:hover{
+  background-color: rgb(204, 204, 204);
+}
+
+.loginRegisterButton{
+  background-color: #b2481b;
+  color: white;
+  border: none;
+  margin: 0px 10px;
+  width: 300px;
+}
+
+.loginRegisterButton:hover{
+  background-color: #57394a;
+}
+
+.doulacheckPlacholder {
+  margin-left: 25px;
+}
+
+.doulaCheck { 
+  margin: 20px 15px
+}
+
+.pageSupport{
+  text-align: center;
+}
+
+.summaryView{
+  background-color: #dbb0a0;
+  text-align: center;
+  border: solid 5px #e0c2c0;
+  /* height: 350px; */
+  /* margin: 5px; */
+}
+
+.summaryView:hover {
+  background-color: #eab586;
+}
+
+.imgHolder{
+  height: 200px;
+  width: 200px;
+  margin: 20px auto;
+}
+
+.image{
+  width: 100%;
+  border-radius: 50%;
+  height: 100%
+}
+
+.userHeader{
+  margin: 30px 0px;
+}
+
+.calendly{
+  background-color: #57394a;
+  border: solid 5px #b2481b;
+}
+
+

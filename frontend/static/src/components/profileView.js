@@ -26,9 +26,11 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     return (
         <section className='col article'>
             <div className='imgHolder'>
-                <img src={image} alt={name} />
+                <img src={image} alt={name} className='image'/>
             </div>
+            <label htmlFor='name'>Name</label>
             <h2>{name}</h2>
+            <label htmlFor='started'>Started</label>
             <p>{started}</p>
             <a target='blank' href={facebook}>{facebook}</a>
             <a target='blank' href={twitter}>{twitter}</a>
@@ -41,7 +43,9 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <button onClick={() => setIsSummary(false)} >Back to Doula's</button>
             <p>Contact</p>
             {auth ? isLogin : notIsLogin}
-            {linked ? isCalendly : isNotCalendly}
+            <div className='calendly'>
+                {linked ? isCalendly : isNotCalendly}
+            </div>
         </section>
     )
 }

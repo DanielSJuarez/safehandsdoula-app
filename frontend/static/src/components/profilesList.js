@@ -45,8 +45,10 @@ function ProfilesList(){
     ))
 
     return (
-        <div>
+        <div className='container profileList'>
+            <div className='row'>
             {isSummary ? profileDetailHTML : profileSummaryHTML}
+            </div>
         </div>
     )
 }

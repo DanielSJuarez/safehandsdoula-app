@@ -61,12 +61,12 @@ function Login() {
                     <input type='password' className='inputField' name='password' id='password' placeholder='password' onChange={handleInput} required value={state.password}/>
                 </div>
                 <div className='col loginField'>
-                    <button className='loginRegisterButton' type='button' onClick={() => navigate('/home')}>Back</button>
+                    <button className='loginRegisterButton' type='button' onClick={() => navigate('/home')}>Home</button>
                     <button className='loginRegisterButton' type='submit'>Login</button>
                 </div>
             </form>
         </div>
-        <div>
+        <div className='pageSupport'>
             <p>Instasdfasflsadjf;lskajf;alskjf;lsdkjf;lsdakfj;alsdkfj;sladkfjasd;lkfjasdl;kf</p>
         </div>
         </>

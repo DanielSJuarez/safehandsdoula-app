@@ -86,16 +86,16 @@ function Register(){
                     <label htmlFor='password2'>Confirm Password</label>
                     <input className='inputField' type='password' name='password2' id='password' placeholder='password' onChange={newHandleInput} required value={newState.password2}/>
                 </div>
-                <div>
+                <div className='col doulacheckPlacholder'>
                 <label htmlFor='checkbox'>Are you a doula?</label>
-                    <input type='checkbox' onChange={() => doula()}/>
+                    <input className='doulaCheck' type='checkbox' onChange={() => doula()}/>
                 </div>
                 <div className='col loginField'>
                     <button className='loginRegisterButton' type='submit'>Create Account</button>
                 </div>
             </form>
         </div>
-        <div>
+        <div className='pageSupport'>
             <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
         </div>
         </>
