@@ -5,7 +5,7 @@ import AdminContactView from "./adminContactView";
 import AdminProfileView from "./adminProfileView";
 
 function AdminView() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
     const [reportedProfiles, setReportedProfiles] = useState(null);
     const [reportedContacts, setReportedContacts] = useState(null);
 

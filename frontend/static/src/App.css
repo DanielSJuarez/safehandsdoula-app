@@ -196,3 +196,52 @@ a:hover{
   text-align: center;
   padding-top: 75px;
 }
+
+.homeArticleOne{
+  /* background-color: #57394a; */
+  height: 1000px;
+  margin: 50px 0px;
+  color: #57394a;
+  text-align: center;
+  font-size: 80px;
+  background-image: linear-gradient(to right bottom,#e0c2c0, #57394a);
+  padding: 100px;
+  line-height: 250px;
+}
+
+.homeArticleOne:hover{
+  cursor: pointer;
+  border: solid 1px #57394a;
+}
+
+.homeArticleTwo {
+  /* background-color: #b2481b; */
+  height: 1000px;
+  margin: 50px 0px;
+  color: #57394a;
+  text-align: center;
+  font-size: 80px;
+  background-image: linear-gradient(to left bottom,#57394a, #e0c2c0);
+  padding: 100px;
+  line-height: 100px;
+}
+
+.homeArticleTwo:hover{
+  cursor: pointer;
+  border: solid 1px #57394a;
+}
+
+.profileHead{
+  background-color: #57394a ;
+  color: white;
+  border-radius: 5px;
+}
+
+.label{
+  font-weight: bold;
+}
+
+.headImg:hover{
+  border: 1px solid #b2481b
+}
+

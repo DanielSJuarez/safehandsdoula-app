@@ -4,6 +4,13 @@ import { NavLink, Link } from 'react-router-dom';
 
 function Header(props) {
 
+    const checkActive = () => {
+        if (props.isSummary === true) {
+            props.setIsSummary(false)
+            console.log('asfasdfs')
+        }
+    }
+
     useEffect(() => {
         const isDoula = async () => {
             const response = await fetch('/api/v1/accounts/doula/').catch(props.handleError);
@@ -11,19 +18,15 @@ function Header(props) {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                // console.log(data)
                 if (data[0].is_doula === true) {
                     props.setIsDoula(true)
-                    // console.log(data[0].image)
                     props.setProfileImg(data[0].image)
                 }
             }
         }
         if (props.auth){
-            // console.log(props.auth)
             isDoula();
         }
-        // isDoula();
     }, []);
 
     const handleLogout = async event => {
@@ -66,7 +69,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/doula'>Doula's</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
+                <button className='logout' type='button' name='logout'  onClick={handleLogout}>Sign Out</button>
             </li>
         </ul>
     )
@@ -89,16 +92,14 @@ function Header(props) {
                 <NavLink className='navLinks' to='/profile'>Profile</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/doula'>Doula's</NavLink>
+                <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doula's</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
             </li>
-            {/* <li className='col mx-0' onClick={() => props.navigate('/profile')}> */}
-                <div className='headImgHolder'>
+                <div className='headImgHolder' onClick={() => props.navigate('/profile')}>
                     <img src={props.profileImg} alt='profile image' className='headImg'/>
                 </div>
-            {/* </li> */}
         </ul>
     )
 

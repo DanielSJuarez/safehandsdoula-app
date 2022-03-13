@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Cookies from 'js-cookie';
 
 function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts }) {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
     
     const contact = async (id) => {
         let contact = ''
@@ -44,7 +44,7 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
     }
 
     return (
-        <div>
+        <div className="col-3">
             <h3>{name}</h3>
             <p>{email}</p>
             <p>{phone_number}</p>

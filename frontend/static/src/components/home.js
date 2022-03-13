@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 function Home() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
-  
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
+
     useEffect(() => {
         let id = ''
         const isDoula = async () => {
@@ -26,7 +26,7 @@ function Home() {
         const getToken = async (id) => {
 
             const code = searchParams.get('code')
-            
+
             const data = new URLSearchParams(code);
             data.append('code', code);
             data.append('client_id', 'UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec');
@@ -54,7 +54,7 @@ function Home() {
                 getSchedule(token, id);
             }
         }
-        if (auth){
+        if (auth) {
             isDoula();
         }
     }, []);
@@ -99,11 +99,19 @@ function Home() {
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
-        } 
+        }
     }
 
     return (
-        <div>I am the home page</div>
+        <>
+            <div className="container">
+                <div className="homeArticleOne" onClick={() => navigate('/what')}>What options are there for you and your child?:What is a doula, and what can we do for you</div>
+                <div className="homeArticleTwo" onClick={() => navigate('/how')}>Article Two</div>
+                <div className="homeArticleOne" onClick={() => navigate('/why')}>Article Three</div>
+                <div className="homeArticleTwo" onClick={() => navigate('/how')}>Find a Doula</div>
+                <div className="homeArticleOne" onClick={() => navigate('/create')}>Register</div>
+            </div>
+        </>
     )
 }
 

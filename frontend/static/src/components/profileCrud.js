@@ -2,7 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import { useState } from 'react';
 
 function ProfileCrud({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification, id, calendly, linked, setLinked, addImage, updateImage, removeImage }) {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
     const [isImage, setIsImage] = useState(false)
 
     const edit = (e) => {
@@ -48,10 +48,12 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
 
     const imageMode = (
         <>
-            <div className='imgHolder'>
+        <div>
+            <div className=' imgHolder'>
                 <img src={image} alt={name} />
             </div>
             <button onClick={() => setIsImage(true)}>Edit</button>
+            </div>
         </>
     )
 
@@ -137,7 +139,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
     )
 
     return (
-        <div>
+        <div className='col-9'>
             {isImage ? changeImageMode : imageMode}
             {isEditing ? editMode : displayMode}
         </div>

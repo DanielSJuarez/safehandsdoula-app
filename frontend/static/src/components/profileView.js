@@ -3,8 +3,8 @@ import { InlineWidget } from "react-calendly";
 import { useOutletContext } from "react-router-dom";
 import ContactDoula from './contactDoula'
 
-function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, setIsSummary, id, calendly, linked }) {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
+function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, linked }) {
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
     const [isAuthenicated, setIsAuthenicated] = useState(false)
 
     const isLogin = (
@@ -14,13 +14,15 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     const notIsLogin = (
         <p>Please create an account or login to contact this doula</p>
     )
-    console.log(calendly)
+    // console.log(calendly)
     const isNotCalendly = (
         <div></div>
     )
 
     const isCalendly = (
-        <InlineWidget url={calendly} />
+        <div className='calendly'>
+            <InlineWidget url={calendly} />
+        </div>
     )
 
     return (
@@ -36,12 +38,14 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                     <h2>{name}</h2>
                 </div>
                 <div className='col-4 profileTopInfo'>
-                    <label htmlFor='started'>Started</label>
+                    <label htmlFor='started' className='label'>Started</label>
                     <p>{started}</p>
                 </div>
             </div>
+            <hr />
             <div className='socials row'>
-                <label htmlFor='socials'>My Social's</label>
+                <h3>My Social's</h3>
+                {/* <label htmlFor='socials'>My Social's</label> */}
                 <div className='col-3'>
                     <label htmlFor='facebook col-3'>Facebook</label>
                     <a target='blank' href={facebook}>{facebook}</a>
@@ -59,26 +63,29 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                     <a target='blank' href={website}>{website}</a>
                 </div>
             </div>
+            <hr />
             <div className='info'>
-                <label htmlFor='certification'>Certifications</label>
+                {/* <h3>Certifications</h3> */}
+                <label htmlFor='certification' className='label'>Certifications</label>
                 <p>{certification}</p>
             </div>
             <div className='info'>
-                <label htmlFor='about'>About Me</label>
+                <label htmlFor='about' className='label'>About Me</label>
                 <p className='summary'>{about}</p>
             </div>
             <div className='info'>
-                <label htmlFor='services'>My Services</label>
+                <label htmlFor='services' className='label'>My Services</label>
                 <p className='summary'>{services}</p>
             </div>
             <div className='info'>
-                <label htmlFor='why'>Why Me</label>
+                <label htmlFor='why' className='label'>Why Me</label>
                 <p className='summary'>{why}</p>
             </div>
-            <button onClick={() => setIsSummary(false)} >Back to Doula's</button>
-            <p>Contact</p>
+            <button onClick={() => setIsSummary(false)} className='loginRegisterButton'>Back to Doula's</button>
+            <hr />
+            <h3>Contact Me</h3>
             {auth ? isLogin : notIsLogin}
-            <div className='calendly'>
+            <div>
                 {linked ? isCalendly : isNotCalendly}
             </div>
         </section>

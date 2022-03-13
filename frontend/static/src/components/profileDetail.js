@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function ProfileDetail() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
     const [isEditing, setIsEditing] = useState(false)
     const [profile, setProfile] = useState(null);
     const [addImage, setAddImage] = useState('');
@@ -197,7 +197,6 @@ function ProfileDetail() {
             } else {
                 const data = await response.json();
                 setProfile(data);
-                console.log(data)
                 setNewIsName(data[0].name);
                 setNewAbout(data[0].about);
                 setNewStarted(data[0].started);
@@ -251,7 +250,8 @@ function ProfileDetail() {
         <>
             <p>Account Status: {status}</p>
             <button type='button' onClick={() => accountStatus(pk)}>Activate/Inactivate Account</button>
-            <div>
+            <div className='row'>
+            <div className=''>
                 <p>New</p>
                 {contactNewList}
                 <p>Contacted</p>
@@ -259,6 +259,7 @@ function ProfileDetail() {
             </div>
             <div>
                 {profileDetail}
+            </div>
             </div>
             <div>Rating</div>
         </>
