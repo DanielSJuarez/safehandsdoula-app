@@ -2,10 +2,11 @@ import { useOutletContext } from "react-router-dom";
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 
-function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts }) {
+function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts, isChecked, setIsChecked, read, setRead}) {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
-    
+    console.log(isChecked)
     const contact = async (id) => {
+       
         let contact = ''
 
         if (contact_status === 'NEW') {
@@ -15,7 +16,7 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
         }
 
         const contactedStatus = {
-            contact_status : contact,
+            contact_status: contact,
         }
 
         const options = {
@@ -34,9 +35,16 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
         }
         const data = await response.json();
 
+        if (data.contact_status === 'CON') {
+            setIsChecked(true)
+            setRead('Mark as unread')
+        } else if (data.contact_status === 'NEW') {
+            setIsChecked(false)
+            setRead('Mark as read')
+        }
+
         const updateContact = contacts.map((contact) => {
             if (contact.id === id) {
-                console.log(data)
                 return data
             }
         })
@@ -44,12 +52,17 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
     }
 
     return (
-        <div className="col-3">
+        <div className="contact">
             <h3>{name}</h3>
             <p>{email}</p>
             <p>{phone_number}</p>
             <p>{question}</p>
-            <button type="button" onClick={() => contact(id)}>New/Contacted</button>
+            <div className='col doulacheckPlacholder'>
+                <label htmlFor='checkbox'>{read}</label>
+                <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} />
+            </div>
+            {/* <button className='loginRegisterButton' type="button" onClick={() => contact(id)}>New/Contacted</button> */}
+            <hr />
         </div>
     )
 }

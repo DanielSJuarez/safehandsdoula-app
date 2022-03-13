@@ -245,3 +245,14 @@ a:hover{
   border: 1px solid #b2481b
 }
 
+.contactList{
+  border-right: 1px solid #57394a;
+}
+
+.contact{
+  background-color: #dbb0a0;
+}
+
+.contactHead{
+  font-weight: bold;
+}

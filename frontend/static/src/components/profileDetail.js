@@ -22,6 +22,9 @@ function ProfileDetail() {
     const [contacts, setContacts] = useState(null)
     const [pk, setPk] = useState('')
     const [status, setStatus] = useState(null)
+    const [activeButton, setActiveButton] = useState('')
+    const [isChecked, setIsChecked] = useState('')
+    const [read, setRead] = useState('')
     
     const handleImage = e => {
 
@@ -52,7 +55,9 @@ function ProfileDetail() {
 
         const formData = new FormData();
         for (const [key, value] of Object.entries(updatedprofile)) {
-            formData.append(key, value)
+            if (value){
+                formData.append(key, value)
+            }   
         }
 
         const options = {
@@ -151,6 +156,14 @@ function ProfileDetail() {
             throw new Error('Netword response was not OK!')
         } else {
             const data = await response.json();
+            console.log(data)
+            if (data[0].contact_status === 'CON') {
+                setIsChecked(true)
+                setRead('Mark as unread')
+            } else if (data[0].contact_status === 'NEW') {
+                setIsChecked(false)
+                setRead('Mark as read')
+            }
             setContacts(data);
         }
     }
@@ -160,8 +173,10 @@ function ProfileDetail() {
         
         if (status === 'ACT') {
             isStatus = 'INA'
+            setActiveButton('Activate Account')
         } else if (status === 'INA') {
             isStatus = 'ACT'
+            setActiveButton('Inactivate Account')
         }
 
         const changeAccount = {
@@ -212,6 +227,11 @@ function ProfileDetail() {
                 setPk(data[0].id)
                 setStatus(data[0].is_active)
                 setProfileImg(data[0].image)
+                if (data[0].is_active === 'ACT'){
+                    setActiveButton('Inactivate Account')
+                } else {
+                    setActiveButton('Activate Account')
+                }
             }
         }
         getProfile();
@@ -235,7 +255,7 @@ function ProfileDetail() {
     ))
 
     const contactNewList = contactNewFilter.map((contact) => (
-        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk}/>
+        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead}/>
     ))
 
     const contactContactedFilter = contacts.filter(contact => (
@@ -243,21 +263,21 @@ function ProfileDetail() {
     ))
 
     const contactContactedList = contactContactedFilter.map((contact) => (
-        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk}/>
+        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead}/>
     ))
 
     return (
         <>
             <p>Account Status: {status}</p>
-            <button type='button' onClick={() => accountStatus(pk)}>Activate/Inactivate Account</button>
+            <button className='loginRegisterButton' type='button' onClick={() => accountStatus(pk)}>{activeButton}</button>
             <div className='row'>
-            <div className=''>
-                <p>New</p>
+            <div className="col-3 contactList">
+                <p className='contactHead'>Unread</p>
                 {contactNewList}
-                <p>Contacted</p>
+                <p className='contactHead'>Read</p>
                 {contactContactedList}
             </div>
-            <div>
+            <div className='col-9'>
                 {profileDetail}
             </div>
             </div>

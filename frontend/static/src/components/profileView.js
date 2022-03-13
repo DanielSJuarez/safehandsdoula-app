@@ -47,7 +47,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                 <h3>My Social's</h3>
                 {/* <label htmlFor='socials'>My Social's</label> */}
                 <div className='col-3'>
-                    <label htmlFor='facebook col-3'>Facebook</label>
+                    <label htmlFor='facebook'>Facebook</label>
                     <a target='blank' href={facebook}>{facebook}</a>
                 </div>
                 <div className='col-3'>

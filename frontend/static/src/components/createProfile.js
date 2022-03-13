@@ -1,4 +1,4 @@
-import { useState }from 'react';
+import { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
@@ -78,16 +78,18 @@ function CreateProfile() {
                 <form onSubmit={handleSubmit}>
                     <div className='col loginField'>
                         <input className='inputField' type='file' name='profileImage' onChange={handleImage} />
-                        {preview && <img src={preview} alt='' />}
+                        <div className=' imgHolder'>
+                            {preview && <img src={preview} alt='' className="image" />}
+                        </div>
                     </div>
                     <div className='col loginField'>
-                        <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} required/>
+                        <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} required />
                     </div>
                     <div className='col loginField'>
                         <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setAbout(e.target.value)} value={about} />
                     </div>
                     <div className='col loginField'>
-                        <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setStarted(e.target.value)} value={started} required/>
+                        <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setStarted(e.target.value)} value={started} required />
                     </div>
                     <div className='col loginField'>
                         <input className='inputField' type='text' name='certification' placeholder='certifications' onChange={(e) => setCertification(e.target.value)} value={certification} />
@@ -110,7 +112,7 @@ function CreateProfile() {
                     <div className='col loginField'>
                         <input className='inputField' type='text' name='why' placeholder='why you' onChange={(e) => setWhy(e.target.value)} value={why} />
                     </div>
-                    <button className='loginRegisterButton create' type='submit'>Save Profile</button>
+                    <button className='loginRegisterButton' type='submit'>Save Profile</button>
                 </form>
             </div>
             <div>

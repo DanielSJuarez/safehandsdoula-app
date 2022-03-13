@@ -89,10 +89,10 @@ function Header(props) {
                 <NavLink className='navLinks' to='/yourplan'>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/profile'>Profile</NavLink>
+                <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doula's</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doula's</NavLink>
+                <NavLink className='navLinks' to='/profile'>Profile</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>

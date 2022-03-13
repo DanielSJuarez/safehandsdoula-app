@@ -48,11 +48,11 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
 
     const imageMode = (
         <>
-        <div>
-            <div className=' imgHolder'>
-                <img src={image} alt={name} />
-            </div>
-            <button onClick={() => setIsImage(true)}>Edit</button>
+            <div>
+                <div className=' imgHolder'>
+                    <img src={image} alt={name} className='image' />
+                </div>
+                <button className='loginRegisterButton' onClick={() => setIsImage(true)}>Edit/Remove</button>
             </div>
         </>
     )
@@ -62,12 +62,14 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
             <form onSubmit={update}>
                 <div className='col loginField'>
                     <input className='inputField' type='file' name='profileImage' onChange={handleImage} />
-                    {preview && <img src={preview} alt='' />}
-                    <button onClick={() => keep()}>Cancel</button>
-                    <button className='loginRegisterButton create' type='submit'>Save Profile</button>
+                    <div className=' imgHolder'>
+                        {preview && <img src={preview} alt='' className="image" />}
+                    </div>
+                    <button className='loginRegisterButton' onClick={() => keep()}>Cancel</button>
+                    <button className='loginRegisterButton' type='submit'>Save Profile</button>
                 </div>
             </form>
-            <button type='button' onClick={remove}>Remove</button>
+            <button className='loginRegisterButton' type='button' onClick={remove}>Remove</button>
         </>
     )
 
@@ -75,18 +77,47 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
         <section className='col article'>
             <h2>{name}</h2>
             <p>{started}</p>
+            <div className='socials row'>
+                <label htmlFor='socials' className="label">My Social's</label>
+                <div className='col-3'>
+                    <label htmlFor='facebook'>Facebook</label>
+                    <a target='blank' href={facebook}>{facebook}</a>
+                </div>
+                <div className='col-3'>
+                    <label htmlFor='twitter'>Twitter</label>
+                    <a target='blank' href={twitter}>{twitter}</a>
+                </div>
+                <div className='col-3'>
+                    <label htmlFor='instagran'>Instagram</label>
+                    <a target='blank' href={instagram}>{instagram}</a>
+                </div>
+                <div className='col-3'>
+                    <label htmlFor='website'>Personal Website</label>
+                    <a target='blank' href={website}>{website}</a>
+                </div>
+            </div>
+            <hr />
+            {/* <label htmlFor='facebook' className='label'>Facebook</label>
             <a target='blank' href={facebook}>{facebook}</a>
+            <label htmlFor='twitter' className='label'>Twitter</label>
             <a target='blank' href={twitter}>{twitter}</a>
+            <label htmlFor='instagran' className='label'>Instagram</label>
             <a target='blank' href={instagram}>{instagram}</a>
+            <label htmlFor='website' className='label'>Personal Website</label>
             <a target='blank' href={website}>{website}</a>
+            <hr/> */}
+            <label htmlFor='certification' className='label'>Certifications</label>
             <p>{certification}</p>
+            <label htmlFor='about' className='label'>About Me</label>
             <p className='summary'>{about}</p>
+            <label htmlFor='services' className='label'>My Services</label>
             <p className='summary'>{services}</p>
+            <label htmlFor='why' className='label'>Why Me</label>
             <p className='summary'>{why}</p>
             <p>{calendly}</p>
             {/* <CalendlyWidget calendly={calendly}/> */}
             {/* <InlineWidget url={calendly} /> */}
-            <button onClick={() => setIsEditing(true)}>Edit Profile</button>
+            <button className='loginRegisterButton' onClick={() => setIsEditing(true)}>Edit Profile</button>
         </section>
     )
     // console.log(linked)
@@ -96,37 +127,48 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
             <div className='loginPlacholder'>
                 <form onSubmit={edit}>
                     <div className='col loginField'>
+                        <label htmlFor='name'>Name</label>
                         <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setNewIsName(e.target.value)} value={newIsName} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='about'>About Me</label>
                         <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setNewAbout(e.target.value)} value={newAbout} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='started'>Started</label>
                         <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setNewStarted(e.target.value)} value={newStarted} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='certification'>Certifications</label>
                         <input className='inputField' type='text' name='certification' placeholder='certifications' onChange={(e) => setNewCertification(e.target.value)} value={newCertification} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='facebook'>Facebook</label>
                         <input className='inputField' type='url' name='facebook' placeholder='facebook url' onChange={(e) => setNewFacebook(e.target.value)} value={newFacebook} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='twitter'>Twitter</label>
                         <input className='inputField' type='url' name='twitter' placeholder='twitter url' onChange={(e) => setNewTwitter(e.target.value)} value={newTwitter} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='instagram'>Instagram</label>
                         <input className='inputField' type='url' name='instagram' placeholder='instagram url' onChange={(e) => setNewInstagram(e.target.value)} value={newInstagram} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='website'>Personal Website</label>
                         <input className='inputField' type='url' name='website' placeholder='website url' onChange={(e) => setNewWebsite(e.target.value)} value={newWebsite} />
                     </div>
                     <div className='col loginField'>
+                    <label htmlFor='calendly'>Calandly Link</label>
                         {linked ? updateCalendly : addCalendly}
                         {/* <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com'>Link Calandly Account</a> */}
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='services'>My Services</label>
                         <input className='inputField' type='text' name='services' placeholder='services/pricing' onChange={(e) => setNewServices(e.target.value)} value={newServices} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='why'>Why Me</label>
                         <input className='inputField' type='text' name='why' placeholder='why you' onChange={(e) => setNewWhy(e.target.value)} value={newWhy} />
                     </div>
                     <div className='col loginField'>
@@ -139,7 +181,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
     )
 
     return (
-        <div className='col-9'>
+        <div>
             {isImage ? changeImageMode : imageMode}
             {isEditing ? editMode : displayMode}
         </div>
