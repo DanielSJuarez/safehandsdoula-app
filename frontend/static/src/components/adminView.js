@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
 import { useOutletContext } from "react-router-dom";
-import Cookies from 'js-cookie';
 import AdminContactView from "./adminContactView";
 import AdminProfileView from "./adminProfileView";
 
 function AdminView() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const [reportedProfiles, setReportedProfiles] = useState(null);
     const [reportedContacts, setReportedContacts] = useState(null);
 
@@ -25,7 +24,7 @@ function AdminView() {
 
     useEffect(() => {
         const isContactReported = async () => {
-            const response = await fetch('/api/v1/contact/admin/').catch(handleError);
+            const response = await fetch('/api/v1/contacts/admin/').catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
@@ -36,31 +35,39 @@ function AdminView() {
         isContactReported();
     }, []);
 
-    const profiles = reportedProfiles.filter (profiles => (
-        profiles.reported === true
+    if (!reportedContacts) {
+        return <div>Fetching contact data....</div>
+    }
+
+    if (!reportedProfiles) {
+        return <div>Fetching profile data....</div>
+    }
+
+    const profilesReportedList = reportedProfiles.filter(profiles => (
+        profiles.reported === false
     ))
 
-    const profileList = profiles.map(profiles => {
-        <AdminProfileView key={profiles.id} {...profiles}/>
-    })
-
-    const contacts = reportedContacts.filter (contacts => (
-        contacts.reported === true
+    const profileList = profilesReportedList.map(profiles => (
+        <AdminProfileView key={profiles.id} {...profiles}  setReportedProfiles={setReportedProfiles} reportedProfiles={reportedProfiles}/>
     ))
 
-    const contactsList = contacts.map(contacts => {
-        <AdminContactView key={contacts.id} {...contacts}/>  
-    })
+    const contactsReportedList = reportedContacts.filter(contacts => (
+        contacts.reported === false
+    ))
+
+    const contactsList = contactsReportedList.map(contacts => (
+        <AdminContactView key={contacts.id} {...contacts} setReportedContacts={setReportedContacts} reportedContacts={reportedContacts}/>
+    ))
 
 
     return (
         <>
-        <div>
-            {contactsList}
-        </div>
-        <div>
-            {profileList}
-        </div>
+            <div className="col-3 contactList">
+                {contactsList}
+            </div>
+            <div className='col-9'>
+                {profileList}
+            </div>
         </>
     )
 }

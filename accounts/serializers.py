@@ -28,7 +28,7 @@ class TokenSerializer(TokenSerializer):
         model = TokenModel
         fields = TokenSerializer.Meta.fields + ('is_superuser',)
 
-class AdminSerializer(serializers.MultipleChoiceField):
+class AdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = DoulaProfile
         fields = '__all__'
