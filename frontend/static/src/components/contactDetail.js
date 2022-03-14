@@ -61,6 +61,7 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
                 <label htmlFor='checkbox'>{read}</label>
                 <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} />
             </div>
+            <button className='loginRegisterButton report'>Report</button>
             {/* <button className='loginRegisterButton' type="button" onClick={() => contact(id)}>New/Contacted</button> */}
             <hr />
         </div>

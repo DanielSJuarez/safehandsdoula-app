@@ -247,6 +247,7 @@ a:hover{
 
 .contactList{
   border-right: 1px solid #57394a;
+  overflow:scroll;
 }
 
 .contact{
@@ -254,5 +255,35 @@ a:hover{
 }
 
 .contactHead{
-  font-weight: bold;
+  text-align: center;
+  /* font-weight: bold; */
+  text-decoration: underline;
+  margin-top: 20px;
+  background-color: #57394a;
+  color: white
+}
+
+.intro{
+  margin: 20px 0px;
+}
+
+.editImage{
+  height: 200px;
+  width: 200px;
+  margin: 10px 
+}
+
+.account{
+  text-align: right;
+  margin: 25px 25px 5px 0px;
+}
+
+.changeImage{
+  border: 1px solid #282c34;
+  background-color: #eab586;
+  margin-bottom: 25px ;
+}
+
+.report{
+  margin: 10px 0px;
 }

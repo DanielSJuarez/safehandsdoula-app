@@ -109,7 +109,7 @@ function Home() {
                 <div className="homeArticleTwo" onClick={() => navigate('/how')}>Article Two</div>
                 <div className="homeArticleOne" onClick={() => navigate('/why')}>Article Three</div>
                 <div className="homeArticleTwo" onClick={() => navigate('/how')}>Find a Doula</div>
-                <div className="homeArticleOne" onClick={() => navigate('/create')}>Register</div>
+                <div className="homeArticleOne" onClick={() => navigate('/register')}>Register</div>
             </div>
         </>
     )

@@ -88,6 +88,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <div>
                 {linked ? isCalendly : isNotCalendly}
             </div>
+            <button className='loginRegisterButton report'>Report</button>
         </section>
     )
 }

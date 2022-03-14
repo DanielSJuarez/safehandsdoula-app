@@ -48,8 +48,8 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
 
     const imageMode = (
         <>
-            <div>
-                <div className=' imgHolder'>
+            <div className="crud">
+                <div className='editImage'>
                     <img src={image} alt={name} className='image' />
                 </div>
                 <button className='loginRegisterButton' onClick={() => setIsImage(true)}>Edit/Remove</button>
@@ -59,6 +59,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
 
     const changeImageMode = (
         <>
+        <div className="changeImage">
             <form onSubmit={update}>
                 <div className='col loginField'>
                     <input className='inputField' type='file' name='profileImage' onChange={handleImage} />
@@ -69,14 +70,19 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                     <button className='loginRegisterButton' type='submit'>Save Profile</button>
                 </div>
             </form>
+            </div>
             <button className='loginRegisterButton' type='button' onClick={remove}>Remove</button>
+           
         </>
     )
 
     const displayMode = (
         <section className='col article'>
-            <h2>{name}</h2>
-            <p>{started}</p>
+            <div className="intro">
+                <h2>{name}</h2>
+                <label htmlFor='started' className="label">Started</label>
+                <p>{started}</p>
+            </div>
             <div className='socials row'>
                 <label htmlFor='socials' className="label">My Social's</label>
                 <div className='col-3'>
@@ -159,7 +165,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                         <input className='inputField' type='url' name='website' placeholder='website url' onChange={(e) => setNewWebsite(e.target.value)} value={newWebsite} />
                     </div>
                     <div className='col loginField'>
-                    <label htmlFor='calendly'>Calandly Link</label>
+                        <label htmlFor='calendly'>Calandly Link</label>
                         {linked ? updateCalendly : addCalendly}
                         {/* <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com'>Link Calandly Account</a> */}
                     </div>

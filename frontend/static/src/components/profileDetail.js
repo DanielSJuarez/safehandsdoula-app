@@ -25,7 +25,7 @@ function ProfileDetail() {
     const [activeButton, setActiveButton] = useState('')
     const [isChecked, setIsChecked] = useState('')
     const [read, setRead] = useState('')
-    
+
     const handleImage = e => {
 
         const file = e.target.files[0];
@@ -55,9 +55,9 @@ function ProfileDetail() {
 
         const formData = new FormData();
         for (const [key, value] of Object.entries(updatedprofile)) {
-            if (value){
+            if (value) {
                 formData.append(key, value)
-            }   
+            }
         }
 
         const options = {
@@ -149,7 +149,7 @@ function ProfileDetail() {
                 "Content-Type": "application/json",
             },
         }
-        
+
         const response = await fetch(`/api/v1/doula/${id}/contacts/`).catch(handleError);
 
         if (!response.ok) {
@@ -167,10 +167,10 @@ function ProfileDetail() {
             setContacts(data);
         }
     }
-   
+
     const accountStatus = async (pk) => {
         let isStatus = ''
-        
+
         if (status === 'ACT') {
             isStatus = 'INA'
             setActiveButton('Activate Account')
@@ -180,7 +180,7 @@ function ProfileDetail() {
         }
 
         const changeAccount = {
-            is_active : isStatus,
+            is_active: isStatus,
         }
 
         const options = {
@@ -192,7 +192,7 @@ function ProfileDetail() {
             body: JSON.stringify(changeAccount)
         }
         const response = await fetch(`/api/v1/accounts/${pk}/doula/`, options)
-        
+
         if (!response.ok) {
             throw new Error('Network response was not OK');
         }
@@ -200,8 +200,8 @@ function ProfileDetail() {
 
         setStatus(data.is_active)
     }
-    
-   
+
+
 
     useEffect(() => {
         const getProfile = async () => {
@@ -227,7 +227,7 @@ function ProfileDetail() {
                 setPk(data[0].id)
                 setStatus(data[0].is_active)
                 setProfileImg(data[0].image)
-                if (data[0].is_active === 'ACT'){
+                if (data[0].is_active === 'ACT') {
                     setActiveButton('Inactivate Account')
                 } else {
                     setActiveButton('Activate Account')
@@ -243,7 +243,7 @@ function ProfileDetail() {
 
     const profileDetail = profile.map((profile) => (
         <ProfileCrud key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
-         preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} />
+            preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} />
     ))
 
     if (!contacts) {
@@ -255,7 +255,7 @@ function ProfileDetail() {
     ))
 
     const contactNewList = contactNewFilter.map((contact) => (
-        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead}/>
+        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
     ))
 
     const contactContactedFilter = contacts.filter(contact => (
@@ -263,23 +263,28 @@ function ProfileDetail() {
     ))
 
     const contactContactedList = contactContactedFilter.map((contact) => (
-        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead}/>
+        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
     ))
 
     return (
         <>
-            <p>Account Status: {status}</p>
-            <button className='loginRegisterButton' type='button' onClick={() => accountStatus(pk)}>{activeButton}</button>
-            <div className='row'>
-            <div className="col-3 contactList">
-                <p className='contactHead'>Unread</p>
-                {contactNewList}
-                <p className='contactHead'>Read</p>
-                {contactContactedList}
+            <div className='row mx-0'>
+                <div className="col-3 contactList">
+                    <h2>Messages</h2>
+                    <p className='contactHead'>Unread</p>
+                    {contactNewList}
+                    <p className='contactHead'>Read</p>
+                    {contactContactedList}
+                </div>
+                <div className='col-9'>
+                    <h2>Profile</h2>
+                    {profileDetail}
+                </div>
             </div>
-            <div className='col-9'>
-                {profileDetail}
-            </div>
+            <hr/>
+            <div className='account'>
+                <p>Account Status: {status}</p>
+                <button className='loginRegisterButton' type='button' onClick={() => accountStatus(pk)}>{activeButton}</button>
             </div>
             <div>Rating</div>
         </>
