@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { InlineWidget } from "react-calendly";
 import { useOutletContext } from "react-router-dom";
 import ContactDoula from './contactDoula'
+import Cookies from 'js-cookie';
 
 function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, linked }) {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary,isSuperUser, setIsSuperUser] = useOutletContext();
@@ -14,7 +15,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     const notIsLogin = (
         <p>Please create an account or login to contact this doula</p>
     )
-    // console.log(calendly)
+
     const isNotCalendly = (
         <div></div>
     )
@@ -24,6 +25,23 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <InlineWidget url={calendly} />
         </div>
     )
+
+    const reportProfile = async (id) => {
+
+        const report = {
+            reported: true,
+        }
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify(report)
+        }
+        const response = await fetch(`/api/v1/accounts/doula/${id}/report/`, options).catch(handleError);
+    }
 
     return (
         <section className='col profile'>
@@ -88,7 +106,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <div>
                 {linked ? isCalendly : isNotCalendly}
             </div>
-            <button className='loginRegisterButton report'>Report</button>
+            <button className='loginRegisterButton report' onClick={() => reportProfile(id)}>Report</button>
         </section>
     )
 }

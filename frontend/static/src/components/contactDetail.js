@@ -51,6 +51,23 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
         setContacts(updateContact)
     }
 
+    const reportContact = async (id) => {
+
+        const report = {
+            reported: true,
+        }
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify(report)
+        }
+        const response = await fetch(`/api/v1/doula/${pk}/contact/${id}/`, options).catch(handleError);
+    }
+
     return (
         <div className="contact">
             <h3>{name}</h3>
@@ -61,8 +78,7 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
                 <label htmlFor='checkbox'>{read}</label>
                 <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} />
             </div>
-            <button className='loginRegisterButton report'>Report</button>
-            {/* <button className='loginRegisterButton' type="button" onClick={() => contact(id)}>New/Contacted</button> */}
+            <button className='loginRegisterButton report' onClick={() => reportContact(id)} >Report</button>
             <hr />
         </div>
     )

@@ -44,29 +44,33 @@ function AdminView() {
     }
 
     const profilesReportedList = reportedProfiles.filter(profiles => (
-        profiles.reported === false
+        profiles.reported === true
     ))
 
     const profileList = profilesReportedList.map(profiles => (
-        <AdminProfileView key={profiles.id} {...profiles}  setReportedProfiles={setReportedProfiles} reportedProfiles={reportedProfiles}/>
+        <AdminProfileView key={profiles.id} {...profiles} setReportedProfiles={setReportedProfiles} reportedProfiles={reportedProfiles} />
     ))
 
     const contactsReportedList = reportedContacts.filter(contacts => (
-        contacts.reported === false
+        contacts.reported === true
     ))
 
     const contactsList = contactsReportedList.map(contacts => (
-        <AdminContactView key={contacts.id} {...contacts} setReportedContacts={setReportedContacts} reportedContacts={reportedContacts}/>
+        <AdminContactView key={contacts.id} {...contacts} setReportedContacts={setReportedContacts} reportedContacts={reportedContacts} />
     ))
 
 
     return (
         <>
-            <div className="col-3 contactList">
-                {contactsList}
-            </div>
-            <div className='col-9'>
-                {profileList}
+            <div className="row">
+                <div className="col-3 contactList">
+                    <h2>Reported Contacts</h2>
+                    {contactsList}
+                </div>
+                <div className='col-9'>
+                    <h2>Reported Profiles</h2>
+                    {profileList}
+                </div>
             </div>
         </>
     )

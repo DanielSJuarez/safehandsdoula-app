@@ -17,6 +17,14 @@ class DoulaProfileListAPIView(generics.ListCreateAPIView):
         user = self.request.user
         return DoulaProfile.objects.filter(user=user)
 
+class ReportProfileEditListAPIView(generics.UpdateAPIView):
+     serializer_class = DoulaProfileSerializer
+     queryset = DoulaProfile.objects.all()
+
+     def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
 class DoulaProfileEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = DoulaProfileSerializer

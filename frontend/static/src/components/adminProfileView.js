@@ -27,8 +27,35 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
         setReportedProfiles(updatedProfileView)
       }
 
-    return(
+      const approveProfile = async (id) => {
 
+        const approve = {
+            reported: false,
+        }
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify(approve)
+        }
+        const response = await fetch(`/api/v1/accounts/${id}/admin/`, options).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network response was not OK');
+        }
+        const updatedProfileView = reportedProfiles.filter(profile => {
+            if (profile.id !== id) {
+                return { ...profile }
+            }
+        })
+        setReportedProfiles(updatedProfileView)
+    }
+
+    return(
+        <>
         <section className='col article'>
              <div className='imgHolder'>
                 <img src={image} alt={name} />
@@ -44,9 +71,11 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
             <p className='summary'>{services}</p>
             <p className='summary'>{why}</p>
             <p>{calendly}</p>
-            {/* <button type="button" onClick={() => approveProfile(id)}>Approve</button> */}
+            <button type="button" onClick={() => approveProfile(id)}>Approve</button>
             <button type="button" onClick={() => deleteProfile(id)}>Delete</button>
         </section>
+        <hr/>
+        </>
     )
 }
 
