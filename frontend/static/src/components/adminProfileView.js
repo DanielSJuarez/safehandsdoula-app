@@ -1,4 +1,4 @@
-function AdminProfileView ({name, started, facebook, twitter, instagram, website, about, services, why, calendly, image, reported}){
+function AdminProfileView ({name, started, facebook, twitter, instagram, website, about, services, why, calendly, image, certification, reported}){
     return(
 
         <section className='col article'>

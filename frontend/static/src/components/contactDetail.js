@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Cookies from 'js-cookie';
 
 function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts, isChecked, setIsChecked, read, setRead}) {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser] = useOutletContext();
     console.log(isChecked)
     const contact = async (id) => {
        

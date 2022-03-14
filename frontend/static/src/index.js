@@ -12,6 +12,7 @@ import Home from './components/home'
 import ProfileDetail from './components/profileDetail'
 import ProfilesList from './components/profilesList'
 import Calendly from './components/linkCalendly';
+import AdminView from './components/adminView'
 
 
 ReactDOM.render(
@@ -27,6 +28,7 @@ ReactDOM.render(
           <Route path='profile' element={<ProfileDetail/>}/>
           <Route path='doula' element={<ProfilesList/>}/>
           <Route path='calendly' element={<Calendly/>}/>
+          <Route path='reported' element={<AdminView/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

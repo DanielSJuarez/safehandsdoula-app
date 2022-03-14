@@ -20,12 +20,13 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class UserDetailsSerializer(UserDetailsSerializer):
     class Meta(UserDetailsSerializer.Meta):
-        fields = UserDetailsSerializer.Meta.fields
+        fields = UserDetailsSerializer.Meta.fields + ('is_superuser',)
 
 class TokenSerializer(TokenSerializer):
+    is_superuser = serializers.ReadOnlyField(source='user.is_superuser',)
     class Meta(TokenSerializer.Meta):
         model = TokenModel
-        fields = TokenSerializer.Meta.fields
+        fields = TokenSerializer.Meta.fields + ('is_superuser',)
 
 class AdminSerializer(serializers.MultipleChoiceField):
     class Meta:

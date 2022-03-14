@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 function Home() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
-
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
+ 
     useEffect(() => {
         let id = ''
         const isDoula = async () => {

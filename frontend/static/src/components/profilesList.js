@@ -4,7 +4,7 @@ import ProfileView from './profileView';
 import { useOutletContext } from "react-router-dom";
 
 function ProfilesList(){
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const [profiles, setProfiles] = useState(null)
     // const [isSummary, setIsSummary] = useState(false)
     const [getId, setGetId] = useState('')

@@ -14,6 +14,7 @@ function App() {
   const [preview, setPreview] = useState('');
   const [profileImg, setProfileImg] = useState(null)
   const [isSummary, setIsSummary] = useState(false)
+  const [isSuperUser, setIsSuperUser] = useState(false)
  
   const handleError = (err) => {
     console.log(err);
@@ -21,9 +22,9 @@ function App() {
 
   return (
     <>
-      <Header setCreateDoula={setCreateDoula} isDoula={isDoula} setIsDoula={setIsDoula} auth={auth} setAuth={setAuth} navigate={navigate} profileImg={profileImg} setProfileImg={setProfileImg} handleError={handleError} isSummary={isSummary} setIsSummary={setIsSummary}/>
+      <Header setCreateDoula={setCreateDoula} isDoula={isDoula} setIsDoula={setIsDoula} auth={auth} setAuth={setAuth} navigate={navigate} profileImg={profileImg} setProfileImg={setProfileImg} handleError={handleError} isSummary={isSummary} setIsSummary={setIsSummary} isSuperUser={isSuperUser} setIsSuperUser={setIsSuperUser}/>
       <div className="App"></div>
-      <Outlet context={[auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary]} />
+      <Outlet context={[auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser]} />
     </>
   );
 }

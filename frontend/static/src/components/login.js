@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function Login() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const [state, setState] = useState({
         username: '',
         password: ''
@@ -35,6 +35,10 @@ function Login() {
                 username: '',
                 password: ''
             })
+            if (data.is_superuser == true) {
+                setIsDoula(true)
+                setIsSuperUser(true)
+            }
             navigate('/home');
         }
     }

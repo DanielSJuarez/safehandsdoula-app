@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function Register(){
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const [newState, setNewState] = useState({
         username: '',
         email: '',

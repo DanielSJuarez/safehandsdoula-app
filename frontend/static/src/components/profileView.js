@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import ContactDoula from './contactDoula'
 
 function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, linked }) {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary,isSuperUser, setIsSuperUser] = useOutletContext();
     const [isAuthenicated, setIsAuthenicated] = useState(false)
 
     const isLogin = (

@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function ProfileDetail() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const [isEditing, setIsEditing] = useState(false)
     const [profile, setProfile] = useState(null);
     const [addImage, setAddImage] = useState('');

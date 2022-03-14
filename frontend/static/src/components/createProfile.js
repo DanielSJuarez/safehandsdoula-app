@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 
 function CreateProfile() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
     const [addImage, setAddImage] = useState(null);
     const [isName, setIsName] = useState('');
     const [about, setAbout] = useState('');
