@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'contacts.apps.ContactsConfig',
     'safehands.apps.SafehandsConfig',
     'frontend.apps.FrontendConfig',
-
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -76,6 +76,7 @@ REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER' : 'accounts.serializers.TokenSerializer',
 }
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -85,6 +86,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -187,3 +190,5 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#email-backend
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CORS_ALLOWED_ORIGINS = ALLOWED_HOSTS
