@@ -34,9 +34,14 @@ function ArticleHow() {
     ))
 
     return (
-        <div>
-            {articleList}
-        </div>
+        <>
+            <div>
+                {articleList}
+            </div>
+            <div className='pageSupport'>
+                <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+            </div>
+        </>
     )
 }
 

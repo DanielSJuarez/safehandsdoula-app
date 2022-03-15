@@ -1,5 +1,5 @@
 import ArticleDetail from "./articleDetail";
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { useOutletContext } from "react-router-dom";
 
 
@@ -20,7 +20,7 @@ function ArticleWhat() {
         }
         getArticle();
     }, []);
-   
+
     if (!article) {
         return <div>Fetching article data....</div>
     }
@@ -30,13 +30,18 @@ function ArticleWhat() {
     ))
 
     const articleList = filterArticle.map(article => (
-        <ArticleDetail key={article.id} {...article}/>
+        <ArticleDetail key={article.id} {...article} />
     ))
 
     return (
-        <div>
-            {articleList}
-        </div>
+        <>
+            <div>
+                {articleList}
+            </div>
+            <div className='pageSupport'>
+                <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+            </div>
+        </>
     )
 }
 
