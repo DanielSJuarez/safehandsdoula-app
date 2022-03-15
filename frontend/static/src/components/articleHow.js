@@ -1,15 +1,23 @@
 import ArticleDetail from "./articleDetail";
 import { useState, useEffect} from 'react'
 import { useOutletContext } from "react-router-dom";
+import {environment} from '../config/settings'
 
 
 function ArticleHow() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const [article, setArticle] = useState(null)
-
+    // console.log(environment)
     useEffect(() => {
         const getArticle = async () => {
-            const response = await fetch('https://safehandsdoula-app-dsj.herokuapp.com/api/v1/articles/').catch(handleError);
+
+            let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+            const response = await fetch(`${location}/api/v1/articles/`).catch(handleError);
 
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
