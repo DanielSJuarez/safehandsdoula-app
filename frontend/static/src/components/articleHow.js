@@ -9,7 +9,7 @@ function ArticleHow() {
 
     useEffect(() => {
         const getArticle = async () => {
-            const response = await fetch('http://api.safehandsdoula.com/api/v1/articles/').catch(handleError);
+            const response = await fetch('https://safehandsdoula-app-dsj.herokuapp.com/api/v1/articles/').catch(handleError);
 
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
