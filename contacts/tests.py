@@ -30,6 +30,8 @@ class ContactTestModel(TestCase):
             id = 1,
         )
 
+    client.login(username = 'daniel', password='safepass1')
+
     def test_create_contact(self):
         contact = Contact.objects.get()
         user = f'{contact.user}'
