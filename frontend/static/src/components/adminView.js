@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useOutletContext } from "react-router-dom";
 import AdminContactView from "./adminContactView";
 import AdminProfileView from "./adminProfileView";
+import {environment} from '../config/settings'
 
 function AdminView() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -10,7 +11,15 @@ function AdminView() {
 
     useEffect(() => {
         const isProfileReported = async () => {
-            const response = await fetch('/api/v1/accounts/admin/').catch(handleError);
+
+            let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+
+            const response = await fetch(`${location}/api/v1/accounts/admin/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
@@ -24,7 +33,15 @@ function AdminView() {
 
     useEffect(() => {
         const isContactReported = async () => {
-            const response = await fetch('/api/v1/contacts/admin/').catch(handleError);
+
+            let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+
+            const response = await fetch(`${location}/api/v1/contacts/admin/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {

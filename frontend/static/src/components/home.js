@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
+import {environment} from '../config/settings'
 
 function Home() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
@@ -8,7 +9,15 @@ function Home() {
     useEffect(() => {
         let id = ''
         const isDoula = async () => {
-            const response = await fetch('/api/v1/accounts/doula/').catch(handleError);
+
+            let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+
+            const response = await fetch(`${location}/api/v1/accounts/doula/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
@@ -83,6 +92,14 @@ function Home() {
     }
 
     const setCalendly = async (id, schedule) => {
+
+        let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+
         const formData = new FormData();
         formData.append('calendly', schedule);
         formData.append('linked', true);
@@ -95,7 +112,7 @@ function Home() {
             body: formData
         }
 
-        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+        const response = await fetch(`${location}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');

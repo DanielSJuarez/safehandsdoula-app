@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
+import {environment} from '../config/settings'
 
 function Login() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -12,6 +13,13 @@ function Login() {
     const handleSubmit = async event => {
         event.preventDefault();
 
+        let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+
         const options = {
             method: 'POST',
             headers: {
@@ -21,7 +29,7 @@ function Login() {
             body: JSON.stringify(state),
         }
 
-        const response = await fetch('/rest-auth/login/', options).catch(
+        const response = await fetch(`${location}/rest-auth/login/`, options).catch(
             handleError
         )
 

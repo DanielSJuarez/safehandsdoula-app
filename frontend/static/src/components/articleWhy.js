@@ -1,6 +1,7 @@
 import ArticleDetail from "./articleDetail";
 import { useState, useEffect} from 'react'
 import { useOutletContext } from "react-router-dom";
+import {environment} from '../config/settings'
 
 
 function ArticleWhy() {
@@ -9,7 +10,15 @@ function ArticleWhy() {
 
     useEffect(() => {
         const getArticle = async () => {
-            const response = await fetch('/api/v1/articles/').catch(handleError);
+
+            let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+            
+            const response = await fetch(`${location}/api/v1/articles/`).catch(handleError);
 
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')

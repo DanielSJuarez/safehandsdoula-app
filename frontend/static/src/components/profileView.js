@@ -3,6 +3,7 @@ import { InlineWidget } from "react-calendly";
 import { useOutletContext } from "react-router-dom";
 import ContactDoula from './contactDoula'
 import Cookies from 'js-cookie';
+import { environment } from '../config/settings'
 
 function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, linked }) {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary,isSuperUser, setIsSuperUser] = useOutletContext();
@@ -28,6 +29,13 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
 
     const reportProfile = async (id) => {
 
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
+
         const report = {
             reported: true,
         }
@@ -40,7 +48,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             },
             body: JSON.stringify(report)
         }
-        const response = await fetch(`/api/v1/accounts/doula/${id}/report/`, options).catch(handleError);
+        const response = await fetch(`${location}/api/v1/accounts/doula/${id}/report/`, options).catch(handleError);
     }
 
     return (

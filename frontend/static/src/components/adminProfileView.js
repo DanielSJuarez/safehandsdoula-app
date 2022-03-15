@@ -1,10 +1,19 @@
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
+import {environment} from '../config/settings'
+
 
 function AdminProfileView ({name, started, facebook, twitter, instagram, website, about, services, why, calendly, image, certification, reported ,  id, setReportedProfiles, reportedProfiles}){
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
 
     const deleteProfile = async (id) => {
+
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
 
         const options = {
           method: 'DELETE',
@@ -14,7 +23,7 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
           },
         }
     
-        const response = await fetch(`/api/v1/accounts/${id}/admin/`, options).catch(handleError);
+        const response = await fetch(`${location}/api/v1/accounts/${id}/admin/`, options).catch(handleError);
     
         if (!response.ok) {
           throw new Error('Network response was not OK');
@@ -29,6 +38,13 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
 
       const approveProfile = async (id) => {
 
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
+
         const approve = {
             reported: false,
         }
@@ -41,7 +57,7 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
             },
             body: JSON.stringify(approve)
         }
-        const response = await fetch(`/api/v1/accounts/${id}/admin/`, options).catch(handleError);
+        const response = await fetch(`${location}/api/v1/accounts/${id}/admin/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');

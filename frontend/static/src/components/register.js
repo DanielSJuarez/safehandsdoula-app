@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
+import { environment } from '../config/settings'
 
 function Register(){
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -26,6 +27,14 @@ function Register(){
 
     const handleCreateSubmit = async event => {
         event.preventDefault();
+
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
+        
         if(newState.password1 < 8|| newState.password2 < 8){
             alert('Password is to short, password must be eight characters long')
         } else if (newState.password1 !== newState.password2) {
@@ -41,7 +50,7 @@ function Register(){
             body: JSON.stringify(newState),
         }
 
-        const response = await fetch('/rest-auth/registration/', options).catch(
+        const response = await fetch(`${location}/rest-auth/registration/`, options).catch(
             handleError
         )
 

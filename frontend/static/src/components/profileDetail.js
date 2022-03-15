@@ -3,6 +3,7 @@ import ProfileCrud from './profileCrud';
 import ContactDetail from './contactDetail'
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
+import {environment} from '../config/settings'
 
 function ProfileDetail() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -40,6 +41,13 @@ function ProfileDetail() {
 
     const editProfile = async (id) => {
 
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
+
         const updatedprofile = {
             name: newIsName,
             about: newAbout,
@@ -68,7 +76,7 @@ function ProfileDetail() {
             body: formData
         }
 
-        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+        const response = await fetch(`${location}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -86,6 +94,14 @@ function ProfileDetail() {
     }
 
     const updateImage = async (id) => {
+
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
+
         const formData = new FormData();
         formData.append('image', addImage);
 
@@ -97,7 +113,7 @@ function ProfileDetail() {
             body: formData,
         }
 
-        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+        const response = await fetch(`${location}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -114,6 +130,14 @@ function ProfileDetail() {
     }
 
     const removeImage = async (id) => {
+
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
+
         const formData = new FormData();
         formData.append('image', new File([], ''));
 
@@ -125,7 +149,7 @@ function ProfileDetail() {
             body: formData,
         }
 
-        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+        const response = await fetch(`${location}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -143,6 +167,13 @@ function ProfileDetail() {
 
     const getContacts = async (id) => {
 
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
+
         const options = {
             method: "GET",
             headers: {
@@ -150,7 +181,7 @@ function ProfileDetail() {
             },
         }
 
-        const response = await fetch(`/api/v1/doula/${id}/contacts/`).catch(handleError);
+        const response = await fetch(`${location}/api/v1/doula/${id}/contacts/`).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Netword response was not OK!')
@@ -169,6 +200,14 @@ function ProfileDetail() {
     }
 
     const accountStatus = async (pk) => {
+
+        let location = ''
+        if (environment === 'development'){
+            location = 'http://localhost:8000'
+        } else if (environment === 'production'){
+            location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+        }
+
         let isStatus = ''
 
         if (status === 'ACT') {
@@ -191,7 +230,7 @@ function ProfileDetail() {
             },
             body: JSON.stringify(changeAccount)
         }
-        const response = await fetch(`/api/v1/accounts/${pk}/doula/`, options)
+        const response = await fetch(`${location}/api/v1/accounts/${pk}/doula/`, options)
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -205,7 +244,15 @@ function ProfileDetail() {
 
     useEffect(() => {
         const getProfile = async () => {
-            const response = await fetch('/api/v1/accounts/doula/').catch(handleError);
+
+            let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+
+            const response = await fetch('${location}/api/v1/accounts/doula/').catch(handleError);
 
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')

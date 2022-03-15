@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useOutletContext } from "react-router-dom";
 import Cookies from 'js-cookie';
+import {environment} from '../config/settings'
 
 
 function ContactDoula({id}) {
@@ -23,6 +24,14 @@ function ContactDoula({id}) {
     }
 
     const submitContact = (id) => {
+
+        let location = ''
+            if (environment === 'development'){
+                location = 'http://localhost:8000'
+            } else if (environment === 'production'){
+                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
+            }
+
         const newContact = {
             name,
             phone_number: phone,
@@ -40,7 +49,7 @@ function ContactDoula({id}) {
             body: JSON.stringify(newContact)
         }
 
-        fetch(`/api/v1/doula/${id}/contact/`, options);
+        fetch(`${location}/api/v1/doula/${id}/contact/`, options);
         setName('');
         setEmail('');
         setPhone('');
