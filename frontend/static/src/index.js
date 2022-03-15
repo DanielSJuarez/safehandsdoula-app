@@ -7,13 +7,15 @@ import App from './App';
 import Login from './components/login';
 import Register from './components/register';
 import reportWebVitals from './reportWebVitals';
-import CreateProfile  from './components/createProfile'
-import Home from './components/home'
-import ProfileDetail from './components/profileDetail'
-import ProfilesList from './components/profilesList'
+import CreateProfile  from './components/createProfile';
+import Home from './components/home';
+import ProfileDetail from './components/profileDetail';
+import ProfilesList from './components/profilesList';
 import Calendly from './components/linkCalendly';
-import AdminView from './components/adminView'
-
+import AdminView from './components/adminView';
+import ArticleHow from './components/articleHow';
+import ArticleWhat from './components/articleWhat';
+import ArticleWhy from './components/articleWhy'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -29,6 +31,9 @@ ReactDOM.render(
           <Route path='doula' element={<ProfilesList/>}/>
           <Route path='calendly' element={<Calendly/>}/>
           <Route path='reported' element={<AdminView/>}/>
+          <Route path='why' element={<ArticleWhy/>}/>
+          <Route path='what' element={<ArticleWhat/>}/>
+          <Route path='how' element={<ArticleHow/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

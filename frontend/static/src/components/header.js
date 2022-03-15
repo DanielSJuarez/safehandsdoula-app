@@ -82,7 +82,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/how'>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/yourplan'>Why</NavLink>
+                <NavLink className='navLinks' to='/why'>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <NavLink className='navLinks' to='/doula'>Doula's</NavLink>
@@ -105,7 +105,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/how'>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/yourplan'>Why</NavLink>
+                <NavLink className='navLinks' to='/why'>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doula's</NavLink>
@@ -134,7 +134,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/how'>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/yourplan'>Why</NavLink>
+                <NavLink className='navLinks' to='/why'>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <NavLink className='navLinks' to='/doula'>Doula's</NavLink>
@@ -160,7 +160,7 @@ function Header(props) {
                 <NavLink className='navLinks' to='/how'>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/yourplan'>Why</NavLink>
+                <NavLink className='navLinks' to='/why'>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doula's</NavLink>
