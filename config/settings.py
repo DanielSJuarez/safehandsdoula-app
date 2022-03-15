@@ -190,4 +190,9 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-CORS_ALLOWED_ORIGINS = ALLOWED_HOSTS
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'https://safehandsdoula-app-dsj.herokuapp.com',
+    'https://safehandsdoula.com',
+]
