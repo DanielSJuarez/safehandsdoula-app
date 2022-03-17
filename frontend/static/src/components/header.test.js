@@ -22,28 +22,25 @@ describe ('Home', () => {
         container = null;
     });
 
-    it('renders an article header' , () => {
+    it('renders header content' , () => {
         render(
-            <MemoryRouter initialEntries={["/home/"]}>
+            <MemoryRouter initialEntries={["/"]}>
                 <Routes>
                     <Route path='/' element={<App />}>
-                        <Route path='home' element={<Home/>}/>
                     </Route>
                 </Routes>
             </MemoryRouter>, container);
-        expect(container.textContent).toContain('Article Two')
+        expect(container.textContent).toContain('WhatHow')
     })
 
-    it('renders an article div' , () => {
+    it('renders an header li for nav' , () => {
         render(
-            <MemoryRouter initialEntries={["/home/"]}>
+            <MemoryRouter initialEntries={["/"]}>
                 <Routes>
                     <Route path='/' element={<App />}>
-                        <Route path='home' element={<Home/>}/>
                     </Route>
                 </Routes>
             </MemoryRouter>, container);
-         expect(container.querySelector('div')).not.toBeNull();
+         expect(container.querySelector('li')).not.toBeNull();
     })
 })
-

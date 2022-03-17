@@ -1,4 +1,4 @@
-import CreateProfile from './createProfile'
+import Login from './login'
 import App from '../App';
 import { render, unmountComponentAtNode } from 'react-dom'
 import {
@@ -7,7 +7,7 @@ import {
     Route,
 } from "react-router-dom";
 
-describe('CreateProfile', () => {
+describe('Login', () => {
 
     let container = null;
 
@@ -22,24 +22,13 @@ describe('CreateProfile', () => {
         container = null;
     });
 
-    it('renders profile header', () => {
-        render(
-            <MemoryRouter initialEntries={["/create/"]}>
-                <Routes>
-                    <Route path='/' element={<App />}>
-                        <Route path='create' element={<CreateProfile />} />
-                    </Route>
-                </Routes>
-            </MemoryRouter>, container);
-        expect(container.textContent).toContain("Your Profile")
-    })
 
     it('renders submit button', () => {
         render(
-            <MemoryRouter initialEntries={["/create/"]}>
+            <MemoryRouter initialEntries={["/login/"]}>
                 <Routes>
                     <Route path='/' element={<App />}>
-                        <Route path='create' element={<CreateProfile />} />
+                        <Route path='login' element={<Login />} />
                     </Route>
                 </Routes>
             </MemoryRouter>, container);
@@ -48,10 +37,10 @@ describe('CreateProfile', () => {
 
     it('renders profile form', () => {
         render(
-            <MemoryRouter initialEntries={["/create/"]}>
+            <MemoryRouter initialEntries={["/login/"]}>
                 <Routes>
                     <Route path='/' element={<App />}>
-                        <Route path='create' element={<CreateProfile />} />
+                        <Route path='login' element={<Login/>} />
                     </Route>
                 </Routes>
             </MemoryRouter>, container);
@@ -61,10 +50,10 @@ describe('CreateProfile', () => {
     const rendersAnInputOfTypeText = (fieldName) => {
         it('renders an input of type text', () => {
             render(
-                <MemoryRouter initialEntries={["/create/"]}>
+                <MemoryRouter initialEntries={["/login/"]}>
                     <Routes>
                         <Route path='/' element={<App />}>
-                            <Route path='create' element={<CreateProfile/>} />
+                            <Route path='login' element={<Login/>} />
                         </Route>
                     </Routes>
                 </MemoryRouter>, container);
@@ -74,24 +63,30 @@ describe('CreateProfile', () => {
         }) 
     }
 
-    describe('name field', () => {
-        let fieldName = 'name'
+    const rendersAnInputOfTypePassword = (fieldName) => {
+        it('renders an input of type email', () => {
+            render(
+                <MemoryRouter initialEntries={["/login/"]}>
+                    <Routes>
+                        <Route path='/' element={<App/>}>
+                            <Route path='login' element={<Login />} />
+                        </Route>
+                    </Routes>
+                </MemoryRouter>, container);
+            const formField = container.querySelector('form').elements[fieldName]
+            expect(formField.tagName).toEqual('INPUT')
+            expect(formField.type).toEqual('password')
+        }) 
+    }
+
+    describe('username field', () => {
+        let fieldName = 'username'
         rendersAnInputOfTypeText(fieldName)
     })
 
-    describe('name field', () => {
-        let fieldName = 'services'
-        rendersAnInputOfTypeText(fieldName)
-    })
-
-    describe('name field', () => {
-        let fieldName = 'why'
-        rendersAnInputOfTypeText(fieldName)
-    })
-
-    describe('name field', () => {
-        let fieldName = 'about'
-        rendersAnInputOfTypeText(fieldName)
+    describe('password field', () => {
+        let fieldName = 'password'
+        rendersAnInputOfTypePassword(fieldName)
     })
 
 })

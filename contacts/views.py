@@ -3,6 +3,7 @@ from .models import Contact
 from rest_framework import generics
 from .serializers import ContactSerializer, AdminSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from .permissions import IsDoulaOrReadOnly
 
 # Create your views here.
 
@@ -15,7 +16,7 @@ class ContactListAPIView(generics.ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 class ContactControlListAPIView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsDoulaOrReadOnly,)
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
 
