@@ -4,8 +4,8 @@ import {environment} from '../config/settings'
 
 
 function AdminContactView({ name, email, phone_number, question, reported, id, setReportedContacts, reportedContacts }) {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-    const { handleError } = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    // const { handleError } = useOutletContext();
     const deleteContact = async (id) => {
 
         let location = ''

@@ -6,6 +6,7 @@ import {environment} from '../config/settings'
 
 function AdminView() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    // const { handleError } = useOutletContext();
     const [reportedProfiles, setReportedProfiles] = useState(null);
     const [reportedContacts, setReportedContacts] = useState(null);
 

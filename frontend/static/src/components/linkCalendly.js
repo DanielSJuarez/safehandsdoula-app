@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 
 function Calendly() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser] = useOutletContext();
-
+    // const { navigate} = useOutletContext();
     return (
         <>
         <div className='col loginField'>

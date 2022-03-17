@@ -5,6 +5,7 @@ import {environment} from '../config/settings'
 
 function Login() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    // const { setAuth,  navigate, setIsDoula, handleError, setIsSuperUser} = useOutletContext();
     const [state, setState] = useState({
         username: '',
         password: ''

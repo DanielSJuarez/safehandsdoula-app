@@ -5,7 +5,7 @@ import {environment} from '../config/settings'
 
 function Home() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
- 
+    // const { auth,  navigate, setIsDoula, searchParams, handleError, setProfileImg} = useOutletContext();
     useEffect(() => {
         let id = ''
         const isDoula = async () => {

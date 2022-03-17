@@ -5,6 +5,7 @@ import {environment} from '../config/settings'
 
 function CreateProfile() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
+    // const { navigate, setCreateDoula, setIsDoula, preview, setPreview} = useOutletContext();
     const [addImage, setAddImage] = useState(null);
     const [isName, setIsName] = useState('');
     const [about, setAbout] = useState('');

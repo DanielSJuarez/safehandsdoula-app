@@ -3,7 +3,9 @@ import ProfileCrud from './profileCrud';
 import ContactDetail from './contactDetail'
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
-import {environment} from '../config/settings'
+import { environment } from '../config/settings'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 function ProfileDetail() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -26,6 +28,12 @@ function ProfileDetail() {
     const [activeButton, setActiveButton] = useState('')
     const [isChecked, setIsChecked] = useState('')
     const [read, setRead] = useState('')
+    const [show, setShow] = useState(false);
+    const [shown, setShown] = useState('')
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     const handleImage = e => {
 
@@ -42,9 +50,9 @@ function ProfileDetail() {
     const editProfile = async (id) => {
 
         let location = ''
-        if (environment === 'development'){
+        if (environment === 'development') {
             location = 'http://localhost:8000'
-        } else if (environment === 'production'){
+        } else if (environment === 'production') {
             location = 'https://safehandsdoula-app-dsj.herokuapp.com'
         }
 
@@ -96,9 +104,9 @@ function ProfileDetail() {
     const updateImage = async (id) => {
 
         let location = ''
-        if (environment === 'development'){
+        if (environment === 'development') {
             location = 'http://localhost:8000'
-        } else if (environment === 'production'){
+        } else if (environment === 'production') {
             location = 'https://safehandsdoula-app-dsj.herokuapp.com'
         }
 
@@ -132,9 +140,9 @@ function ProfileDetail() {
     const removeImage = async (id) => {
 
         let location = ''
-        if (environment === 'development'){
+        if (environment === 'development') {
             location = 'http://localhost:8000'
-        } else if (environment === 'production'){
+        } else if (environment === 'production') {
             location = 'https://safehandsdoula-app-dsj.herokuapp.com'
         }
 
@@ -168,9 +176,9 @@ function ProfileDetail() {
     const getContacts = async (id) => {
 
         let location = ''
-        if (environment === 'development'){
+        if (environment === 'development') {
             location = 'http://localhost:8000'
-        } else if (environment === 'production'){
+        } else if (environment === 'production') {
             location = 'https://safehandsdoula-app-dsj.herokuapp.com'
         }
 
@@ -202,9 +210,9 @@ function ProfileDetail() {
     const accountStatus = async (pk) => {
 
         let location = ''
-        if (environment === 'development'){
+        if (environment === 'development') {
             location = 'http://localhost:8000'
-        } else if (environment === 'production'){
+        } else if (environment === 'production') {
             location = 'https://safehandsdoula-app-dsj.herokuapp.com'
         }
 
@@ -213,9 +221,13 @@ function ProfileDetail() {
         if (status === 'ACT') {
             isStatus = 'INA'
             setActiveButton('Activate Account')
+            setShown('Activated accounts will be shown on safehandadouls.com and will available for contact by site users.')
+            setShow(false);
         } else if (status === 'INA') {
             isStatus = 'ACT'
             setActiveButton('Inactivate Account')
+            setShown('Inactivated accounts will not be shown on safehandadouls.com and will not available for contact by site users.')
+            setShow(false);
         }
 
         const changeAccount = {
@@ -246,9 +258,9 @@ function ProfileDetail() {
         const getProfile = async () => {
 
             let location = ''
-            if (environment === 'development'){
+            if (environment === 'development') {
                 location = 'http://localhost:8000'
-            } else if (environment === 'production'){
+            } else if (environment === 'production') {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
 
@@ -276,8 +288,10 @@ function ProfileDetail() {
                 setProfileImg(data[0].image)
                 if (data[0].is_active === 'ACT') {
                     setActiveButton('Inactivate Account')
+                    setShown('Inactivated accounts will not be shown on safehandadouls.com and will not available for contact by site users.')
                 } else {
                     setActiveButton('Activate Account')
+                    setShown('Activated accounts will be shown on safehandadouls.com and will available for contact by site users.')
                 }
             }
         }
@@ -328,12 +342,31 @@ function ProfileDetail() {
                     {profileDetail}
                 </div>
             </div>
-            <hr/>
+            <hr />
             <div className='account'>
                 <p>Account Status: {status}</p>
-                <button className='loginRegisterButton' type='button' onClick={() => accountStatus(pk)}>{activeButton}</button>
+                <button className='loginRegisterButton' type='button' onClick={handleShow}>{activeButton}</button>
             </div>
-            <div>Rating</div>
+           
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Change Account Status</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {shown}  
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className='loginRegisterButton' onClick={handleClose}>
+                        Close
+                    </button>
+                    <button className='loginRegisterButton' onClick={() => accountStatus(pk)}>Confirm</button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }
