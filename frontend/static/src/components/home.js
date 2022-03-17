@@ -1,12 +1,13 @@
 import { useOutletContext } from "react-router-dom";
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
-import {environment} from '../config/settings'
+import {environment, base_URL} from '../config/settings'
 
 function Home() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
     // const { auth,  navigate, setIsDoula, searchParams, handleError, setProfileImg} = useOutletContext();
     useEffect(() => {
+        console.log(base_URL)
         let id = ''
         const isDoula = async () => {
             console.log('hi')
