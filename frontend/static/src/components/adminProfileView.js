@@ -1,11 +1,19 @@
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 import {environment} from '../config/settings'
+import Modal from 'react-bootstrap/Modal'
+import { useState } from 'react';
 
 
 function AdminProfileView ({name, started, facebook, twitter, instagram, website, about, services, why, calendly, image, certification, reported ,  id, setReportedProfiles, reportedProfiles}){
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     // const { handleError } = useOutletContext();
+    const [show, setShow] = useState(false);
+    
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const deleteProfile = async (id) => {
 
         let location = ''
@@ -88,9 +96,30 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
             <p className='summary'>{why}</p>
             <p>{calendly}</p>
             <button type="button" onClick={() => approveProfile(id)}>Approve</button>
-            <button type="button" onClick={() => deleteProfile(id)}>Delete</button>
+            {/* <button type="button" onClick={() => deleteProfile(id)}>Delete</button> */}
+            <button type="button" onClick={handleShow}>Delete</button>
         </section>
         <hr/>
+
+        <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete Content</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Deleting this item, will permanently remove it from safehandsdoula.com and will not be recoverable. Do you wish to cancel or confirm?
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className='loginRegisterButton' onClick={handleClose}>
+                        Cancel
+                    </button>
+                    <button className='loginRegisterButton' onClick={() => deleteProfile(id)}>Confirm Delete</button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

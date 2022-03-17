@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 import { environment } from '../config/settings'
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+
 
 function ProfileDetail() {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
