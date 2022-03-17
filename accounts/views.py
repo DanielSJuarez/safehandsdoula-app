@@ -1,3 +1,4 @@
+from ast import IsNot
 from django.shortcuts import render
 from .models import Profile, DoulaProfile
 from rest_framework import generics
@@ -18,10 +19,10 @@ class DoulaProfileListAPIView(generics.ListCreateAPIView):
         return DoulaProfile.objects.filter(user=user)
 
 class ReportProfileEditListAPIView(generics.UpdateAPIView):
-     serializer_class = DoulaProfileSerializer
-     queryset = DoulaProfile.objects.all()
+    serializer_class = DoulaProfileSerializer
+    queryset = DoulaProfile.objects.all()
 
-     def perform_create(self, serializer):
+    def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
 

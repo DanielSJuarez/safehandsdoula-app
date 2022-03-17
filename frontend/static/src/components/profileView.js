@@ -15,11 +15,23 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     const target = useRef(null);
 
     const isLogin = (
-        <ContactDoula id={id} />
+        <>
+            <ContactDoula id={id} />
+            <button className='loginRegisterButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
+                Report
+            </button>
+            <Overlay target={target.current} show={show} placement="right">
+                {(props) => (
+                    <Tooltip id="overlay-example" {...props}>
+                        Reported
+                    </Tooltip>
+                )}
+            </Overlay>
+        </>
     )
 
     const notIsLogin = (
-        <p>Please create an account or login to contact this doula</p>
+        <p>Please create an account or login to contact this doula, or report this account</p>
     )
 
     const isNotCalendly = (
@@ -27,9 +39,21 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     )
 
     const isCalendly = (
-        <div className='calendly'>
-            <InlineWidget url={calendly} />
-        </div>
+        <>
+            <div className='calendly'>
+                <InlineWidget url={calendly} />
+            </div>
+            <button className='loginRegisterButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
+                Report
+            </button>
+            <Overlay target={target.current} show={show} placement="right">
+                {(props) => (
+                    <Tooltip id="overlay-example" {...props}>
+                        Reported
+                    </Tooltip>
+                )}
+            </Overlay>
+        </>
     )
 
     const reportProfile = async (id) => {
@@ -116,12 +140,12 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <button onClick={() => setIsSummary(false)} className='loginRegisterButton'>Back to Doula's</button>
             <hr />
             <h3>Contact Me</h3>
-            {auth ? isLogin : notIsLogin}
             <div>
-                {linked ? isCalendly : isNotCalendly}
+                {auth ? linked ? isCalendly : isLogin : notIsLogin}
             </div>
-            {/* <button className='loginRegisterButton report' onClick={() => reportProfile(id)}>Report</button> */}
-            <button className='loginRegisterButton report' ref={target}  onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
+            {/* <div> */}
+                {/* {linked ? isCalendly : isNotCalendly} */}
+                {/* <button className='loginRegisterButton report' ref={target}  onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
                 Report
             </button>
             <Overlay target={target.current} show={show} placement="right">
@@ -130,7 +154,10 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                         Reported
                     </Tooltip>
                 )}
-            </Overlay>
+            </Overlay> */}
+            {/* </div> */}
+            {/* <button className='loginRegisterButton report' onClick={() => reportProfile(id)}>Report</button> */}
+
         </section>
     )
 }
