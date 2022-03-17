@@ -2,25 +2,18 @@ import { useState, useEffect } from "react"
 import { useOutletContext } from "react-router-dom";
 import AdminContactView from "./adminContactView";
 import AdminProfileView from "./adminProfileView";
-import {environment} from '../config/settings'
+import {base_URL} from '../config/settings'
 
 function AdminView() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-    // const { handleError } = useOutletContext();
+    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    const { handleError } = useOutletContext();
     const [reportedProfiles, setReportedProfiles] = useState(null);
     const [reportedContacts, setReportedContacts] = useState(null);
 
     useEffect(() => {
         const isProfileReported = async () => {
 
-            let location = ''
-            if (environment === 'development'){
-                location = 'http://localhost:8000'
-            } else if (environment === 'production'){
-                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
-            }
-
-            const response = await fetch(`/api/v1/accounts/admin/`).catch(handleError);
+            const response = await fetch(`${base_URL}/api/v1/accounts/admin/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
@@ -35,14 +28,7 @@ function AdminView() {
     useEffect(() => {
         const isContactReported = async () => {
 
-            let location = ''
-            if (environment === 'development'){
-                location = 'http://localhost:8000'
-            } else if (environment === 'production'){
-                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
-            }
-
-            const response = await fetch(`/api/v1/contacts/admin/`).catch(handleError);
+            const response = await fetch(`${base_URL}/api/v1/contacts/admin/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {

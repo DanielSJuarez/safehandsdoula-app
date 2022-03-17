@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
-import {environment} from '../config/settings'
+import {base_URL} from '../config/settings'
 
 function CreateProfile() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
-    // const { navigate, setCreateDoula, setIsDoula, preview, setPreview} = useOutletContext();
+    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
+    const { navigate, setCreateDoula, setIsDoula, preview, setPreview} = useOutletContext();
     const [addImage, setAddImage] = useState(null);
     const [isName, setIsName] = useState('');
     const [about, setAbout] = useState('');
@@ -33,13 +33,6 @@ function CreateProfile() {
     const handleSubmit = e => {
         e.preventDefault();
 
-        let location = ''
-            if (environment === 'development'){
-                location = 'http://localhost:8000'
-            } else if (environment === 'production'){
-                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
-            }
-
         const formData = new FormData();
         formData.append('name', isName);
         formData.append('about', about);
@@ -62,7 +55,7 @@ function CreateProfile() {
             body: formData,
         }
 
-        fetch(`/api/v1/accounts/doula/`, options);
+        fetch(`${base_URL}/api/v1/accounts/doula/`, options);
         e.target.reset();
         setPreview('');
         setAddImage('');

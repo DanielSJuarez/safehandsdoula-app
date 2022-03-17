@@ -2,24 +2,19 @@ import { useState, useEffect } from 'react'
 import ProfilesDiplayView from './profileDisplayView';
 import ProfileView from './profileView';
 import { useOutletContext } from "react-router-dom";
-import { environment } from '../config/settings'
+import { base_URL } from '../config/settings'
 
 function ProfilesList() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    const {handleError, isSummary, setIsSummary} = useOutletContext();
     const [profiles, setProfiles] = useState(null)
     // const [isSummary, setIsSummary] = useState(false)
     const [getId, setGetId] = useState('')
 
     useEffect(() => {
         const getActiveProfiles = async () => {
-            let location = ''
-            if (environment === 'development') {
-                location = 'http://localhost:8000'
-            } else if (environment === 'production') {
-                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
-            }
 
-            const response = await fetch(`/api/v1/accounts/`).catch(handleError);
+            const response = await fetch(`${base_URL}/api/v1/accounts/`).catch(handleError);
 
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')

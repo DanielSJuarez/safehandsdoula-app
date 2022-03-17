@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Cookies from 'js-cookie';
 import { NavLink, Link } from 'react-router-dom';
-import {environment} from '../config/settings'
+import { base_URL } from '../config/settings';
 
 function Header(props) {
 
@@ -15,14 +15,7 @@ function Header(props) {
     useEffect(() => {
         const getIsAdmin = async () => {
 
-            let location = ''
-            if (environment === 'development'){
-                location = 'http://localhost:8000'
-            } else if (environment === 'production'){
-                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
-            }
-
-            const response = await fetch(`/rest-auth/user/`).catch(props.handleError);
+            const response = await fetch(`${base_URL}/rest-auth/user/`).catch(props.handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
@@ -43,14 +36,8 @@ function Header(props) {
     }, []);
 
     const isDoula = async () => {
-        let location = ''
-            if (environment === 'development'){
-                location = 'http://localhost:8000'
-            } else if (environment === 'production'){
-                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
-            }
 
-        const response = await fetch(`/api/v1/accounts/doula/`).catch(props.handleError);
+        const response = await fetch(`${base_URL}/api/v1/accounts/doula/`).catch(props.handleError);
         if (!response.ok) {
             throw new Error('Netword response was not OK!')
         } else {
@@ -66,13 +53,6 @@ function Header(props) {
     const handleLogout = async event => {
         event.preventDefault();
 
-        let location = ''
-            if (environment === 'development'){
-                location = 'http://localhost:8000'
-            } else if (environment === 'production'){
-                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
-            }
-
         const options = {
             method: 'POST',
             headers: {
@@ -81,7 +61,7 @@ function Header(props) {
             },
         }
 
-        const response = await fetch(`/rest-auth/logout/`, options).catch(
+        const response = await fetch(`${base_URL}/rest-auth/logout/`, options).catch(
             props.handleError
         )
 
@@ -96,19 +76,19 @@ function Header(props) {
     const user = (
         <ul className='row header mx-0'>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/home'>Home</NavLink>
+                <NavLink to="/home" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Home</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/what'>What</NavLink>
+                <NavLink to="/what" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>What</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/how'>How</NavLink>
+                <NavLink to="/how" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/why'>Why</NavLink>
+                <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doulas</NavLink>
+                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Doula</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
@@ -119,22 +99,22 @@ function Header(props) {
     const doulaUser = (
         <ul className='row header mx-0'>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/home'>Home</NavLink>
+                <NavLink to="/home" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Home</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/what'>What</NavLink>
+                <NavLink to="/what" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>What</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/how'>How</NavLink>
+                <NavLink to="/how" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/why'>Why</NavLink>
+                <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doulas</NavLink>
+                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Doula</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/profile'>Profile</NavLink>
+                <NavLink to="/profile" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Profile</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
@@ -148,19 +128,20 @@ function Header(props) {
     const visitor = (
         <ul className='row header mx-0'>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/home'>Home</NavLink>
+                <NavLink to="/home" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Home</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/what'>What</NavLink>
+                <NavLink to="/what" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>What</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/how'>How</NavLink>
+                <NavLink to="/how" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>How</NavLink>
+
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/why'>Why</NavLink>
+                <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doulas</NavLink>
+                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Doula</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <Link className='navLinks' to='/login'>Login</Link>
@@ -174,22 +155,22 @@ function Header(props) {
     const adminUser = (
         <ul className='row header mx-0'>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/home'>Home</NavLink>
+                <NavLink to="/home" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Home</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/what'>What</NavLink>
+                <NavLink to="/what" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>What</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/how'>How</NavLink>
+                <NavLink to="/how" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>How</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/why'>Why</NavLink>
+                <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/doula' onClick={checkActive}>Doulas</NavLink>
+                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Doula</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink className='navLinks' to='/reported'>Reported Content</NavLink>
+                <NavLink to="/reported" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Reported Content</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>

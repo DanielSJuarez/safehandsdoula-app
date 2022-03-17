@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
-import {environment} from '../config/settings'
+import {base_URL} from '../config/settings'
 
 function Login() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-    // const { setAuth,  navigate, setIsDoula, handleError, setIsSuperUser} = useOutletContext();
+    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    const { setAuth,  navigate, setIsDoula, handleError, setIsSuperUser} = useOutletContext();
     const [state, setState] = useState({
         username: '',
         password: ''
@@ -13,14 +13,6 @@ function Login() {
 
     const handleSubmit = async event => {
         event.preventDefault();
-
-        console.log()
-        let location = ''
-            if (environment === 'development'){
-                location = 'http://localhost:8000'
-            } else if (environment === 'production'){
-                location = 'https://safehandsdoula-app-dsj.herokuapp.com'
-            }
 
         const options = {
             method: 'POST',
@@ -31,7 +23,7 @@ function Login() {
             body: JSON.stringify(state),
         }
 
-        const response = await fetch(`/rest-auth/login/`, options).catch(
+        const response = await fetch(`${base_URL}/rest-auth/login/`, options).catch(
             handleError
         )
 
