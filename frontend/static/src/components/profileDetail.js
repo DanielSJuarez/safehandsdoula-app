@@ -195,11 +195,12 @@ function ProfileDetail() {
             throw new Error('Netword response was not OK!')
         } else {
             const data = await response.json();
-            console.log(data)
-            if (data[0].contact_status === 'CON') {
+            console.log(data.length)
+
+            if (data.length > 0 && data[0].contact_status === 'CON') {
                 setIsChecked(true)
                 setRead('Mark as unread')
-            } else if (data[0].contact_status === 'NEW') {
+            } else if (data.length > 0 && data[0].contact_status === 'NEW') {
                 setIsChecked(false)
                 setRead('Mark as read')
             }
