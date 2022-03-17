@@ -1,13 +1,18 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { InlineWidget } from "react-calendly";
 import { useOutletContext } from "react-router-dom";
 import ContactDoula from './contactDoula'
 import Cookies from 'js-cookie';
 import { environment } from '../config/settings'
+import Tooltip from 'react-bootstrap/Tooltip'
+import Overlay from 'react-bootstrap/Overlay'
+
 
 function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, linked }) {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary,isSuperUser, setIsSuperUser] = useOutletContext();
+    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const [isAuthenicated, setIsAuthenicated] = useState(false)
+    const [show, setShow] = useState(false);
+    const target = useRef(null);
 
     const isLogin = (
         <ContactDoula id={id} />
@@ -30,9 +35,9 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     const reportProfile = async (id) => {
 
         let location = ''
-        if (environment === 'development'){
+        if (environment === 'development') {
             location = 'http://localhost:8000'
-        } else if (environment === 'production'){
+        } else if (environment === 'production') {
             location = 'https://safehandsdoula-app-dsj.herokuapp.com'
         }
 
@@ -49,6 +54,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             body: JSON.stringify(report)
         }
         const response = await fetch(`/api/v1/accounts/doula/${id}/report/`, options).catch(handleError);
+        setShow(true)
     }
 
     return (
@@ -114,7 +120,17 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <div>
                 {linked ? isCalendly : isNotCalendly}
             </div>
-            <button className='loginRegisterButton report' onClick={() => reportProfile(id)}>Report</button>
+            {/* <button className='loginRegisterButton report' onClick={() => reportProfile(id)}>Report</button> */}
+            <button className='loginRegisterButton report' ref={target}  onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
+                Report
+            </button>
+            <Overlay target={target.current} show={show} placement="right">
+                {(props) => (
+                    <Tooltip id="overlay-example" {...props}>
+                        Reported
+                    </Tooltip>
+                )}
+            </Overlay>
         </section>
     )
 }

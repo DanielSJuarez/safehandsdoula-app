@@ -1,11 +1,15 @@
 import { useOutletContext } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Cookies from 'js-cookie';
 import {environment} from '../config/settings'
+import Tooltip from 'react-bootstrap/Tooltip'
+import Overlay from 'react-bootstrap/Overlay'
 
 function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts, isChecked, setIsChecked, read, setRead}) {
     const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser] = useOutletContext();
     // const { handleError } = useOutletContext();
+    const [show, setShow] = useState(false);
+    const target = useRef(null);
     console.log(isChecked)
     const contact = async (id) => {
 
@@ -82,6 +86,7 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
             body: JSON.stringify(report)
         }
         const response = await fetch(`/api/v1/doula/${pk}/contact/${id}/`, options).catch(handleError);
+        setShow(true)
     }
 
     return (
@@ -94,7 +99,17 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
                 <label htmlFor='checkbox'>{read}</label>
                 <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} />
             </div>
-            <button className='loginRegisterButton report' onClick={() => reportContact(id)} >Report</button>
+            {/* <button className='loginRegisterButton report' onClick={() => reportContact(id)} >Report</button> */}
+            <button className='loginRegisterButton report' ref={target}  onMouseLeave={() => setShow(false)} onClick={() => reportContact(id)}>
+                Report
+            </button>
+            <Overlay target={target.current} show={show} placement="right">
+                {(props) => (
+                    <Tooltip id="overlay-example" {...props}>
+                        Reported
+                    </Tooltip>
+                )}
+            </Overlay>
             <hr />
         </div>
     )
