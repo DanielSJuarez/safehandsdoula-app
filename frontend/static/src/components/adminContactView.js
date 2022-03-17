@@ -4,8 +4,8 @@ import {environment} from '../config/settings'
 
 
 function AdminContactView({ name, email, phone_number, question, reported, id, setReportedContacts, reportedContacts }) {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-
+    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    const { handleError } = useOutletContext();
     const deleteContact = async (id) => {
 
         let location = ''
@@ -23,7 +23,7 @@ function AdminContactView({ name, email, phone_number, question, reported, id, s
             },
         }
 
-        const response = await fetch(`${location}/api/v1/contacts/${id}/admin/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/contacts/${id}/admin/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -57,7 +57,7 @@ function AdminContactView({ name, email, phone_number, question, reported, id, s
             },
             body: JSON.stringify(approve)
         }
-        const response = await fetch(`${location}/api/v1/contacts/${id}/admin/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/contacts/${id}/admin/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');

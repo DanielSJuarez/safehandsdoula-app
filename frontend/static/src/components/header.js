@@ -22,12 +22,12 @@ function Header(props) {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
 
-            const response = await fetch(`${location}/rest-auth/user/`).catch(props.handleError);
+            const response = await fetch(`/rest-auth/user/`).catch(props.handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-
+                console.log('hi')
                 if (data.is_superuser == true) {
                     props.setIsDoula(true)
                     props.setIsSuperUser(true)
@@ -43,7 +43,6 @@ function Header(props) {
     }, []);
 
     const isDoula = async () => {
-
         let location = ''
             if (environment === 'development'){
                 location = 'http://localhost:8000'
@@ -51,7 +50,7 @@ function Header(props) {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
 
-        const response = await fetch(`${location}/api/v1/accounts/doula/`).catch(props.handleError);
+        const response = await fetch(`/api/v1/accounts/doula/`).catch(props.handleError);
         if (!response.ok) {
             throw new Error('Netword response was not OK!')
         } else {
@@ -82,7 +81,7 @@ function Header(props) {
             },
         }
 
-        const response = await fetch(`${location}/rest-auth/logout/`, options).catch(
+        const response = await fetch(`/rest-auth/logout/`, options).catch(
             props.handleError
         )
 

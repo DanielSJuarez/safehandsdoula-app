@@ -9,7 +9,7 @@ function Home() {
     useEffect(() => {
         let id = ''
         const isDoula = async () => {
-
+            console.log('hi')
             let location = ''
             if (environment === 'development'){
                 location = 'http://localhost:8000'
@@ -17,7 +17,7 @@ function Home() {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
 
-            const response = await fetch(`${location}/api/v1/accounts/doula/`).catch(handleError);
+            const response = await fetch(`/api/v1/accounts/doula/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
@@ -112,7 +112,7 @@ function Home() {
             body: formData
         }
 
-        const response = await fetch(`${location}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');

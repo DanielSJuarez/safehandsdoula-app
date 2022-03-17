@@ -50,7 +50,7 @@ function Register(){
             body: JSON.stringify(newState),
         }
 
-        const response = await fetch(`${location}/rest-auth/registration/`, options).catch(
+        const response = await fetch(`/rest-auth/registration/`, options).catch(
             handleError
         )
 

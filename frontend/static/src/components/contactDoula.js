@@ -49,7 +49,7 @@ function ContactDoula({id}) {
             body: JSON.stringify(newContact)
         }
 
-        fetch(`${location}/api/v1/doula/${id}/contact/`, options);
+        fetch(`/api/v1/doula/${id}/contact/`, options);
         setName('');
         setEmail('');
         setPhone('');

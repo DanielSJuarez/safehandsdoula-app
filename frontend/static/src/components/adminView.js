@@ -19,7 +19,7 @@ function AdminView() {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
 
-            const response = await fetch(`${location}/api/v1/accounts/admin/`).catch(handleError);
+            const response = await fetch(`/api/v1/accounts/admin/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
@@ -41,7 +41,7 @@ function AdminView() {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
 
-            const response = await fetch(`${location}/api/v1/contacts/admin/`).catch(handleError);
+            const response = await fetch(`/api/v1/contacts/admin/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {

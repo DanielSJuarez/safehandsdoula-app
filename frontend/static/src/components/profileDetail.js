@@ -76,7 +76,7 @@ function ProfileDetail() {
             body: formData
         }
 
-        const response = await fetch(`${location}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -113,7 +113,7 @@ function ProfileDetail() {
             body: formData,
         }
 
-        const response = await fetch(`${location}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -149,7 +149,7 @@ function ProfileDetail() {
             body: formData,
         }
 
-        const response = await fetch(`${location}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/accounts/${id}/doula/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -181,7 +181,7 @@ function ProfileDetail() {
             },
         }
 
-        const response = await fetch(`${location}/api/v1/doula/${id}/contacts/`).catch(handleError);
+        const response = await fetch(`/api/v1/doula/${id}/contacts/`).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Netword response was not OK!')
@@ -230,7 +230,7 @@ function ProfileDetail() {
             },
             body: JSON.stringify(changeAccount)
         }
-        const response = await fetch(`${location}/api/v1/accounts/${pk}/doula/`, options)
+        const response = await fetch(`/api/v1/accounts/${pk}/doula/`, options)
 
         if (!response.ok) {
             throw new Error('Network response was not OK');
@@ -252,7 +252,7 @@ function ProfileDetail() {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
 
-            const response = await fetch('${location}/api/v1/accounts/doula/').catch(handleError);
+            const response = await fetch(`/api/v1/accounts/doula/`).catch(handleError);
 
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')

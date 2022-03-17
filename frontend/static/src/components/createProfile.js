@@ -61,7 +61,7 @@ function CreateProfile() {
             body: formData,
         }
 
-        fetch(`${location}/api/v1/accounts/doula/`, options);
+        fetch(`/api/v1/accounts/doula/`, options);
         e.target.reset();
         setPreview('');
         setAddImage('');

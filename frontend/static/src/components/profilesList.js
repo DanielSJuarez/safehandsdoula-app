@@ -19,7 +19,7 @@ function ProfilesList() {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
 
-            const response = await fetch(`${location}/api/v1/accounts/`).catch(handleError);
+            const response = await fetch(`/api/v1/accounts/`).catch(handleError);
 
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')

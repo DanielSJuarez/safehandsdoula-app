@@ -5,7 +5,8 @@ import {environment} from '../config/settings'
 
 
 function ArticleWhy() {
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    const { handleError } = useOutletContext();
     const [article, setArticle] = useState(null)
 
     useEffect(() => {
@@ -18,7 +19,7 @@ function ArticleWhy() {
                 location = 'https://safehandsdoula-app-dsj.herokuapp.com'
             }
             
-            const response = await fetch(`${location}/api/v1/articles/`).catch(handleError);
+            const response = await fetch(`/api/v1/articles/`).catch(handleError);
 
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')

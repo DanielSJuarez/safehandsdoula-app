@@ -4,8 +4,8 @@ import {environment} from '../config/settings'
 
 
 function AdminProfileView ({name, started, facebook, twitter, instagram, website, about, services, why, calendly, image, certification, reported ,  id, setReportedProfiles, reportedProfiles}){
-    const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-
+    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+    const { handleError } = useOutletContext();
     const deleteProfile = async (id) => {
 
         let location = ''
@@ -23,7 +23,7 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
           },
         }
     
-        const response = await fetch(`${location}/api/v1/accounts/${id}/admin/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/accounts/${id}/admin/`, options).catch(handleError);
     
         if (!response.ok) {
           throw new Error('Network response was not OK');
@@ -57,7 +57,7 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
             },
             body: JSON.stringify(approve)
         }
-        const response = await fetch(`${location}/api/v1/accounts/${id}/admin/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/accounts/${id}/admin/`, options).catch(handleError);
 
         if (!response.ok) {
             throw new Error('Network response was not OK');

@@ -48,7 +48,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             },
             body: JSON.stringify(report)
         }
-        const response = await fetch(`${location}/api/v1/accounts/doula/${id}/report/`, options).catch(handleError);
+        const response = await fetch(`/api/v1/accounts/doula/${id}/report/`, options).catch(handleError);
     }
 
     return (

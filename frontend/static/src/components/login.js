@@ -13,6 +13,7 @@ function Login() {
     const handleSubmit = async event => {
         event.preventDefault();
 
+        console.log()
         let location = ''
             if (environment === 'development'){
                 location = 'http://localhost:8000'
@@ -29,7 +30,7 @@ function Login() {
             body: JSON.stringify(state),
         }
 
-        const response = await fetch(`${location}/rest-auth/login/`, options).catch(
+        const response = await fetch(`/rest-auth/login/`, options).catch(
             handleError
         )
 
