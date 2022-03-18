@@ -31,6 +31,9 @@ function ProfileDetail() {
     const [read, setRead] = useState('')
     const [show, setShow] = useState(false);
     const [shown, setShown] = useState('')
+    const [newRange, setNewRange] = useState(0);
+    const [newCity, setNewCity] = useState('')
+    const [newCityState, setNewCityState] = useState('')
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -61,6 +64,9 @@ function ProfileDetail() {
             twitter: newTwitter,
             instagram: newInstagram,
             certification: newCertification,
+            city: newCity,
+            state: newCityState,
+            service_range: newRange,
         }
 
         const formData = new FormData();
@@ -244,6 +250,9 @@ function ProfileDetail() {
                 setPreview(data[0].image)
                 getContacts(data[0].id);
                 setPk(data[0].id)
+                setNewCity(data[0].city)
+                setNewCityState(data[0].state)
+                setNewRange(data[0].service_range)
                 setStatus(data[0].is_active)
                 setProfileImg(data[0].image)
                 if (data[0].is_active === 'ACT') {
@@ -264,7 +273,7 @@ function ProfileDetail() {
 
     const profileDetail = profile.map((profile) => (
         <ProfileCrud key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
-            preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} />
+            preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} newRange={newRange} setNewRange={setNewRange} newCity={newCity} setNewCity={setNewCity} newCityState={newCityState} setNewCityState={setNewCityState}/>
     ))
 
     if (!contacts) {

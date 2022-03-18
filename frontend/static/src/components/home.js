@@ -115,6 +115,9 @@ function Home() {
                 <div className="homeArticleOne" onClick={() => navigate('/why')}>Article Three</div>
                 <div className="homeArticleTwo" onClick={() => navigate('/how')}>Find a Doula</div>
                 <div className="homeArticleOne" onClick={() => navigate('/register')}>Register</div>
+                <div className='pageSupport'>
+                    <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+                </div>
             </div>
         </>
     )

@@ -1,7 +1,8 @@
 import ArticleDetail from "./articleDetail";
 import { useState, useEffect } from 'react'
 import { useOutletContext } from "react-router-dom";
-import {base_URL} from '../config/settings'
+import { base_URL } from '../config/settings'
+import Spinner from 'react-bootstrap/Spinner'
 
 function ArticleWhat() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -24,7 +25,9 @@ function ArticleWhat() {
     }, []);
 
     if (!article) {
-        return <div>Fetching article data....</div>
+        return <div>Fetching article data....
+             <Spinner animation="border" size="sm"/>
+        </div>
     }
 
     const filterArticle = article.filter(article => (
@@ -37,11 +40,13 @@ function ArticleWhat() {
 
     return (
         <>
-            <div>
-                {articleList}
-            </div>
-            <div className='pageSupport'>
-                <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+            <div className="container ">
+                <div className="articleHolder">
+                    {articleList}
+                </div>
+                <div className='pageSupport'>
+                    <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+                </div>
             </div>
         </>
     )

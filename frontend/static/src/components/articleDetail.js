@@ -4,9 +4,9 @@ function ArticleDetail ({title, image, text}) {
             <div>
                 <img src={image} alt={title}/>
             </div>
-            <h1>{title}</h1>
+            <h1 className='articleTitle'>{title}</h1>
             <hr/>
-            <div>{text}</div>
+            <div className="articleText">{text}</div>
         </article>
     )
 }

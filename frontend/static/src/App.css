@@ -80,6 +80,7 @@
 
 .pageSupport{
   text-align: center;
+  font-style: italic;
 }
 
 .summaryView{
@@ -286,4 +287,20 @@ a:hover{
 
 .report{
   margin: 10px 0px;
+}
+
+.articleText{
+  font-size: 20px;
+  text-align: left;
+}
+
+.articleHolder{
+  background-color: #dbb0a0;
+  margin: 50px 0px 100px 0px;
+  text-align: center;
+  padding: 50px;
+}
+
+.articleTitle {
+  font-style: italic;
 }

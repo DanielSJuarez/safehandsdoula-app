@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
-import {base_URL} from '../config/settings'
+import { base_URL } from '../config/settings'
+import Form from 'react-bootstrap/Form'
 
 function CreateProfile() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
-    const { navigate, setCreateDoula, setIsDoula, preview, setPreview} = useOutletContext();
+    const { navigate, setCreateDoula, setIsDoula, preview, setPreview } = useOutletContext();
     const [addImage, setAddImage] = useState(null);
     const [isName, setIsName] = useState('');
     const [about, setAbout] = useState('');
@@ -17,6 +18,9 @@ function CreateProfile() {
     const [website, setWebsite] = useState('');
     const [services, setServices] = useState('');
     const [why, setWhy] = useState('');
+    const [city, setCity] = useState('')
+    const [cityState, setCityState] = useState('')
+    const [range, setRange] = useState(0)
 
     const handleImage = e => {
 
@@ -46,6 +50,9 @@ function CreateProfile() {
         formData.append('instagram', instagram);
         formData.append('is_doula', true);
         formData.append('certification', certification);
+        formData.append('city', city);
+        formData.append('service_range', range);
+        formData.append('state', cityState);
 
         const options = {
             method: 'POST',
@@ -69,6 +76,9 @@ function CreateProfile() {
         setTwitter('');
         setInstagram('');
         setCertification('');
+        setCity('')
+        setCityState('')
+        setRange(0)
         setCreateDoula(false);
         setIsDoula(true);
         navigate('/calendly')
@@ -87,6 +97,68 @@ function CreateProfile() {
                     </div>
                     <div className='col loginField'>
                         <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} required />
+                    </div>
+                    <div className='col loginField'>
+                        <input className='inputField' type='text' name='city' placeholder='city' onChange={(e) => setCity(e.target.value)} value={city} required />
+                    </div>
+                    <div className='col loginField'>
+                        <Form.Select aria-label="Default select example" onChange={(e) => setCityState(e.target.value)} size="sm">
+                            <option value="--">--</option>
+                            <option value="AK">AK</option>
+                            <option value="AL">AL</option>
+                            <option value="AR">AR</option>
+                            <option value="AZ">AZ</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DC">DC</option>
+                            <option value="DE">DE</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="HI">HI</option>
+                            <option value="IA">IA</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="MA">MA</option>
+                            <option value="MD">MD</option>
+                            <option value="ME">ME</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MO">MO</option>
+                            <option value="MS">MS</option>
+                            <option value="MT">MT</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="NE">NE</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NV">NV</option>
+                            <option value="NY">NY</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VA">VA</option>
+                            <option value="VT">VT</option>
+                            <option value="WA">WA</option>
+                            <option value="WI">WI</option>
+                            <option value="WV">WV</option>
+                            <option value="WY">WY</option>
+                        </Form.Select>
+                    </div>
+                    <div className='col loginField'>
+                        <input className='inputField' type='number' name='serviceRange' placeholder='service range' onChange={(e) => setRange(e.target.value)} value={range} required />
                     </div>
                     <div className='col loginField'>
                         <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setAbout(e.target.value)} value={about} />

@@ -1,7 +1,8 @@
 import ArticleDetail from "./articleDetail";
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { useOutletContext } from "react-router-dom";
-import {base_URL} from '../config/settings'
+import { base_URL } from '../config/settings'
+import Spinner from 'react-bootstrap/Spinner'
 
 
 function ArticleWhy() {
@@ -11,7 +12,7 @@ function ArticleWhy() {
 
     useEffect(() => {
         const getArticle = async () => {
-            
+
             const response = await fetch(`${base_URL}/api/v1/articles/`).catch(handleError);
 
             if (!response.ok) {
@@ -23,9 +24,11 @@ function ArticleWhy() {
         }
         getArticle();
     }, []);
-    
+
     if (!article) {
-        return <div>Fetching article data....</div>
+        return <div>Fetching article data....
+             <Spinner animation="border" size="sm"/>
+        </div>
     }
 
     const filterArticle = article.filter(article => (
@@ -33,16 +36,18 @@ function ArticleWhy() {
     ))
 
     const articleList = filterArticle.map(article => (
-        <ArticleDetail key={article.id} {...article}/>
+        <ArticleDetail key={article.id} {...article} />
     ))
 
     return (
         <>
-            <div>
-                {articleList}
-            </div>
-            <div className='pageSupport'>
-                <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+            <div className='container'>
+                <div className="articleHolder">
+                    {articleList}
+                </div>
+                <div className='pageSupport'>
+                    <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+                </div>
             </div>
         </>
     )
