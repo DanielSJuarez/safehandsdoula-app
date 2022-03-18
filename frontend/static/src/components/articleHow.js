@@ -2,6 +2,7 @@ import ArticleDetail from "./articleDetail";
 import { useState, useEffect} from 'react'
 import { useOutletContext } from "react-router-dom";
 import {base_URL} from '../config/settings'
+import Spinner from 'react-bootstrap/Spinner'
 
 function ArticleHow() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -24,7 +25,9 @@ function ArticleHow() {
     }, []);
   
     if (!article) {
-        return <div>Fetching article data....</div>
+        return <div>Fetching article data....
+            <Spinner animation="border" />
+        </div>
     }
 
     const filterArticle = article.filter(article => (
