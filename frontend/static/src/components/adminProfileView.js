@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 import { useState } from 'react';
 
 
-function AdminProfileView ({name, started, facebook, twitter, instagram, website, about, services, why, calendly, image, certification, reported ,  id, setReportedProfiles, reportedProfiles}){
+function AdminProfileView ({name, started, facebook, twitter, instagram, website, about, services, why, calendly, image, certification, reported ,  id, setReportedProfiles, reportedProfiles, city, state, service_range}){
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError } = useOutletContext();
     const [show, setShow] = useState(false);
@@ -72,6 +72,9 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
             </div>
             <h2>{name}</h2>
             <p>{started}</p>
+            <p>{city}</p>
+            <p>{state}</p>
+            <p>{service_range}</p>
             <a target='blank' href={facebook}>{facebook}</a>
             <a target='blank' href={twitter}>{twitter}</a>
             <a target='blank' href={instagram}>{instagram}</a>
