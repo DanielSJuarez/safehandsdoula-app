@@ -92,6 +92,8 @@ class DoulaProfile(models.Model):
     service_range = models.IntegerField(null=True)
     city = models.CharField(max_length=255, default='')
     state = models.CharField(max_length=2, choices=STATES, default='--')
+    display_calendly = models.BooleanField(default=False)
+
 
 
 

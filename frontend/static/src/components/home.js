@@ -91,6 +91,7 @@ function Home() {
         const formData = new FormData();
         formData.append('calendly', schedule);
         formData.append('linked', true);
+        formData.append('display_calendly', true);
 
         const options = {
             method: 'PATCH',

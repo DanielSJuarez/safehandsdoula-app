@@ -10,7 +10,7 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
     const { handleError } = useOutletContext();
     const [show, setShow] = useState(false);
     const target = useRef(null);
-    console.log(isChecked)
+    // console.log(isChecked)
     const contact = async (id) => {
 
         let contact = ''

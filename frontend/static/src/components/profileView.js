@@ -8,7 +8,8 @@ import Tooltip from 'react-bootstrap/Tooltip'
 import Overlay from 'react-bootstrap/Overlay'
 
 
-function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, linked, city, state, service_range}) {
+
+function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, city, state, service_range, display_calendly}) {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { auth, handleError, setIsSummary} = useOutletContext();
     // const [isAuthenicated, setIsAuthenicated] = useState(false)
@@ -32,15 +33,34 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     )
 
     const notIsLogin = (
-        <p>Please create an account or login to contact this doula, or report this account</p>
+        <p>Please <a href='/register'>create an account</a> or <a href='/login'>login</a> to contact this doula, or report this account</p>
     )
 
     // const isNotCalendly = (
     //     <div></div>
     // )
 
-    const isCalendly = (
+    // const isCalendly = (
+    //     <>
+    //         <div className='calendly'>
+    //             <InlineWidget url={calendly} />
+    //         </div>
+    //         <button className='loginRegisterButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
+    //             Report
+    //         </button>
+    //         <Overlay target={target.current} show={show} placement="right">
+    //             {(props) => (
+    //                 <Tooltip id="overlay-example" {...props}>
+    //                     Reported
+    //                 </Tooltip>
+    //             )}
+    //         </Overlay>
+    //     </>
+    // )
+
+    const displayAll = (
         <>
+            <ContactDoula id={id} />
             <div className='calendly'>
                 <InlineWidget url={calendly} />
             </div>
@@ -147,7 +167,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
             <hr />
             <h3>Contact Me</h3>
             <div>
-                {auth ? linked ? isCalendly : isLogin : notIsLogin}
+                {auth ? display_calendly ? displayAll : isLogin : notIsLogin}
             </div>
             {/* <div> */}
                 {/* {linked ? isCalendly : isNotCalendly} */}

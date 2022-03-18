@@ -1,16 +1,67 @@
 import { useOutletContext } from "react-router-dom";
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form'
+import { base_URL } from '../config/settings'
+import Cookies from 'js-cookie';
 
-function ProfileCrud({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification, id, calendly, linked, setLinked, addImage, updateImage, removeImage , service_range, city, state, newCity, setNewCity, newRange, setNewRange, setNewCityState}) {
+function ProfileCrud({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification, id, calendly, linked, setLinked, addImage, updateImage, removeImage , service_range, city, state, newCity, setNewCity, newRange, setNewRange, setNewCityState, isDisplay, setIsDisplay, display_calendly , setProfile, profile}) {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-    const {preview, setPreview, profileImg} = useOutletContext();
+    const {preview, setPreview, profileImg, handleError} = useOutletContext();
     const [isImage, setIsImage] = useState(false)
+    console.log(isDisplay)
+
+    const displayStatus = async (id) => {
+
+        let status = ''
+
+        if (display_calendly === true) {
+            status = false
+        } else if (display_calendly === false) {
+            status = true
+        }
+
+        const calendlyStatus = {
+            display_calendly: status,
+        }
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify(calendlyStatus)
+        }
+
+        const response = await fetch(`${base_URL}/api/v1/accounts/${id}/doula/`, options).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network response was not OK');
+        }
+        const data = await response.json();
+
+        console.log(data)
+
+        if (data.display_calendly === true) {
+            setIsDisplay(true)
+        } else if (data.display_calendly === false) {
+            setIsDisplay(false)
+        }
+
+        const updateStatus = profile.map((status) => {
+            if (status.id === id) {
+                return data
+            }
+        })
+
+        setProfile(updateStatus);
+    }
 
     const edit = (e) => {
         e.preventDefault();
         editProfile(id);
         setIsEditing(false);
+
         e.target.reset();
     }
 
@@ -128,6 +179,10 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
             <label htmlFor='why' className='label'>Why Me</label>
             <p className='summary'>{why}</p>
             <p>{calendly}</p>
+            <div className='col doulacheckPlacholder'>
+                <label htmlFor='checkbox'>Display Calendly {isDisplay}</label>
+                <input className='doulaCheck' type='checkbox' onChange={() => displayStatus(id)} checked={isDisplay}/>
+            </div>
             {/* <CalendlyWidget calendly={calendly}/> */}
             {/* <InlineWidget url={calendly} /> */}
             <button className='loginRegisterButton' onClick={() => setIsEditing(true)}>Edit Profile</button>

@@ -34,6 +34,7 @@ function ProfileDetail() {
     const [newRange, setNewRange] = useState(0);
     const [newCity, setNewCity] = useState('')
     const [newCityState, setNewCityState] = useState('')
+    const [isDisplay, setIsDisplay] = useState('')
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -51,7 +52,7 @@ function ProfileDetail() {
         reader.readAsDataURL(file);
     }
 
-    const editProfile = async (id) => {
+    const editProfile = async (id, display) => {
 
         const updatedprofile = {
             name: newIsName,
@@ -174,7 +175,7 @@ function ProfileDetail() {
             throw new Error('Netword response was not OK!')
         } else {
             const data = await response.json();
-            console.log(data.length)
+            // console.log(data.length)
 
             if (data.length > 0 && data[0].contact_status === 'CON') {
                 setIsChecked(true)
@@ -193,13 +194,13 @@ function ProfileDetail() {
 
         if (status === 'ACT') {
             isStatus = 'INA'
-            setActiveButton('Activate Account')
-            setShown('Activated accounts will be shown on safehandadouls.com and will available for contact by site users.')
+            setActiveButton('Make Account Public')
+            setShown('Public accounts will be shown on safehandadouls.com and will available for contact by site users.')
             setShow(false);
         } else if (status === 'INA') {
             isStatus = 'ACT'
-            setActiveButton('Inactivate Account')
-            setShown('Inactivated accounts will not be shown on safehandadouls.com and will not available for contact by site users.')
+            setActiveButton('Make Account Private')
+            setShown('Private accounts will not be shown on safehandadouls.com and will not available for contact by site users.')
             setShow(false);
         }
 
@@ -255,12 +256,13 @@ function ProfileDetail() {
                 setNewRange(data[0].service_range)
                 setStatus(data[0].is_active)
                 setProfileImg(data[0].image)
+                setIsDisplay(data[0].display_calendly)
                 if (data[0].is_active === 'ACT') {
-                    setActiveButton('Inactivate Account')
-                    setShown('Inactivated accounts will not be shown on safehandadouls.com and will not available for contact by site users.')
+                    setActiveButton('Make Account Private')
+                    setShown('Private accounts will not be shown on safehandadouls.com and will not available for contact by site users.')
                 } else {
-                    setActiveButton('Activate Account')
-                    setShown('Activated accounts will be shown on safehandadouls.com and will available for contact by site users.')
+                    setActiveButton('Make Account Public')
+                    setShown('Public accounts will be shown on safehandadouls.com and will available for contact by site users.')
                 }
             }
         }
@@ -271,9 +273,9 @@ function ProfileDetail() {
         return <div>Fetching profile data....</div>
     }
 
-    const profileDetail = profile.map((profile) => (
-        <ProfileCrud key={profile.id} {...profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
-            preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} newRange={newRange} setNewRange={setNewRange} newCity={newCity} setNewCity={setNewCity} newCityState={newCityState} setNewCityState={setNewCityState}/>
+    const profileDetail = profile.map((profileData) => (
+        <ProfileCrud key={profileData.id} {...profileData} profile={profile} isEditing={isEditing} setIsEditing={setIsEditing} handleImage={handleImage} editProfile={editProfile} setNewAbout={setNewAbout} setNewCertification={setNewCertification} setNewFacebook={setNewFacebook} setNewInstagram={setNewInstagram} setNewTwitter={setNewTwitter} setNewWebsite={setNewWebsite} setNewIsName={setNewIsName} setNewServices={setNewServices} setNewWhy={setNewWhy} setNewStarted={setNewStarted} newFacebook={newFacebook} newInstagram={newInstagram} newTwitter={newTwitter} newWebsite={newWebsite} newIsName={newIsName} newAbout={newAbout} newStarted={newStarted} newCertification={newCertification} newServices={newServices} newWhy={newWhy}
+            preview={preview} setPreview={setPreview} addImage={addImage} updateImage={updateImage} removeImage={removeImage} newRange={newRange} setNewRange={setNewRange} newCity={newCity} setNewCity={setNewCity} newCityState={newCityState} setNewCityState={setNewCityState} isDisplay={isDisplay} setIsDisplay={setIsDisplay} setProfile={setProfile} />
     ))
 
     if (!contacts) {

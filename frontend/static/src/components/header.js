@@ -20,7 +20,7 @@ function Header(props) {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                console.log('hi')
+                // console.log('hi')
                 if (data.is_superuser == true) {
                     props.setIsDoula(true)
                     props.setIsSuperUser(true)
