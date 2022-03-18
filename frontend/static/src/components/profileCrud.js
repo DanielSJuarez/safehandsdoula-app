@@ -8,7 +8,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const {preview, setPreview, profileImg, handleError} = useOutletContext();
     const [isImage, setIsImage] = useState(false)
-    console.log(isDisplay)
+    // console.log(isDisplay)
 
     const displayStatus = async (id) => {
 

@@ -282,31 +282,37 @@ function ProfileDetail() {
         return <div>Fetching contact data....</div>
     }
 
-    const contactNewFilter = contacts.filter(contact => (
-        contact.contact_status === 'NEW'
-    ))
-
-    const contactNewList = contactNewFilter.map((contact) => (
+    const contactList = contacts.map((contact) => (
         <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
     ))
 
-    const contactContactedFilter = contacts.filter(contact => (
-        contact.contact_status === 'CON'
-    ))
+    // const contactNewFilter = contacts.filter(contact => (
+    //     contact.contact_status === 'NEW'
+    // ))
 
-    const contactContactedList = contactContactedFilter.map((contact) => (
-        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
-    ))
+    // const contactNewList = contactNewFilter.map((contact) => (
+    //     <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
+    // ))
+
+    // const contactContactedFilter = contacts.filter(contact => (
+    //     contact.contact_status === 'CON'
+    // ))
+
+    // const contactContactedList = contactContactedFilter.map((contact) => (
+    //     <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
+    // ))
 
     return (
         <>
             <div className='row mx-0'>
                 <div className="col-3 contactList">
                     <h2>Messages</h2>
-                    <p className='contactHead'>Unread</p>
+                    <p className='contactHead'>Messages</p>
+                    {contactList}
+                    {/* <p className='contactHead'>Unread</p>
                     {contactNewList}
                     <p className='contactHead'>Read</p>
-                    {contactContactedList}
+                    {contactContactedList} */}
                 </div>
                 <div className='col-9'>
                     <h2>Profile</h2>
