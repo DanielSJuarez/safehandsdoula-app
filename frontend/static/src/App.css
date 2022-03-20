@@ -128,11 +128,12 @@
 } */
 
 .header{
-  background-color: #dbb0a0;
+  background-color: #e0c2c0;
   list-style-type: none;
   height: 50px;
   padding: 0;
   border-bottom: solid 1px #57394a;
+  border-top: solid 1px #57394a;
 }
 
 /* .header{
@@ -200,7 +201,7 @@ a:hover{
 
 .homeArticleOne{
   /* background-color: #57394a; */
-  height: 1000px;
+  /* height: 1000px; */
   margin: 50px 0px;
   color: #57394a;
   text-align: center;
@@ -217,7 +218,7 @@ a:hover{
 
 .homeArticleTwo {
   /* background-color: #b2481b; */
-  height: 1000px;
+  /* height: 1000px; */
   margin: 50px 0px;
   color: #57394a;
   text-align: center;
@@ -304,3 +305,45 @@ a:hover{
 .articleTitle {
   font-style: italic;
 }
+
+.modalButton{
+  background-color: #b2481b;
+  color: white;
+  border: none;
+  margin: 0px 10px;
+  width: 100px;
+}
+
+.modalButton:hover{
+  background-color: #57394a;
+}
+
+.backButton{
+  background-color: #b2481b;
+  color: white;
+  border: none;
+  margin: 3px;
+  width: 30px;
+}
+
+.backButton:hover{
+  background-color: #57394a;
+}
+
+.banner{
+  text-align: center;
+  margin: 3px 0px;
+}
+
+.adminButton{
+  margin-bottom: 10px;
+}
+
+#stateForm{
+  width: 65px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 10px;
+  /* margin-right: 730px; */
+}
+

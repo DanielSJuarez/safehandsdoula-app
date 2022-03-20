@@ -1,16 +1,16 @@
 import { useOutletContext } from "react-router-dom";
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
-import {base_URL} from '../config/settings'
+import { base_URL } from '../config/settings'
 
 function Home() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
-    const { auth,  navigate, setIsDoula, searchParams, handleError, setProfileImg} = useOutletContext();
+    const { auth, navigate, setIsDoula, searchParams, handleError, setProfileImg } = useOutletContext();
     useEffect(() => {
         console.log(base_URL)
         let id = ''
         const isDoula = async () => {
-            
+
             const response = await fetch(`${base_URL}/api/v1/accounts/doula/`).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
@@ -111,11 +111,30 @@ function Home() {
     return (
         <>
             <div className="container">
-                <div className="homeArticleOne" onClick={() => navigate('/what')}>What options are there for you and your child?:What is a doula, and what can we do for you</div>
-                <div className="homeArticleTwo" onClick={() => navigate('/how')}>Article Two</div>
-                <div className="homeArticleOne" onClick={() => navigate('/why')}>Article Three</div>
-                <div className="homeArticleTwo" onClick={() => navigate('/how')}>Find a Doula</div>
-                <div className="homeArticleOne" onClick={() => navigate('/register')}>Register</div>
+                <div className="homeArticleOne" onClick={() => navigate('/what')}>
+                    <div>
+                        <img src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                    </div>
+                    What options are there for you and your child?:What is a doula, and what can we do for you</div>
+                <div className="homeArticleTwo" onClick={() => navigate('/how')}>
+                    <div>
+                        <img src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                    </div>
+                    Article Two</div>
+                <div className="homeArticleOne" onClick={() => navigate('/why')}>
+                    <div>
+                        <img src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                    </div>
+                    Article Three</div>
+                <div className="homeArticleTwo" onClick={() => navigate('/how')}>
+                    <div>
+                        <img src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                    </div>
+                    Find a Doula</div>
+                <div className="homeArticleOne" onClick={() => navigate('/register')}><div>
+                    <img src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                </div>
+                    Register</div>
                 <div className='pageSupport'>
                     <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
                 </div>

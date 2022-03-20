@@ -102,7 +102,7 @@ function CreateProfile() {
                         <input className='inputField' type='text' name='city' placeholder='city' onChange={(e) => setCity(e.target.value)} value={city} required />
                     </div>
                     <div className='col loginField'>
-                        <Form.Select aria-label="Default select example" onChange={(e) => setCityState(e.target.value)} size="sm">
+                        <Form.Select id='stateForm' aria-label="Default select example" onChange={(e) => setCityState(e.target.value)} size="sm" required>
                             <option value="--">--</option>
                             <option value="AK">AK</option>
                             <option value="AL">AL</option>
@@ -191,7 +191,7 @@ function CreateProfile() {
                 </form>
             </div>
             <div>
-                <p>Instasdfasflsadjf;lskajf;alskjf;lsdkjf;lsdakfj;alsdkfj;sladkfjasd;lkfjasdl;kf</p>
+                <p>“We have a secret in our culture, and it's not that birth is painful. It's that women are strong.” - Laura Stavoe Harm</p>
             </div>
         </>
     )

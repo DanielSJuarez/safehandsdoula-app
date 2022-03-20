@@ -46,7 +46,7 @@ function ArticleWhy() {
                     {articleList}
                 </div>
                 <div className='pageSupport'>
-                    <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+                    <p>“There is such a special sweetness in being able to participate in creation.” - Pamela S. Nadav</p>
                 </div>
             </div>
         </>

@@ -66,14 +66,14 @@ function AdminContactView({ name, email, phone_number, question, reported, id, s
 
 return (
     <>
-        <div>
+        <div className='profile'>
             <h3>{name}</h3>
             <p>{email}</p>
             <p>{phone_number}</p>
             <p>{question}</p>
-            <button type="button" onClick={() => approveContact(id)}>Approve</button>
+            <button className='modalButton' type="button" onClick={() => approveContact(id)}>Approve</button>
             {/* <button type="button" onClick={() => deleteContact(id)}>Delete</button> */}
-            <button type="button" onClick={handleShow}>Delete</button>
+            <button className='modalButton adminButton' type="button" onClick={handleShow}>Delete</button>
         </div>
         <hr />
 
@@ -90,10 +90,10 @@ return (
                     Deleting this item, will permanently remove it from safehandsdoula.com and will not be recoverable. Do you wish to cancel or confirm?
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className='loginRegisterButton' onClick={handleClose}>
+                    <button className='modalButton' onClick={handleClose}>
                         Cancel
                     </button>
-                    <button className='loginRegisterButton' onClick={() => deleteContact(id)}>Confirm Delete</button>
+                    <button className='modalButton' onClick={() => deleteContact(id)}>Confirm</button>
                 </Modal.Footer>
             </Modal>
     </>

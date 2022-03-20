@@ -142,7 +142,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                 <p>{service_range}</p>
             </div>
             <div className='socials row'>
-                <label htmlFor='socials' className="label">My Social's</label>
+                <label htmlFor='socials' className="label">My Socials</label>
                 <div className='col-3'>
                     <label htmlFor='facebook'>Facebook</label>
                     <a target='blank' href={facebook}>{facebook}</a>
@@ -204,7 +204,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                     </div>
                     <div className='col loginField'>
                         <label htmlFor='state'>State</label>
-                        <Form.Select aria-label="Default select example" onChange={(e) => setNewCityState(e.target.value)} size="sm">
+                        <Form.Select id='stateForm' aria-label="Default select example" onChange={(e) => setNewCityState(e.target.value)} size="sm">
                             <option value="--">--</option>
                             <option value="AK">AK</option>
                             <option value="AL">AL</option>

@@ -45,7 +45,7 @@ function ArticleHow() {
                     {articleList}
                 </div>
                 <div className='pageSupport'>
-                    <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+                    <p>“Birth isn't something we suffer, but something we actively do and exult in.” - Sheila Kitzinger</p>
                 </div>
             </div>
         </>

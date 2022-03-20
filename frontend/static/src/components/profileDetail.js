@@ -306,7 +306,7 @@ function ProfileDetail() {
         <>
             <div className='row mx-0'>
                 <div className="col-3 contactList">
-                    <h2>Messages</h2>
+                    <h2>Inbox</h2>
                     <p className='contactHead'>Messages</p>
                     {contactList}
                     {/* <p className='contactHead'>Unread</p>
@@ -338,10 +338,10 @@ function ProfileDetail() {
                     {shown}  
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className='loginRegisterButton' onClick={handleClose}>
+                    <button className='modalButton' onClick={handleClose}>
                         Close
                     </button>
-                    <button className='loginRegisterButton' onClick={() => accountStatus(pk)}>Confirm</button>
+                    <button className='modalButton' onClick={() => accountStatus(pk)}>Confirm</button>
                 </Modal.Footer>
             </Modal>
         </>

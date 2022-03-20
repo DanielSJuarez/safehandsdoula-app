@@ -73,7 +73,7 @@ function Login() {
             </form>
         </div>
         <div className='pageSupport'>
-            <p>Instasdfasflsadjf;lskajf;alskjf;lsdkjf;lsdakfj;alsdkfj;sladkfjasd;lkfjasdl;kf</p>
+            <p>“Birth is the pinnacle where women discover the courage to become mothers.” - Anita Diamant</p>
         </div>
         </>
     )

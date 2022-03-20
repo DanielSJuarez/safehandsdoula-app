@@ -88,7 +88,7 @@ function Header(props) {
                 <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Doula</NavLink>
+                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Find a Doula</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
@@ -111,7 +111,7 @@ function Header(props) {
                 <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Doula</NavLink>
+                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}> Find a Doula</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <NavLink to="/profile" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Profile</NavLink>
@@ -141,7 +141,7 @@ function Header(props) {
                 <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Doula</NavLink>
+                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Find a Doula</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <Link className='navLinks' to='/login'>Login</Link>
@@ -167,7 +167,7 @@ function Header(props) {
                 <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Why</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
-                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Doula</NavLink>
+                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Find a Doula</NavLink>
             </li>
             <li className='col navLinkButton mx-0'>
                 <NavLink to="/reported" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}>Reported Content</NavLink>
@@ -180,6 +180,9 @@ function Header(props) {
 
     return (
         <nav>
+            <div className='banner' onClick={() => props.navigate('/home')}>
+                <img src='/media/doula/safehandsdoulabanner.png' alt='siteLogo'/>
+            </div>
             {props.auth ? props.isDoula ? props.isSuperUser ? adminUser : doulaUser : user : visitor}
         </nav>
     )

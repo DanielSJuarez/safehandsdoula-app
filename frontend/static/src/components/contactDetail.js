@@ -4,13 +4,17 @@ import Cookies from 'js-cookie';
 import { base_URL } from '../config/settings'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Overlay from 'react-bootstrap/Overlay'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 
 function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts, isChecked, setIsChecked, read, setRead }) {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError } = useOutletContext();
     const [show, setShow] = useState(false);
+    const [display, setDisplay] = useState(false);
     const [contactDisplay, setContactDisplay] = useState(false)
     const target = useRef(null);
+    const newTarget = useRef(null);
   
 
     const changeStatus = (id) => {
@@ -63,7 +67,14 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
 
     const clickStatus = (
         <div className='col doulacheckPlacholder'>
-            <button type='button' onClick={() => contact(id)}>Mark as Unread</button>
+            <button className='modalButton' ref={newTarget} type='button' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)}  onClick={() => contact(id)}><FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon></button>
+            <Overlay target={newTarget.current} show={display} placement="right">
+                {(props) => (
+                    <Tooltip id="overlay-example" {...props}>
+                        Mark as Unread
+                    </Tooltip>
+                )}
+            </Overlay>
                 {/* <label htmlFor='checkbox'>{read}</label>
                 <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} /> */}
             </div>
@@ -155,12 +166,12 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
 
     const contactDetail = (
         <div className="contact" style={ isChecked ? { background: '#dbb0a0', } : { background: '#eab586' }}>
-            <button type="button" onClick={() => setContactDisplay(false)}>Back</button>
+            <button className='backButton' type="button" onClick={() => setContactDisplay(false)}>&#8617;</button>
             <h3>{name}</h3>
             <p>{email}</p>
             <p>{phone_number}</p>
             <p>{question}</p>
-            <button className='loginRegisterButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportContact(id)}>
+            <button className='modalButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportContact(id)}>
                 Report
             </button>
             <Overlay target={target.current} show={show} placement="right">
