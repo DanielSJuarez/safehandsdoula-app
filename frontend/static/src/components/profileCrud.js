@@ -4,9 +4,9 @@ import Form from 'react-bootstrap/Form'
 import { base_URL } from '../config/settings'
 import Cookies from 'js-cookie';
 
-function ProfileCrud({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification, id, calendly, linked, setLinked, addImage, updateImage, removeImage , service_range, city, state, newCity, setNewCity, newRange, setNewRange, setNewCityState, isDisplay, setIsDisplay, display_calendly , setProfile, profile}) {
+function ProfileCrud({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification, id, calendly, linked, setLinked, addImage, updateImage, removeImage, service_range, city, state, newCity, setNewCity, newRange, setNewRange, setNewCityState, isDisplay, setIsDisplay, display_calendly, setProfile, profile }) {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-    const {preview, setPreview, profileImg, handleError} = useOutletContext();
+    const { preview, setPreview, profileImg, handleError } = useOutletContext();
     const [isImage, setIsImage] = useState(false)
     // console.log(isDisplay)
 
@@ -111,20 +111,31 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
 
     const changeImageMode = (
         <>
-        <div className="changeImage">
-            <form onSubmit={update}>
-                <div className='col loginField'>
-                    <input className='inputField' type='file' name='profileImage' onChange={handleImage} />
-                    <div className=' imgHolder'>
-                        {preview && <img src={preview} alt='' className="image" />}
+            <div className="changeImage">
+                <form onSubmit={update}>
+                    <div className='col loginField'>
+                        <input className='inputField' type='file' name='profileImage' onChange={handleImage} />
+                        <div className=' imgHolder'>
+                            {preview && <img src={preview} alt='' className="image" />}
+                        </div>
+                        <button className='loginRegisterButton cancel' onClick={() => keep()}>Cancel</button>
+                        <button className='loginRegisterButton' type='submit'>Save Profile</button>
                     </div>
-                    <button className='loginRegisterButton' onClick={() => keep()}>Cancel</button>
-                    <button className='loginRegisterButton' type='submit'>Save Profile</button>
-                </div>
-            </form>
+                </form>
             </div>
             <button className='loginRegisterButton' type='button' onClick={remove}>Remove</button>
-           
+
+        </>
+    )
+
+    const noContactChoice = (
+        <div></div>
+    )
+
+    const contactChoice = (
+        <>
+            <label htmlFor='checkbox'>Display Calendly {isDisplay}</label>
+            <input className='doulaCheck' type='checkbox' onChange={() => displayStatus(id)} checked={isDisplay} />
         </>
     )
 
@@ -180,8 +191,9 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
             <p className='summary'>{why}</p>
             <p>{calendly}</p>
             <div className='col doulacheckPlacholder'>
-                <label htmlFor='checkbox'>Display Calendly {isDisplay}</label>
-                <input className='doulaCheck' type='checkbox' onChange={() => displayStatus(id)} checked={isDisplay}/>
+                {linked ? contactChoice : noContactChoice}
+                {/* <label htmlFor='checkbox'>Display Calendly {isDisplay}</label>
+                <input className='doulaCheck' type='checkbox' onChange={() => displayStatus(id)} checked={isDisplay} /> */}
             </div>
             {/* <CalendlyWidget calendly={calendly}/> */}
             {/* <InlineWidget url={calendly} /> */}
@@ -200,7 +212,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                     </div>
                     <div className='col loginField'>
                         <label htmlFor='city'>City</label>
-                        <input className='inputField' type='text' name='city' placeholder='city' onChange={(e) => setNewCity(e.target.value)} value={newCity}/>
+                        <input className='inputField' type='text' name='city' placeholder='city' onChange={(e) => setNewCity(e.target.value)} value={newCity} />
                     </div>
                     <div className='col loginField'>
                         <label htmlFor='state'>State</label>
@@ -261,7 +273,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                     </div>
                     <div className='col loginField'>
                         <label htmlFor='serviceRange'>Service Range(miles)</label>
-                        <input className='inputField' type='number' name='serviceRange' placeholder='service range' onChange={(e) => setNewRange(e.target.value)} value={newRange}/>
+                        <input className='inputField' type='number' name='serviceRange' placeholder='service range' onChange={(e) => setNewRange(e.target.value)} value={newRange} />
                     </div>
                     <div className='col loginField'>
                         <label htmlFor='about'>About Me</label>

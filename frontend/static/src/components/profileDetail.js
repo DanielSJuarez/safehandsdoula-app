@@ -9,7 +9,7 @@ import Modal from 'react-bootstrap/Modal'
 
 function ProfileDetail() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-    const {handleError, preview, setPreview, setProfileImg} = useOutletContext();
+    const { handleError, preview, setPreview, setProfileImg } = useOutletContext();
     const [isEditing, setIsEditing] = useState(false)
     const [profile, setProfile] = useState(null);
     const [addImage, setAddImage] = useState('');
@@ -305,7 +305,7 @@ function ProfileDetail() {
     return (
         <>
             <div className='row mx-0'>
-                <div className="col-3 contactList">
+                <div className="col-md-12 col-lg-3 contactList">
                     <h2>Inbox</h2>
                     <p className='contactHead'>Messages</p>
                     {contactList}
@@ -314,7 +314,7 @@ function ProfileDetail() {
                     <p className='contactHead'>Read</p>
                     {contactContactedList} */}
                 </div>
-                <div className='col-9'>
+                <div className='col-md-12 col-lg-9'>
                     <h2>Profile</h2>
                     {profileDetail}
                 </div>
@@ -324,7 +324,7 @@ function ProfileDetail() {
                 <p>Account Status: {status}</p>
                 <button className='loginRegisterButton' type='button' onClick={handleShow}>{activeButton}</button>
             </div>
-           
+
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -335,7 +335,7 @@ function ProfileDetail() {
                     <Modal.Title>Change Account Status</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {shown}  
+                    {shown}
                 </Modal.Body>
                 <Modal.Footer>
                     <button className='modalButton' onClick={handleClose}>

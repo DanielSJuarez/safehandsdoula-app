@@ -67,11 +67,11 @@ function AdminView() {
     return (
         <>
             <div className="row  mx-0" >
-                <div className="col-3 contactList">
+                <div className="col-md-12 col-lg-3 contactList">
                     <h2>Reported Contacts</h2>
                     {contactsList}
                 </div>
-                <div className='col-9'>
+                <div className='col-md-12 col-lg-9'>
                     <h2>Reported Profiles</h2>
                     {profileList}
                 </div>

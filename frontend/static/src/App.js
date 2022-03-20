@@ -11,7 +11,7 @@ function App() {
   const [createDoula, setCreateDoula] = useState(false)
   const [auth, setAuth] = useState(!!Cookies.get('Authorization'));
   const [isDoula, setIsDoula] = useState(false)
-  const [preview, setPreview] = useState('');
+  const [preview, setPreview] = useState('/media/doula/download.jpeg');
   const [profileImg, setProfileImg] = useState(null)
   const [isSummary, setIsSummary] = useState(false)
   const [isSuperUser, setIsSuperUser] = useState(false)

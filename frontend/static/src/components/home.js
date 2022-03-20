@@ -113,12 +113,12 @@ function Home() {
             <div className="container">
                 <div className="homeArticleOne" onClick={() => navigate('/what')}>
                     <div>
-                        <img src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
-                    </div>
-                    What options are there for you and your child?:What is a doula, and what can we do for you</div>
+                        <img className="articleImage" src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                    
+                    <p className="articleHeader">What is a doula, and what can we do for you</p></div></div>
                 <div className="homeArticleTwo" onClick={() => navigate('/how')}>
                     <div>
-                        <img src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                        <img  className="articleImage" src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
                     </div>
                     Article Two</div>
                 <div className="homeArticleOne" onClick={() => navigate('/why')}>

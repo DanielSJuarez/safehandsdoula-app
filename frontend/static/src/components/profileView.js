@@ -9,9 +9,9 @@ import Overlay from 'react-bootstrap/Overlay'
 
 
 
-function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, city, state, service_range, display_calendly}) {
+function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, city, state, service_range, display_calendly }) {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-    const { auth, handleError, setIsSummary} = useOutletContext();
+    const { auth, handleError, setIsSummary } = useOutletContext();
     // const [isAuthenicated, setIsAuthenicated] = useState(false)
     const [show, setShow] = useState(false);
     const target = useRef(null);
@@ -97,32 +97,47 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
 
     return (
         <section className='col profile'>
-            <div className='row'>
-                <div className='col-2'>
+            <div className='row justify-content-between'>
+                <div className='col-md-12 col-lg-3'>
                     <div className='imgHolder'>
                         <img src={image} alt={name} className='image' />
                     </div>
                 </div>
-                <div className='col profileTopInfo'>
+                <div className='col-lg-2 intro'> 
                     <label htmlFor='name'>Name</label>
                     <h2>{name}</h2>
                 </div>
-                <div className='col profileTopInfo'>
+                <div className="col-lg-5 intro">
+                    {/* <h2>{name}</h2> */}
+                    <label htmlFor='started' className="label">Started</label>
+                    <p>{started}</p>
+                    <label htmlFor='started' className="label">City</label>
+                    <p>{city}</p>
+                    <label htmlFor='started' className="label">State</label>
+                    <p>{state}</p>
+                    <label htmlFor='range' className="label">Service Range</label>
+                    <p>{service_range}</p>
+                </div>
+                {/* <div className='col-sm-2 col-lg profileTopInfo'>
+                    <label htmlFor='name'>Name</label>
+                    <h2>{name}</h2>
+                </div>
+                <div className='col-sm-2 col-lg profileTopInfo'>
                     <label htmlFor='city' className='label'>City</label>
                     <p>{city}</p>
                 </div>
-                <div className='col profileTopInfo'>
+                <div className='col-sm-2 col-lg profileTopInfo'>
                     <label htmlFor='state' className='label'>State</label>
                     <p>{state}</p>
                 </div>
-                <div className='col profileTopInfo'>
+                <div className='col-lg-2 profileTopInfo'>
                     <label htmlFor='serviceRange' className='label'>Service Range</label>
                     <p>{service_range}</p>
                 </div>
-                <div className='col profileTopInfo'>
+                <div className='col-sm-2 col-lg profileTopInfo'>
                     <label htmlFor='started' className='label'>Started</label>
                     <p>{started}</p>
-                </div>
+                </div> */}
             </div>
             <hr />
             <div className='socials row'>
@@ -170,8 +185,8 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                 {auth ? display_calendly ? displayAll : isLogin : notIsLogin}
             </div>
             {/* <div> */}
-                {/* {linked ? isCalendly : isNotCalendly} */}
-                {/* <button className='loginRegisterButton report' ref={target}  onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
+            {/* {linked ? isCalendly : isNotCalendly} */}
+            {/* <button className='loginRegisterButton report' ref={target}  onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
                 Report
             </button>
             <Overlay target={target.current} show={show} placement="right">

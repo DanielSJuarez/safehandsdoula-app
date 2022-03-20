@@ -37,7 +37,7 @@ class DoulaProfileEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
     def perform_update(self, serializer):
         if self.request.data.get('image'):
             if not self.request.data['image']:
-                serializer.save(image='doula/beef_taco.jpeg')
+                serializer.save(image='doula/download.jpeg')
             else:
                 super().perform_update(serializer)
         else:

@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form'
 function CreateProfile() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
     const { navigate, setCreateDoula, setIsDoula, preview, setPreview } = useOutletContext();
-    const [addImage, setAddImage] = useState(null);
+    const [addImage, setAddImage] = useState(new File([], ''));
     const [isName, setIsName] = useState('');
     const [about, setAbout] = useState('');
     const [started, setStarted] = useState('');
@@ -87,7 +87,7 @@ function CreateProfile() {
     return (
         <>
             <div className='loginPlacholder'>
-                <h2>Your Profile</h2>
+                <h2 className='createHead'>Your Profile</h2>
                 <form onSubmit={handleSubmit}>
                     <div className='col loginField'>
                         <input className='inputField' type='file' name='profileImage' onChange={handleImage} />
@@ -96,12 +96,15 @@ function CreateProfile() {
                         </div>
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='name' >Name</label>
                         <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} required />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='started' >City</label>
                         <input className='inputField' type='text' name='city' placeholder='city' onChange={(e) => setCity(e.target.value)} value={city} required />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='started' >State</label>
                         <Form.Select id='stateForm' aria-label="Default select example" onChange={(e) => setCityState(e.target.value)} size="sm" required>
                             <option value="--">--</option>
                             <option value="AK">AK</option>
@@ -158,39 +161,51 @@ function CreateProfile() {
                         </Form.Select>
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='serviceRange'>Service Range(miles)</label>
                         <input className='inputField' type='number' name='serviceRange' placeholder='service range' onChange={(e) => setRange(e.target.value)} value={range} required />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='about'>About Me</label>
                         <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setAbout(e.target.value)} value={about} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='started'>Started</label>
                         <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setStarted(e.target.value)} value={started} required />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='certification'>Certifications</label>
                         <input className='inputField' type='text' name='certification' placeholder='certifications' onChange={(e) => setCertification(e.target.value)} value={certification} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='facebook'>Facebook</label>
                         <input className='inputField' type='url' name='facebook' placeholder='facebook url' onChange={(e) => setFacebook(e.target.value)} value={facebook} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='twitter'>Twitter</label>
                         <input className='inputField' type='url' name='twitter' placeholder='twitter url' onChange={(e) => setTwitter(e.target.value)} value={twitter} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='instagram'>Instagram</label>
                         <input className='inputField' type='url' name='instagram' placeholder='instagram url' onChange={(e) => setInstagram(e.target.value)} value={instagram} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='website'>Personal Website</label>
                         <input className='inputField' type='url' name='website' placeholder='website url' onChange={(e) => setWebsite(e.target.value)} value={website} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='services'>My Services</label>
                         <input className='inputField' type='text' name='services' placeholder='services/pricing' onChange={(e) => setServices(e.target.value)} value={services} />
                     </div>
                     <div className='col loginField'>
+                        <label htmlFor='why'>Why Me</label>
                         <input className='inputField' type='text' name='why' placeholder='why you' onChange={(e) => setWhy(e.target.value)} value={why} />
                     </div>
-                    <button className='loginRegisterButton' type='submit'>Save Profile</button>
+                    <div className='col loginField'>
+                        <button className='loginRegisterButton' type='submit'>Save Profile</button>
+                    </div>
                 </form>
             </div>
-            <div>
+            <div className='pageSupport'>
                 <p>“We have a secret in our culture, and it's not that birth is painful. It's that women are strong.” - Laura Stavoe Harm</p>
             </div>
         </>

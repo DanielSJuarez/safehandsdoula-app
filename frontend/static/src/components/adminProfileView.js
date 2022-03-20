@@ -67,7 +67,28 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
     return(
         <>
         <section className='col profile'>
-            <div className='row'>
+        <div className='row justify-content-between'>
+                <div className='col-md-12 col-lg-3'>
+                    <div className='imgHolder'>
+                        <img src={image} alt={name} className='image' />
+                    </div>
+                </div>
+                <div className='col-lg-2 intro'> 
+                    <label htmlFor='name'>Name</label>
+                    <h2>{name}</h2>
+                </div>
+                <div className="col-lg-5 intro">
+                    <label htmlFor='started' className="label">Started</label>
+                    <p>{started}</p>
+                    <label htmlFor='started' className="label">City</label>
+                    <p>{city}</p>
+                    <label htmlFor='started' className="label">State</label>
+                    <p>{state}</p>
+                    <label htmlFor='range' className="label">Service Range</label>
+                    <p>{service_range}</p>
+                </div>
+            </div>
+            {/* <div className='row'>
                 <div className='col-2'>
                     <div className='imgHolder'>
                         <img src={image} alt={name} className='image' />
@@ -93,7 +114,7 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
                     <label htmlFor='started' className='label'>Started</label>
                     <p>{started}</p>
                 </div>
-            </div>
+            </div> */}
             <hr />
             <div className='socials row'>
                 <h3>Socials</h3>

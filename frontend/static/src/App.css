@@ -190,7 +190,7 @@ a:hover{
 .headImgHolder{
   width: 46px;
   height: 40px;
-  margin: 2px; 
+  margin: 4px; 
   padding: 0px
 }
 
@@ -209,6 +209,7 @@ a:hover{
   background-image: linear-gradient(to right bottom,#e0c2c0, #57394a);
   padding: 100px;
   line-height: 250px;
+  /* background-image: url("/media/doula/doulaArticleTwo.jpeg"); */
 }
 
 .homeArticleOne:hover{
@@ -345,5 +346,60 @@ a:hover{
   display: inline-block;
   margin-left: 10px;
   /* margin-right: 730px; */
+}
+
+.articleImage{
+  width: 100%;
+  opacity: 50%;
+  position: relative;
+}
+
+.articleHeader{
+  position: absolute;
+  bottom: 0px;
+  max-width: 1000px;
+}
+
+.createHead{
+  margin: 10px;
+}
+
+@media (max-width: 1250px){
+  .banner{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navLinksBottom{
+    margin-bottom: 50px;
+  }
+
+  .articleHeader{
+    position: relative;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .cancel{
+    margin-bottom: 5px;
+  }
+
+  .headImgHolder{
+    display: none;
+  }
+
+  .header{
+    margin-bottom: 200px;
+  }
+
+  .logout{
+    padding-top: 5px;
+  }
+
+  .navLinks{
+    padding: 3px;
+    border-bottom: solid 1px #e0c2c0;
+  }
 }
 

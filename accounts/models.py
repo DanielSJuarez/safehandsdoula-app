@@ -73,7 +73,7 @@ class DoulaProfile(models.Model):
 
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
-    image = models.ImageField(upload_to='doula/', null=True, default='doula/beef_taco.jpeg')
+    image = models.ImageField(upload_to='doula/',  default='doula/download.jpeg')
     name = models.CharField(max_length=255)
     about = models.TextField(null=True, blank=True)
     services = models.TextField(null=True, blank=True)
