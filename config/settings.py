@@ -195,4 +195,5 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
     'https://safehandsdoula-app-dsj.herokuapp.com',
     'https://www.safehandsdoula.com',
+    'https://api.safehandsdoula.com',
 ]
