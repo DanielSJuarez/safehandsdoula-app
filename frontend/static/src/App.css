@@ -394,6 +394,14 @@ a:hover{
   display: none;
 }
 
+.mobile{
+  display: none;
+}
+
+.close{
+  display: none;
+}
+
 @media (max-width: 1250px){
   .banner{
     display: none;
@@ -446,6 +454,26 @@ a:hover{
   .homeArticleTwoTitle{
     font-size:40px
   }
+
+  .header{
+    margin-bottom: 175px;
+  }
+
+  .headImgHolder{
+    display: none;
+  }
+
+  .mobile{
+    display: unset;
+  }
+  
+  .close{
+    display: unset;
+  }
+
+  .desktop{
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -463,10 +491,6 @@ a:hover{
     margin-bottom: 5px;
   }
 
-  .headImgHolder{
-    display: none;
-  }
-
   .header{
     margin-bottom: 200px;
   }
@@ -479,8 +503,6 @@ a:hover{
     padding: 3px;
     border-bottom: solid 1px #e0c2c0;
   }
-
-  
 
 }
 
