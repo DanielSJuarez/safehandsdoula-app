@@ -1,14 +1,42 @@
 import { useOutletContext } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form'
 import { base_URL } from '../config/settings'
 import Cookies from 'js-cookie';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookSquare , faTwitterSquare, faInstagramSquare, } from '@fortawesome/free-brands-svg-icons'
+import { faComputer } from '@fortawesome/free-solid-svg-icons'
 
 function ProfileCrud({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification, id, calendly, linked, setLinked, addImage, updateImage, removeImage, service_range, city, state, newCity, setNewCity, newRange, setNewRange, setNewCityState, isDisplay, setIsDisplay, display_calendly, setProfile, profile }) {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { preview, setPreview, profileImg, handleError } = useOutletContext();
     const [isImage, setIsImage] = useState(false)
+    const [iconFaceBook, setIconFacebook] = useState(false)
+    const [iconInstagram, setIconInstagram] = useState(false)
+    const [iconTwitter, setIconTwitter] = useState(false)
+    const [iconWeb, setIconWeb] = useState(false)
     // console.log(isDisplay)
+
+    useEffect(() => {
+        const checkSocialStatus = async () => {
+            if (facebook === '') {
+                setIconFacebook(true)
+            } 
+
+            if (instagram === ''){
+                setIconInstagram(true)
+            }
+
+            if (twitter === '') {
+                setIconTwitter(true)
+            }
+
+            if (website === '') {
+                setIconWeb(true)
+            }
+        }
+        checkSocialStatus();
+    }, []);
 
     const displayStatus = async (id) => {
 
@@ -152,7 +180,7 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                 <label htmlFor='range' className="label">Service Range</label>
                 <p>{service_range}</p>
             </div>
-            <div className='socials row'>
+            {/* <div className='socials row'>
                 <label htmlFor='socials' className="label">My Socials</label>
                 <div className='col-3'>
                     <label htmlFor='facebook'>Facebook</label>
@@ -169,6 +197,26 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                 <div className='col-3'>
                     <label htmlFor='website'>Personal Website</label>
                     <a target='blank' href={website}>{website}</a>
+                </div>
+            </div> */}
+            <div className='socials row'>
+                <h3>My Socials</h3>
+                {/* <label htmlFor='socials'>My Social's</label> */}
+                <div className='col-1'>
+                    {/* <label htmlFor='facebook'>Facebook</label> */}
+                    <a style={iconFaceBook ? {display : 'none' } : {display: 'unset' }} target='blank' href={facebook}><FontAwesomeIcon icon={faFacebookSquare} className='icon'></FontAwesomeIcon></a>
+                </div>
+                <div className='col-1'>
+                    {/* <label htmlFor='twitter'>Twitter</label> */}
+                    <a style={iconTwitter ? {display : 'none' } : {display: 'unset' }} target='blank' href={twitter}><FontAwesomeIcon icon={faTwitterSquare} className='icon'></FontAwesomeIcon></a>
+                </div>
+                <div className='col-1'>
+                    {/* <label htmlFor='instagran'>Instagram</label> */}
+                    <a style={iconInstagram ? {display : 'none' } : {display: 'unset' }} target='blank' href={instagram}><FontAwesomeIcon icon={faInstagramSquare} className='icon'></FontAwesomeIcon></a>
+                </div>
+                <div className='col-1'>
+                    {/* <label htmlFor='website'>Personal Website</label> */}
+                    <a style={iconWeb ? {display : 'none' } : {display: 'unset' }} target='blank' href={website}><FontAwesomeIcon icon={faComputer} className='icon'></FontAwesomeIcon></a>
                 </div>
             </div>
             <hr />

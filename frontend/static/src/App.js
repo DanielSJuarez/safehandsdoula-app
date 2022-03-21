@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-      <Header setCreateDoula={setCreateDoula} isDoula={isDoula} setIsDoula={setIsDoula} auth={auth} setAuth={setAuth} navigate={navigate} profileImg={profileImg} setProfileImg={setProfileImg} handleError={handleError} isSummary={isSummary} setIsSummary={setIsSummary} isSuperUser={isSuperUser} setIsSuperUser={setIsSuperUser}/>
+      <Header setCreateDoula={setCreateDoula} isDoula={isDoula} setIsDoula={setIsDoula} auth={auth} setAuth={setAuth} navigate={navigate} profileImg={profileImg} setProfileImg={setProfileImg} handleError={handleError} isSummary={isSummary} setIsSummary={setIsSummary} isSuperUser={isSuperUser} setIsSuperUser={setIsSuperUser} setPreview={setPreview}/>
       <div className="App"></div>
       <Outlet context={{auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser}} />
     </>

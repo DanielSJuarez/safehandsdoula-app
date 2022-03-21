@@ -8,7 +8,7 @@ function ProfilesList() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const {handleError, isSummary, setIsSummary} = useOutletContext();
     const [profiles, setProfiles] = useState(null)
-    // const [isSummary, setIsSummary] = useState(false)
+    const [icon, setIcon] = useState(false)
     const [getId, setGetId] = useState('')
 
     useEffect(() => {
@@ -44,7 +44,7 @@ function ProfilesList() {
     ))
 
     const profileDetailHTML = profileFilter.map((profiles) => (
-        <ProfileView key={profiles.id} {...profiles} setIsSummary={setIsSummary} />
+        <ProfileView key={profiles.id} {...profiles} setIsSummary={setIsSummary}/>
     ))
 
     return (

@@ -2,17 +2,45 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 import {base_URL} from '../config/settings'
 import Modal from 'react-bootstrap/Modal'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookSquare , faTwitterSquare, faInstagramSquare, } from '@fortawesome/free-brands-svg-icons'
+import { faComputer } from '@fortawesome/free-solid-svg-icons'
 
 
 function AdminProfileView ({name, started, facebook, twitter, instagram, website, about, services, why, calendly, image, certification, reported ,  id, setReportedProfiles, reportedProfiles, city, state, service_range}){
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError } = useOutletContext();
     const [show, setShow] = useState(false);
+    const [iconFaceBook, setIconFacebook] = useState(false)
+    const [iconInstagram, setIconInstagram] = useState(false)
+    const [iconTwitter, setIconTwitter] = useState(false)
+    const [iconWeb, setIconWeb] = useState(false)
     
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    useEffect(() => {
+        const checkSocialStatus = async () => {
+            if (facebook === '') {
+                setIconFacebook(true)
+            } 
+
+            if (instagram === ''){
+                setIconInstagram(true)
+            }
+
+            if (twitter === '') {
+                setIconTwitter(true)
+            }
+
+            if (website === '') {
+                setIconWeb(true)
+            }
+        }
+        checkSocialStatus();
+    }, []);
 
     const deleteProfile = async (id) => {
 
@@ -116,9 +144,9 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
                 </div>
             </div> */}
             <hr />
-            <div className='socials row'>
+            {/* <div className='socials row'>
                 <h3>Socials</h3>
-                {/* <label htmlFor='socials'>My Social's</label> */}
+                <label htmlFor='socials'>My Social's</label>
                 <div className='col-3'>
                     <label htmlFor='facebook'>Facebook</label>
                     <a target='blank' href={facebook}>{facebook}</a>
@@ -134,6 +162,26 @@ function AdminProfileView ({name, started, facebook, twitter, instagram, website
                 <div className='col-3'>
                     <label htmlFor='website'>Personal Website</label>
                     <a target='blank' href={website}>{website}</a>
+                </div>
+            </div> */}
+            <div className='socials row'>
+                <h3>Socials</h3>
+                {/* <label htmlFor='socials'>My Social's</label> */}
+                <div className='col-1'>
+                    {/* <label htmlFor='facebook'>Facebook</label> */}
+                    <a style={iconFaceBook ? {display : 'none' } : {display: 'unset' }} target='blank' href={facebook}><FontAwesomeIcon icon={faFacebookSquare} className='icon'></FontAwesomeIcon></a>
+                </div>
+                <div className='col-1'>
+                    {/* <label htmlFor='twitter'>Twitter</label> */}
+                    <a style={iconTwitter ? {display : 'none' } : {display: 'unset' }} target='blank' href={twitter}><FontAwesomeIcon icon={faTwitterSquare} className='icon'></FontAwesomeIcon></a>
+                </div>
+                <div className='col-1'>
+                    {/* <label htmlFor='instagran'>Instagram</label> */}
+                    <a style={iconInstagram ? {display : 'none' } : {display: 'unset' }} target='blank' href={instagram}><FontAwesomeIcon icon={faInstagramSquare} className='icon'></FontAwesomeIcon></a>
+                </div>
+                <div className='col-1'>
+                    {/* <label htmlFor='website'>Personal Website</label> */}
+                    <a style={iconWeb ? {display : 'none' } : {display: 'unset' }} target='blank' href={website}><FontAwesomeIcon icon={faComputer} className='icon'></FontAwesomeIcon></a>
                 </div>
             </div>
             <hr />

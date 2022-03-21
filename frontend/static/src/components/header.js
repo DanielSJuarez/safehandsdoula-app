@@ -70,7 +70,9 @@ function Header(props) {
         props.setIsSuperUser(false)
         props.setIsDoula(false);
         props.setAuth(false);
+        props.setPreview('/media/doula/download.jpeg')
         props.navigate('/home');
+
     }
 
     const user = (
@@ -180,8 +182,11 @@ function Header(props) {
 
     return (
         <nav>
+             <div className='logo' onClick={() => props.navigate('/home')}>
+                <img src='/media/doula/newsafehandsdoulalogo.png' alt='siteLogo'/>
+            </div>
             <div className='banner' onClick={() => props.navigate('/home')}>
-                <img src='/media/doula/safehandsdoulabanner.png' alt='siteLogo'/>
+                <img src='/media/doula/safehandsdoulabanner.png' alt='siteBanner'/>
             </div>
             {props.auth ? props.isDoula ? props.isSuperUser ? adminUser : doulaUser : user : visitor}
         </nav>

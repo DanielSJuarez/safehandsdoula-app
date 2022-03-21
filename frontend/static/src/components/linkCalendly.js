@@ -13,6 +13,7 @@ function Calendly() {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
+                console.log(data)
                 if (data.length > 0 && data[0].is_doula === true) {
                     setProfileImg(data[0].image)
                 }

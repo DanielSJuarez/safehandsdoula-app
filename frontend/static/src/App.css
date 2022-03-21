@@ -87,8 +87,6 @@
   background-color: #dbb0a0;
   text-align: center;
   border: solid 5px #e0c2c0;
-  /* height: 350px; */
-  /* margin: 5px; */
 }
 
 .summaryView:hover {
@@ -120,12 +118,8 @@
 
 .profile{
   background-color: #dbb0a0;
+  padding: 10px;
 }
-
-/* .info{
-  background-color: #eab586;
-  border: solid 1px #57394a
-} */
 
 .header{
   background-color: #e0c2c0;
@@ -136,20 +130,6 @@
   border-top: solid 1px #57394a;
 }
 
-/* .header{
-  list-style-type: none;
-  height: 50px;
-  padding: 0;
-} */
-
-/* .navLinkButton{
-  background-color: #4b6700;
-  list-style-type: none;
-  margin: 0px 5px;
-  border-radius: 5px;
-  border: 1px solid #212638;
-} */
-
 .navLinks{
   text-align: center;
   display: inline-block;
@@ -159,14 +139,8 @@
   width: 100%;
   height: 100%;
   padding-top: 10px;
-  /* border-left: solid 1px #e0c2c0;
-  border-right: solid 1px #e0c2c0; */
-  /* margin-top: 10px; */
 } 
 
-/* .navLinks:active{
-  background-color: black;
-} */
 a:hover{
   text-decoration: none;
   color: white;
@@ -199,17 +173,35 @@ a:hover{
   padding-top: 75px;
 }
 
+@keyframes slide-right {
+  from{
+      opacity: 25%;
+      transform:translateX(-100px);
+  }
+  to{
+      opacity: 100%;
+      transform:translateX(0px);
+  }
+}
+
+@keyframes slide-down {
+  from{
+      opacity: 25%;
+      transform:translatey(-100px);
+  }
+  to{
+      opacity: 100%;
+      transform:translatey(0px);
+  }
+}
+
 .homeArticleOne{
-  /* background-color: #57394a; */
-  /* height: 1000px; */
   margin: 50px 0px;
   color: #57394a;
   text-align: center;
   font-size: 80px;
   background-image: linear-gradient(to right bottom,#e0c2c0, #57394a);
   padding: 100px;
-  line-height: 250px;
-  /* background-image: url("/media/doula/doulaArticleTwo.jpeg"); */
 }
 
 .homeArticleOne:hover{
@@ -218,21 +210,44 @@ a:hover{
 }
 
 .homeArticleTwo {
-  /* background-color: #b2481b; */
-  /* height: 1000px; */
   margin: 50px 0px;
   color: #57394a;
   text-align: center;
   font-size: 80px;
   background-image: linear-gradient(to left bottom,#57394a, #e0c2c0);
   padding: 100px;
-  line-height: 100px;
+}
+
+.homeArticleTwo:hover .homeArticleTwoImage{
+  opacity: 50%;
+}
+
+.homeArticleOne:hover .homeArticleTwoImage{
+  opacity: 50%;
+}
+
+.homeArticleTwo:hover .homeArticleTwoTitle{
+  animation: slide-right 2s
+}
+
+.homeArticleTwo:hover .homeArticleTwoSub{
+  animation: slide-down 2s
+}
+
+.homeArticleOne:hover .homeArticleTwoTitle{
+  animation: slide-right 2s
+}
+
+.homeArticleOne:hover .homeArticleTwoSub{
+  animation: slide-down 2s
 }
 
 .homeArticleTwo:hover{
   cursor: pointer;
   border: solid 1px #57394a;
 }
+
+
 
 .profileHead{
   background-color: #57394a ;
@@ -336,6 +351,15 @@ a:hover{
   margin: 3px 0px;
 }
 
+.icon{
+  font-size: 40px;
+  color: #57394a;
+}
+
+.icon:hover{
+  color: #b2481b;
+}
+
 .adminButton{
   margin-bottom: 10px;
 }
@@ -345,28 +369,82 @@ a:hover{
   text-align: center;
   display: inline-block;
   margin-left: 10px;
-  /* margin-right: 730px; */
 }
 
 .articleImage{
   width: 100%;
-  opacity: 50%;
-  position: relative;
-}
-
-.articleHeader{
-  position: absolute;
-  bottom: 0px;
-  max-width: 1000px;
+  height: 100%;
 }
 
 .createHead{
   margin: 10px;
 }
 
+.homeArticleTwoImage{
+  width: 600px;
+  margin: 0px 30px 30px 0px;
+}
+
+.homeArticleTwoSub {
+  font-size: 40px;
+  margin: 100px 0px 0px 20px;
+}
+
+.logo{
+  display: none;
+}
+
 @media (max-width: 1250px){
   .banner{
     display: none;
+  }
+
+  .logo{
+    display: unset;
+  }
+
+  .navLinks{
+    padding: 3px;
+    border-bottom: solid 1px #e0c2c0;
+  }
+
+  .articleHolder{
+    margin-top: 200px;
+  }
+
+  .form{
+    margin-top: 200px;
+  }
+
+  .profileList{
+    margin-top: 200px;
+  }
+
+  .homeButton{
+    margin-bottom: 3px;
+  }
+
+  .homeArticleOne{
+    font-size: 20px;
+    padding: 20px
+  }
+
+  .homeArticleTwo{
+    font-size: 20px;
+    padding: 20px
+  }
+
+  .articleImage{
+    margin-top: 10px;
+  }
+
+  .homeArticleTwoSub {
+    font-size: 20px;
+    margin: 10px 0px 0px 20px;
+  }
+
+  .homeArticleTwoTitle{
+    font-size:40px
   }
 }
 
@@ -401,5 +479,8 @@ a:hover{
     padding: 3px;
     border-bottom: solid 1px #e0c2c0;
   }
+
+  
+
 }
 
