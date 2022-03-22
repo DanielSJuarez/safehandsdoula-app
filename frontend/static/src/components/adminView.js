@@ -17,7 +17,7 @@ function AdminView() {
 
             const response = await fetch(`${base_URL}/api/v1/accounts/admin/`, {
                 headers: {
-                    Authorization: `Token ${Cookies.get('Authorization')}`
+                    Authorization: `${Cookies.get('Authorization')}`
                 }
             }).catch(handleError);
             if (!response.ok) {
