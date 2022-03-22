@@ -197,3 +197,5 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.safehandsdoula.com',
     'https://api.safehandsdoula.com',
 ]
+
+CORS_ALLOW_CREDENTIALS = True
