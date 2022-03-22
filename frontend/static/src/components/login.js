@@ -37,7 +37,7 @@ function Login() {
             throw new Error('Network response not ok!');     
         } else {
             const data = await response.json();
-            Cookies.set('Authorization', `Token ${data.key}`);
+            Cookies.set('Authorization', `Token ${data.key}`, {domain: 'https://safehandsdoula-app-dsj.herokuapp.com'});
             setAuth(true);
             setState({
                 username: '',
