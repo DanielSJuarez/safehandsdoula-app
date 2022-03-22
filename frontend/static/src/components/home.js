@@ -112,7 +112,6 @@ function Home() {
         <>
             <div className="container">
                 <div className="homeArticleTwo row mx-0" onClick={() => navigate('/doula')}>
-                
                     <div className="homeArticleTwoImage col-8">
                         <img className="articleImage" src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
                     </div>
@@ -121,36 +120,37 @@ function Home() {
                 </div>
                 <div className="homeArticleOne row mx-0" onClick={() => navigate('/what')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                        <img className="articleImage" src='/media/doula/pexels-vidal-balielo-jr-4005601.jpg' alt='homeImage' />
+
                     </div>
                     <p className="homeArticleTwoSub col-4">Let me show you</p>
                     <p className="homeArticleTwoTitle col-12">What is a doula, and what can we do for you?</p>
                 </div>
                 <div className="homeArticleTwo row mx-0" onClick={() => navigate('/how')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                        <img className="articleImage" src='/media/doula/pexels-rodnae-productions-6149306.jpg' alt='homeImage' />
                     </div>
                     <p className="homeArticleTwoSub col-4">What to expect from the experience</p>
                     <p className="homeArticleTwoTitle col-12">How can a Doula serve you?</p>
                 </div>
                 <div className="homeArticleOne row mx-0" onClick={() => navigate('/why')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                        <img className="articleImage" src='/media/doula/pexels-rene-asmussen-325690.jpg' alt='homeImage' />
                     </div>
                     <p className="homeArticleTwoSub col-4">What even is the point?</p>
                     <p className="homeArticleTwoTitle col-12">Why would you use a doula? What are the benefits?</p>
                 </div>
                 <div className="homeArticleOne row mx-0" onClick={() => navigate('/register')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                        <img className="articleImage" src='/media/doula/pexels-freestocksorg-57529.jpg' alt='homeImage' />
                     </div>
                     <p className="homeArticleTwoSub col-4">Join our community</p>
                     <p className="homeArticleTwoTitle col-12">Are you a doula, and want to join the Safehandsdoula community?</p>
                 </div>
-            <div className='pageSupport'>
-                <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+                <div className='pageSupport'>
+                    <p>“The so called miracle of birth is nature getting her own way.” - Camille Paglia</p>
+                </div>
             </div>
-        </div>
         </>
     )
 }

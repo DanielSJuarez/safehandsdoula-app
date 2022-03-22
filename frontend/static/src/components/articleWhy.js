@@ -48,7 +48,7 @@ function ArticleWhy() {
                 <div className="articleHolder">
                     {/* {articleList} */}
                     <article>
-                        <div>
+                        <div className="articleImageHolder">
                             <img className="articleImage" src={getImage} alt='why'/>
                         </div>
                         <h1 className='articleTitle'>Why</h1>

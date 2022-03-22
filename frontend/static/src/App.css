@@ -420,6 +420,9 @@ a:hover{
   margin-bottom: 10px;
 }
 
+.articleImageHolder{
+  margin-bottom: 20px;
+}
 #stateForm{
   width: 65px;
   text-align: center;
