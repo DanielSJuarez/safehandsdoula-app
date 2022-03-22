@@ -196,6 +196,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://safehandsdoula-app-dsj.herokuapp.com',
     'https://www.safehandsdoula.com',
     'https://api.safehandsdoula.com',
+    'http://api.safehandsdoula.com',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
