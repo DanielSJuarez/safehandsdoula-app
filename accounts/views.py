@@ -65,6 +65,6 @@ class AdminProfileEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AdminProfileListAPIView(generics.ListAPIView):
-     permission_classes = (IsAdminUser,)
+    #  permission_classes = (IsAdminUser,)
      serializer_class = AdminSerializer
      queryset = DoulaProfile.objects.all()
