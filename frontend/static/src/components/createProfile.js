@@ -95,16 +95,16 @@ function CreateProfile() {
                             {preview && <img src={preview} alt='' className="image" />}
                         </div>
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='name' >Name</label>
-                        <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} required />
+                    <div className='col formField'>
+                        <label htmlFor='name' className='inputLabel'>Name</label>
+                        <input className='inputLabel' type='text' name='name' placeholder='name' onChange={(e) => setIsName(e.target.value)} value={isName} required />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='started' >City</label>
-                        <input className='inputField' type='text' name='city' placeholder='city' onChange={(e) => setCity(e.target.value)} value={city} required />
+                    <div className='col formField'>
+                        <label htmlFor='started' className='inputLabel'>City</label>
+                        <input className='inputLabel' type='text' name='city' placeholder='city' onChange={(e) => setCity(e.target.value)} value={city} required />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='started' >State</label>
+                    <div className='col formField'>
+                        <label htmlFor='started' className='inputLabel'>State</label>
                         <Form.Select id='stateForm' aria-label="Default select example" onChange={(e) => setCityState(e.target.value)} size="sm" required>
                             <option value="--">--</option>
                             <option value="AK">AK</option>
@@ -160,45 +160,45 @@ function CreateProfile() {
                             <option value="WY">WY</option>
                         </Form.Select>
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='serviceRange'>Service Range(miles)</label>
-                        <input className='inputField' type='number' name='serviceRange' placeholder='service range' onChange={(e) => setRange(e.target.value)} value={range} required />
+                    <div className='col formField'>
+                        <label htmlFor='serviceRange' className='inputLabel'>Service Range(miles)</label>
+                        <input className='inputLabel' type='number' name='serviceRange' placeholder='service range' onChange={(e) => setRange(e.target.value)} value={range} required />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='about'>About Me</label>
-                        <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setAbout(e.target.value)} value={about} />
+                    <div className='col formField'>
+                        <label htmlFor='about' className='inputLabel'>About Me</label>
+                        <textarea className='inputLabel' type='text' name='about' placeholder='about' onChange={(e) => setAbout(e.target.value)} value={about} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='started'>Started</label>
-                        <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setStarted(e.target.value)} value={started} required />
+                    <div className='col formField'>
+                        <label htmlFor='started' className='inputLabel'>Started</label>
+                        <input className='inputLabel' type="date" name='date' placeholder='start date' onChange={(e) => setStarted(e.target.value)} value={started} required />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='certification'>Certifications</label>
-                        <input className='inputField' type='text' name='certification' placeholder='certifications' onChange={(e) => setCertification(e.target.value)} value={certification} />
+                    <div className='col formField'>
+                        <label htmlFor='certification' className='inputLabel'>Certifications</label>
+                        <input className='inputLabel' type='text' name='certification' placeholder='certifications' onChange={(e) => setCertification(e.target.value)} value={certification} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='facebook'>Facebook</label>
-                        <input className='inputField' type='url' name='facebook' placeholder='facebook url' onChange={(e) => setFacebook(e.target.value)} value={facebook} />
+                    <div className='col formField'>
+                        <label htmlFor='facebook' className='inputLabel'>Facebook</label>
+                        <input className='inputLabel' type='url' name='facebook' placeholder='facebook url' onChange={(e) => setFacebook(e.target.value)} value={facebook} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='twitter'>Twitter</label>
-                        <input className='inputField' type='url' name='twitter' placeholder='twitter url' onChange={(e) => setTwitter(e.target.value)} value={twitter} />
+                    <div className='col formField'>
+                        <label htmlFor='twitter' className='inputLabel'>Twitter</label>
+                        <input className='inputLabel' type='url' name='twitter' placeholder='twitter url' onChange={(e) => setTwitter(e.target.value)} value={twitter} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='instagram'>Instagram</label>
-                        <input className='inputField' type='url' name='instagram' placeholder='instagram url' onChange={(e) => setInstagram(e.target.value)} value={instagram} />
+                    <div className='col formField'>
+                        <label htmlFor='instagram'className='inputLabel'>Instagram</label>
+                        <input className='inputLabel' type='url' name='instagram' placeholder='instagram url' onChange={(e) => setInstagram(e.target.value)} value={instagram} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='website'>Personal Website</label>
-                        <input className='inputField' type='url' name='website' placeholder='website url' onChange={(e) => setWebsite(e.target.value)} value={website} />
+                    <div className='col formField'>
+                        <label htmlFor='website' className='inputLabel'>Personal Website</label>
+                        <input className='inputLabel' type='url' name='website' placeholder='website url' onChange={(e) => setWebsite(e.target.value)} value={website} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='services'>My Services</label>
-                        <input className='inputField' type='text' name='services' placeholder='services/pricing' onChange={(e) => setServices(e.target.value)} value={services} />
+                    <div className='col formField'>
+                        <label htmlFor='services' className='inputLabel'>My Services</label>
+                        <textarea className='inputLabel' type='text' name='services' placeholder='services/pricing' onChange={(e) => setServices(e.target.value)} value={services} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='why'>Why Me</label>
-                        <input className='inputField' type='text' name='why' placeholder='why you' onChange={(e) => setWhy(e.target.value)} value={why} />
+                    <div className='col formField'>
+                        <label htmlFor='why' className='inputLabel'>Why Me</label>
+                        <textarea className='inputLabel' type='text' name='why' placeholder='why you' onChange={(e) => setWhy(e.target.value)} value={why} />
                     </div>
                     <div className='col loginField'>
                         <button className='loginRegisterButton' type='submit'>Save Profile</button>

@@ -3,6 +3,7 @@ import ProfilesDiplayView from './profileDisplayView';
 import ProfileView from './profileView';
 import { useOutletContext } from "react-router-dom";
 import { base_URL } from '../config/settings'
+import Spinner from 'react-bootstrap/Spinner'
 
 function ProfilesList() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -28,7 +29,9 @@ function ProfilesList() {
     }, []);
 
     if (!profiles) {
-        return <div>Fetching profile data....</div>
+        return <div>Fetching profile data....
+             <Spinner animation="border" size="sm"/>
+        </div>
     }
 
     const profileFilter = profiles.filter(profiles => (
@@ -48,7 +51,7 @@ function ProfilesList() {
     ))
 
     return (
-        <div className='container profileList'>
+        <div className='container'>
             <div className='row'>
                 {isSummary ? profileDetailHTML : profileSummaryHTML}
             </div>

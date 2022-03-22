@@ -87,48 +87,48 @@ function Header(props) {
 
     const user = (
         <ul className='row header mx-0'>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/home" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Home</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/home" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/what" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>What</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/how" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>How</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/how" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Why</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Find a Doula</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}>Find a Doula</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
             </li>
         </ul>
     )
 
     const doulaUser = (
-        <ul className='row header mx-0'>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/home" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Home</NavLink>
+        <ul className='row urr header mx-0'>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/home" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/what" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>What</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/how" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>How</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/how" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Why</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}> Find a Doula</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}> Find a Doula</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/profile" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Profile</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/profile" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Profile</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
             </li>
             <div className='headImgHolder' onClick={() => props.navigate('/profile')}>
@@ -138,53 +138,53 @@ function Header(props) {
     )
 
     const visitor = (
-        <ul className='row header mx-0'>
-            <li className='col-sm-12 col-lg  mx-0'>
-                <NavLink to="/home" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Home</NavLink>
+        <ul className='row header  mx-0' style={menuSelected ? { marginbottom: '200px' } : { marginbottom: '0px' }}>
+            <li className='col-sm-12 headerIndex col-lg  mx-0'>
+                <NavLink to="/home" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
+            </li>
+            <li className='col-sm-12 headerIndex col-lg  mx-0'>
+                <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
             <li className='col-sm-12 col-lg  mx-0'>
-                <NavLink to="/what" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>What</NavLink>
-            </li>
-            <li className='col-sm-12 col-lg  mx-0'>
-                <NavLink to="/how" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }}onClick={() => setMenuSelected(false)} >How</NavLink>
+                <NavLink to="/how" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)} >How</NavLink>
 
             </li>
-            <li className='col-sm-12 col-lg  mx-0'>
-                <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Why</NavLink>
+            <li className='col-sm-12 headerIndex col-lg  mx-0'>
+                <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
-            <li className='col-sm-12 col-lg  mx-0'>
-                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Find a Doula</NavLink>
+            <li className='col-sm-12 headerIndex  col-lg  mx-0'>
+                <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}>Find a Doula</NavLink>
             </li>
-            <li className='col-sm-12 col-lg  mx-0'>
-                <Link className='navLinks' to='/login'>Login</Link>
+            <li className='col-sm-12 headerIndex col-lg  mx-0'>
+                <Link className='navLinks' to='/login' onClick={() => setMenuSelected(false)}>Login</Link>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <Link className='navLinks' to='/register'>Create Account</Link>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <Link className='navLinks' to='/register' onClick={() => setMenuSelected(false)}>Create Account</Link>
             </li>
         </ul>
     )
 
     const adminUser = (
         <ul className='row header mx-0'>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/home" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Home</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/home" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/what" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>What</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/how" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>How</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/how" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/why" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Why</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/doula" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={checkActive}>Find a Doula</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}>Find a Doula</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
-                <NavLink to="/reported" className='navLinks' style={({ isActive }) => isActive ? { background: '#b2481b', } : { background: '#57394a' }} onClick={() => setMenuSelected(false)}>Reported Content</NavLink>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
+                <NavLink to="/reported" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Reported Content</NavLink>
             </li>
-            <li className='col-sm-12 col-lg mx-0'>
+            <li className='col-sm-12 headerIndex col-lg mx-0'>
                 <button className='logout' type='button' name='logout' onClick={handleLogout}>Sign Out</button>
             </li>
         </ul>
@@ -192,17 +192,17 @@ function Header(props) {
 
     return (
         <nav>
-             <div className='logo' onClick={() => props.navigate('/home')}>
-                <img src='/media/doula/newsafehandsdoulalogo.png' alt='siteLogo'/>
+            <div className='logo' onClick={() => props.navigate('/home')}>
+                <img src='/media/doula/newsafehandsdoulalogo.png' alt='siteLogo' />
             </div>
             <div className='banner' onClick={() => props.navigate('/home')}>
-                <img src='/media/doula/safehandsdoulabanner.png' alt='siteBanner'/>
+                <img src='/media/doula/safehandsdoulabanner.png' alt='siteBanner' />
             </div>
             <div className='mobile'>
                 {menuSelected ? props.auth ? props.isDoula ? props.isSuperUser ? adminUser : doulaUser : user : visitor : menuSelect}
             </div>
             <div className='desktop'>
-            {props.auth ? props.isDoula ? props.isSuperUser ? adminUser : doulaUser : user : visitor}
+                {props.auth ? props.isDoula ? props.isSuperUser ? adminUser : doulaUser : user : visitor}
             </div>
         </nav>
     )

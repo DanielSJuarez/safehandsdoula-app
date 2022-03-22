@@ -127,6 +127,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
 
     return (
         <section className='col profile'>
+            <button onClick={() => setIsSummary(false)} className='loginRegisterButton'>Back to Doula's</button>
             <div className='row justify-content-between'>
                 <div className='col-md-12 col-lg-3'>
                     <div className='imgHolder'>
@@ -208,7 +209,7 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                 <label htmlFor='why' className='label'>Why Me</label>
                 <p className='summary'>{why}</p>
             </div>
-            <button onClick={() => setIsSummary(false)} className='loginRegisterButton'>Back to Doula's</button>
+            {/* <button onClick={() => setIsSummary(false)} className='loginRegisterButton'>Back to Doula's</button> */}
             <hr />
             <h3>Contact Me</h3>
             <div>

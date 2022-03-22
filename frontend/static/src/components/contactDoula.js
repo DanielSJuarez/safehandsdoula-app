@@ -70,8 +70,8 @@ function ContactDoula({ id }) {
                     <input type='text' className='inputField' name='phone' id='phone' placeholder='phone' onChange={(e) => setPhone(e.target.value)} required value={phone} required />
                 </div>
                 <div className='col loginField'>
-                    <label htmlFor='info'>Info</label>
-                    <input type='text' className='inputField' name='info' id='info' placeholder='info' onChange={(e) => setInfo(e.target.value)} required value={info} required />
+                    <label htmlFor='message'>Message</label>
+                    <input type='text' className='inputField' name='message' id='message' placeholder='message' onChange={(e) => setInfo(e.target.value)} required value={info} required />
                 </div>
                 <div className='col loginField'>
                     <button className='loginRegisterButton' type='button' onClick={() => clear()}>Clear</button>

@@ -42,10 +42,21 @@
   margin: 50px 0px
 }
 
+.formField{
+  margin: 50px 25px
+}
+
 .loginPlacholder{
   margin: 100px auto;
   border: solid 3px #57394a;
   max-width: 1000px;
+  background-color: #eab586;
+}
+
+.formPlacholder{
+  margin: 100px;
+  border: solid 3px #57394a;
+  max-width: 900px;
   background-color: #eab586;
 }
 
@@ -55,6 +66,10 @@
 }
 
 .inputField:hover{
+  background-color: rgb(204, 204, 204);
+}
+
+.inputLabel:hover{
   background-color: rgb(204, 204, 204);
 }
 
@@ -139,7 +154,20 @@
   width: 100%;
   height: 100%;
   padding-top: 10px;
+  z-index:10;
 } 
+
+.navLinks:hover{
+  background-color: #b2481b;
+  border-right: 1px solid #57394a;
+  border-left: 1px solid #57394a;
+} 
+
+.active{
+  background-color: #b2481b;
+  border-right: 1px solid #57394a;
+  border-left: 1px solid #57394a;
+}
 
 a:hover{
   text-decoration: none;
@@ -184,6 +212,18 @@ a:hover{
   }
 }
 
+@keyframes slide-left {
+  from{
+      opacity: 25%;
+      transform:translateX(100px);
+  }
+  to{
+      opacity: 100%;
+      transform:translateX(0px);
+  }
+}
+
+
 @keyframes slide-down {
   from{
       opacity: 25%;
@@ -216,6 +256,7 @@ a:hover{
   font-size: 80px;
   background-image: linear-gradient(to left bottom,#57394a, #e0c2c0);
   padding: 100px;
+  z-index:1;
 }
 
 .homeArticleTwo:hover .homeArticleTwoImage{
@@ -268,8 +309,13 @@ a:hover{
   overflow:scroll;
 }
 
+.headerIndex{
+  z-index: 10;
+}
+
 .contact{
   background-color: #dbb0a0;
+  padding: 5px 5px 0px 5px;
 }
 
 .contactHead{
@@ -309,6 +355,11 @@ a:hover{
 .articleText{
   font-size: 20px;
   text-align: left;
+  animation: slide-left 2s
+}
+
+.messageATag{
+  margin: 3px 0px;
 }
 
 .articleHolder{
@@ -342,6 +393,11 @@ a:hover{
   width: 30px;
 }
 
+.inputLabel{
+  display: block;
+  width: 80%;
+}
+
 .backButton:hover{
   background-color: #57394a;
 }
@@ -368,12 +424,12 @@ a:hover{
   width: 65px;
   text-align: center;
   display: inline-block;
-  margin-left: 10px;
 }
 
 .articleImage{
   width: 100%;
   height: 100%;
+  animation: slide-right 2s
 }
 
 .createHead{
@@ -414,17 +470,14 @@ a:hover{
   .navLinks{
     padding: 3px;
     border-bottom: solid 1px #e0c2c0;
+    /* z-index:10; */
   }
 
-  .articleHolder{
+  /* .articleHolder{
     margin-top: 200px;
-  }
+  } */
 
   .form{
-    margin-top: 200px;
-  }
-
-  .profileList{
     margin-top: 200px;
   }
 
@@ -439,7 +492,8 @@ a:hover{
 
   .homeArticleTwo{
     font-size: 20px;
-    padding: 20px
+    padding: 20px;
+    z-index:10;
   }
 
   .articleImage{
@@ -455,9 +509,9 @@ a:hover{
     font-size:40px
   }
 
-  .header{
+  /* .header{
     margin-bottom: 175px;
-  }
+  } */
 
   .headImgHolder{
     display: none;
@@ -465,6 +519,7 @@ a:hover{
 
   .mobile{
     display: unset;
+    z-index: 10;
   }
   
   .close{
@@ -477,9 +532,9 @@ a:hover{
 }
 
 @media (max-width: 768px) {
-  .navLinksBottom{
+  /* .navLinksBottom{
     margin-bottom: 50px;
-  }
+  } */
 
   .articleHeader{
     position: relative;
@@ -491,9 +546,9 @@ a:hover{
     margin-bottom: 5px;
   }
 
-  .header{
+  /* .header{
     margin-bottom: 200px;
-  }
+  } */
 
   .logout{
     padding-top: 5px;
@@ -503,6 +558,14 @@ a:hover{
     padding: 3px;
     border-bottom: solid 1px #e0c2c0;
   }
+
+  .inputLabel{
+    width: 100%
+  }
+
+.formPlacholder{
+  margin: 25px;
+}
 
 }
 

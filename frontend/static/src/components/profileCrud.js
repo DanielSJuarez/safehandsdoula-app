@@ -252,18 +252,18 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
 
     const editMode = (
         <>
-            <div className='loginPlacholder'>
+            <div className='formPlacholder'>
                 <form onSubmit={edit}>
-                    <div className='col loginField'>
-                        <label htmlFor='name'>Name</label>
-                        <input className='inputField' type='text' name='name' placeholder='name' onChange={(e) => setNewIsName(e.target.value)} value={newIsName} />
+                    <div className='col formField'>
+                        <label htmlFor='name' className='inputLabel'>Name</label>
+                        <input className='inputLabel' type='text' name='name' placeholder='name' onChange={(e) => setNewIsName(e.target.value)} value={newIsName} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='city'>City</label>
-                        <input className='inputField' type='text' name='city' placeholder='city' onChange={(e) => setNewCity(e.target.value)} value={newCity} />
+                    <div className='col formField'>
+                        <label htmlFor='city' className='inputLabel'>City</label>
+                        <input className='inputLabel' type='text' name='city' placeholder='city' onChange={(e) => setNewCity(e.target.value)} value={newCity} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='state'>State</label>
+                    <div className='col formField'>
+                        <label htmlFor='state' className='inputLabel'>State</label>
                         <Form.Select id='stateForm' aria-label="Default select example" onChange={(e) => setNewCityState(e.target.value)} size="sm">
                             <option value="--">--</option>
                             <option value="AK">AK</option>
@@ -319,53 +319,53 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                             <option value="WY">WY</option>
                         </Form.Select>
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='serviceRange'>Service Range(miles)</label>
-                        <input className='inputField' type='number' name='serviceRange' placeholder='service range' onChange={(e) => setNewRange(e.target.value)} value={newRange} />
+                    <div className='col formField'>
+                        <label htmlFor='serviceRange' className='inputLabel'>Service Range(miles)</label>
+                        <input className='inputLabel' type='number' name='serviceRange' placeholder='service range' onChange={(e) => setNewRange(e.target.value)} value={newRange} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='about'>About Me</label>
-                        <input className='inputField' type='text' name='about' placeholder='about' onChange={(e) => setNewAbout(e.target.value)} value={newAbout} />
+                    <div className='col formField'>
+                        <label htmlFor='about' className='inputLabel'>About Me</label>
+                        <textarea className='inputLabel' type='text' name='about' placeholder='about' onChange={(e) => setNewAbout(e.target.value)} value={newAbout} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='started'>Started</label>
-                        <input className='inputField' type="date" name='date' placeholder='start date' onChange={(e) => setNewStarted(e.target.value)} value={newStarted} />
+                    <div className='col formField'>
+                        <label htmlFor='started' className='inputLabel'>Started</label>
+                        <input className='inputLabel' type="date" name='date' placeholder='start date' onChange={(e) => setNewStarted(e.target.value)} value={newStarted} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='certification'>Certifications</label>
-                        <input className='inputField' type='text' name='certification' placeholder='certifications' onChange={(e) => setNewCertification(e.target.value)} value={newCertification} />
+                    <div className='col formField'>
+                        <label htmlFor='certification' className='inputLabel'>Certifications</label>
+                        <input className='inputLabel' type='text' name='certification' placeholder='certifications' onChange={(e) => setNewCertification(e.target.value)} value={newCertification} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='facebook'>Facebook</label>
-                        <input className='inputField' type='url' name='facebook' placeholder='facebook url' onChange={(e) => setNewFacebook(e.target.value)} value={newFacebook} />
+                    <div className='col formField'>
+                        <label htmlFor='facebook' className='inputLabel'>Facebook</label>
+                        <input className='inputLabel' type='url' name='facebook' placeholder='facebook url' onChange={(e) => setNewFacebook(e.target.value)} value={newFacebook} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='twitter'>Twitter</label>
-                        <input className='inputField' type='url' name='twitter' placeholder='twitter url' onChange={(e) => setNewTwitter(e.target.value)} value={newTwitter} />
+                    <div className='col formField'>
+                        <label htmlFor='twitter' className='inputLabel'>Twitter</label>
+                        <input className='inputLabel' type='url' name='twitter' placeholder='twitter url' onChange={(e) => setNewTwitter(e.target.value)} value={newTwitter} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='instagram'>Instagram</label>
-                        <input className='inputField' type='url' name='instagram' placeholder='instagram url' onChange={(e) => setNewInstagram(e.target.value)} value={newInstagram} />
+                    <div className='col formField'>
+                        <label htmlFor='instagram' className='inputLabel'>Instagram</label>
+                        <input className='inputLabel' type='url' name='instagram' placeholder='instagram url' onChange={(e) => setNewInstagram(e.target.value)} value={newInstagram} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='website'>Personal Website</label>
-                        <input className='inputField' type='url' name='website' placeholder='website url' onChange={(e) => setNewWebsite(e.target.value)} value={newWebsite} />
+                    <div className='col formField'>
+                        <label htmlFor='website' className='inputLabel'>Personal Website</label>
+                        <input className='inputLabel' type='url' name='website' placeholder='website url' onChange={(e) => setNewWebsite(e.target.value)} value={newWebsite} />
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='calendly'>Calandly Link</label>
+                    <div className='col formField'>
+                        <label htmlFor='calendly' className='inputLabel'>Calandly Link</label>
                         {linked ? updateCalendly : addCalendly}
                         {/* <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com'>Link Calandly Account</a> */}
                     </div>
-                    <div className='col loginField'>
-                        <label htmlFor='services'>My Services</label>
-                        <input className='inputField' type='text' name='services' placeholder='services/pricing' onChange={(e) => setNewServices(e.target.value)} value={newServices} />
+                    <div className='col formField'>
+                        <label htmlFor='services' className='inputLabel'>My Services</label>
+                        <textarea className='inputLabel' type='text' name='services' placeholder='services/pricing' onChange={(e) => setNewServices(e.target.value)} value={newServices} />
+                    </div>
+                    <div className='col formField'>
+                        <label htmlFor='why' className='inputLabel'>Why Me</label>
+                        <textarea className='inputLabel' type='text' name='why' placeholder='why you' onChange={(e) => setNewWhy(e.target.value)} value={newWhy} />
                     </div>
                     <div className='col loginField'>
-                        <label htmlFor='why'>Why Me</label>
-                        <input className='inputField' type='text' name='why' placeholder='why you' onChange={(e) => setNewWhy(e.target.value)} value={newWhy} />
-                    </div>
-                    <div className='col loginField'>
-                        <button className='loginRegisterButton' onClick={() => cancel()}>Cancel</button>
+                        <button className='loginRegisterButton cancel' onClick={() => cancel()}>Cancel</button>
                         <button className='loginRegisterButton' type='submit'>Save Profile</button>
                     </div>
                 </form>

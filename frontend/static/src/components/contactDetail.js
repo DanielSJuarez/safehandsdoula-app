@@ -15,59 +15,59 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
     const [contactDisplay, setContactDisplay] = useState(false)
     const target = useRef(null);
     const newTarget = useRef(null);
-  
+
 
     const changeStatus = (id) => {
         if (contactDisplay === false && isChecked === false) {
             contact(id)
         }
-        setContactDisplay(true)  
+        setContactDisplay(true)
     }
-   
+
     // const newContact = async (id) => {
 
-        // let contact = 'CON'
+    // let contact = 'CON'
 
-        // if (contact_status === 'NEW') {
-        //     contact = 'CON'
-        // }
+    // if (contact_status === 'NEW') {
+    //     contact = 'CON'
+    // }
 
-        // const contactedStatus = {
-        //     contact_status: 'CON',
-        // }
+    // const contactedStatus = {
+    //     contact_status: 'CON',
+    // }
 
-        // const options = {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'Content-type': 'application/json',
-        //         'X-CSRFToken': Cookies.get('csrftoken'),
-        //     },
-        //     body: JSON.stringify(contactedStatus)
-        // }
+    // const options = {
+    //     method: 'PATCH',
+    //     headers: {
+    //         'Content-type': 'application/json',
+    //         'X-CSRFToken': Cookies.get('csrftoken'),
+    //     },
+    //     body: JSON.stringify(contactedStatus)
+    // }
 
-        // const response = await fetch(`${base_URL}/api/v1/doula/${pk}/contact/${id}/`, options);
+    // const response = await fetch(`${base_URL}/api/v1/doula/${pk}/contact/${id}/`, options);
 
-        // if (!response.ok) {
-        //     throw new Error('Network response was not OK');
-        // }
+    // if (!response.ok) {
+    //     throw new Error('Network response was not OK');
+    // }
 
-        // const data = await response.json();
+    // const data = await response.json();
 
-        // setIsChecked(true)
-        // setRead('Mark as unread')
+    // setIsChecked(true)
+    // setRead('Mark as unread')
 
-        // const updateContact = contacts.map((contact) => {
-        //     if (contact.id === id) {
-        //         setContactDisplay(true)  
-        //         return data
-        //     }
-        // })
-        // setContacts(updateContact)  
+    // const updateContact = contacts.map((contact) => {
+    //     if (contact.id === id) {
+    //         setContactDisplay(true)  
+    //         return data
+    //     }
+    // })
+    // setContacts(updateContact)  
     // }
 
     const clickStatus = (
         <div className='col doulacheckPlacholder'>
-            <button className='modalButton' ref={newTarget} type='button' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)}  onClick={() => contact(id)}><FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon></button>
+            <button className='modalButton' ref={newTarget} type='button' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)} onClick={() => contact(id)}><FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon></button>
             <Overlay target={newTarget.current} show={display} placement="right">
                 {(props) => (
                     <Tooltip id="overlay-example" {...props}>
@@ -75,9 +75,9 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
                     </Tooltip>
                 )}
             </Overlay>
-                {/* <label htmlFor='checkbox'>{read}</label>
+            {/* <label htmlFor='checkbox'>{read}</label>
                 <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} /> */}
-            </div>
+        </div>
     )
 
     const noStatus = (
@@ -151,9 +151,9 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
     const contactHead = (
         <div className="contact" style={isChecked ? { background: '#dbb0a0', } : { background: '#eab586' }}>
             <div onClick={() => changeStatus(id)}>
-            <h3>{name}</h3>
-            <p>{email}</p>
-            <p>{phone_number}</p>
+                <h3>{name}</h3>
+                <p>{email}</p>
+                <p>{phone_number}</p>
             </div>
             {isChecked ? clickStatus : noStatus}
             {/* <div className='col doulacheckPlacholder'>
@@ -165,24 +165,30 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
     )
 
     const contactDetail = (
-        <div className="contact" style={ isChecked ? { background: '#dbb0a0', } : { background: '#eab586' }}>
-            <button className='backButton' type="button" onClick={() => setContactDisplay(false)}>&#8617;</button>
-            <h3>{name}</h3>
-            <p>{email}</p>
-            <p>{phone_number}</p>
-            <p>{question}</p>
-            <button className='modalButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportContact(id)}>
-                Report
-            </button>
-            <Overlay target={target.current} show={show} placement="right">
-                {(props) => (
-                    <Tooltip id="overlay-example" {...props}>
-                        Reported
-                    </Tooltip>
-                )}
-            </Overlay>
-            <hr />
-        </div>
+        <>
+            <div className="contact" style={isChecked ? { background: '#dbb0a0', } : { background: '#eab586' }}>
+                <button className='backButton' type="button" onClick={() => setContactDisplay(false)}>&#8617;</button>
+                <h3>{name}</h3>
+                <div>
+                    <a href={`mailto:${email}`}>{email}</a>
+                </div>
+                <div className="messageATag">
+                    <a href={`tel:${phone_number}`}>{phone_number}</a>
+                </div>
+                <p>{question}</p>
+                <button className='modalButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportContact(id)}>
+                    Report
+                </button>
+                <Overlay target={target.current} show={show} placement="right">
+                    {(props) => (
+                        <Tooltip id="overlay-example" {...props}>
+                            Reported
+                        </Tooltip>
+                    )}
+                </Overlay>
+                <hr />
+            </div>
+        </>
     )
 
     return (
