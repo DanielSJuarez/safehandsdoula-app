@@ -5,12 +5,30 @@ import { base_URL } from '../config/settings';
 
 function Header(props) {
     const [menuSelected, setMenuSelected] = useState(false)
+    const [banner, setBanner] = useState(null)
+    const [logo, setLogo] = useState(null)
     const checkActive = () => {
         if (props.isSummary === true) {
             props.setIsSummary(false)
         }
         setMenuSelected(false)
     }
+
+    useEffect(() => {
+        const getHeader = async () => {
+
+            const response = await fetch(`${base_URL}/api/v1/homepage/`).catch(props.handleError);
+
+            if (!response.ok) {
+                throw new Error('Netword response was not OK!')
+            } else {
+                const data = await response.json();
+                setBanner(data[0].banner)
+                setLogo(data[0].logo)
+            }
+        }
+        getHeader();
+    }, []);
 
     useEffect(() => {
         const getIsAdmin = async () => {
@@ -189,14 +207,14 @@ function Header(props) {
             </li>
         </ul>
     )
-
+  
     return (
         <nav>
             <div className='logo' onClick={() => props.navigate('/home')}>
-                <img src='/media/doula/newsafehandsdoulalogo.png' alt='siteLogo' />
+                <img src={logo} alt='siteLogo' />
             </div>
             <div className='banner' onClick={() => props.navigate('/home')}>
-                <img src='/media/doula/safehandsdoulabanner.png' alt='siteBanner' />
+                <img src={banner} alt='siteBanner' />
             </div>
             <div className='mobile'>
                 {menuSelected ? props.auth ? props.isDoula ? props.isSuperUser ? adminUser : doulaUser : user : visitor : menuSelect}

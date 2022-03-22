@@ -17,3 +17,13 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class HomePage(models.Model):
+    imageHomeOne = models.ImageField(upload_to='doula/', null=True)
+    imageHomeTwo = models.ImageField(upload_to='doula/', null=True)
+    imageHomeThree = models.ImageField(upload_to='doula/', null=True)
+    imageHomeFour = models.ImageField(upload_to='doula/', null=True)
+    imageHomeFive = models.ImageField(upload_to='doula/', null=True)
+    banner = models.ImageField(upload_to='doula/', null=True)
+    logo = models.ImageField(upload_to='doula/', null=True)

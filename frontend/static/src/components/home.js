@@ -1,11 +1,36 @@
 import { useOutletContext } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { base_URL } from '../config/settings'
 
 function Home() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
     const { auth, navigate, setIsDoula, searchParams, handleError, setProfileImg } = useOutletContext();
+    const [articleOneHeader, setArticleOneHeader] = useState(null)
+    const [articleTwoHeader, setArticleTwoHeader] = useState(null)
+    const [articleThreeHeader, setArticleThreeHeader] = useState(null)
+    const [articleFourHeader, setArticleFourHeader] = useState(null)
+    const [articleFiveHeader, setArticleFiveHeader] = useState(null)
+
+    useEffect(() => {
+        const getHomePage = async () => {
+
+            const response = await fetch(`${base_URL}/api/v1/homepage/`).catch(handleError);
+
+            if (!response.ok) {
+                throw new Error('Netword response was not OK!')
+            } else {
+                const data = await response.json();
+                setArticleOneHeader(data[0].imageHomeOne)
+                setArticleTwoHeader(data[0].imageHomeTwo)
+                setArticleThreeHeader(data[0].imageHomeThree)
+                setArticleFourHeader(data[0].imageHomeFour)
+                setArticleFiveHeader(data[0].imageHomeFive)
+            }
+        }
+        getHomePage();
+    }, []);
+
     useEffect(() => {
         console.log(base_URL)
         let id = ''
@@ -113,14 +138,14 @@ function Home() {
             <div className="container">
                 <div className="homeArticleTwo row mx-0" onClick={() => navigate('/doula')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/doulaArticleTwo.jpeg' alt='homeImage' />
+                        <img className="articleImage" src={articleOneHeader} alt='homeImage' />
                     </div>
                     <p className="homeArticleTwoSub col-4">Who will be your best fit?</p>
                     <p className="homeArticleTwoTitle col-12">Find a Doula for you</p>
                 </div>
                 <div className="homeArticleOne row mx-0" onClick={() => navigate('/what')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/pexels-vidal-balielo-jr-4005601.jpg' alt='homeImage' />
+                        <img className="articleImage" src={articleTwoHeader} alt='homeImage' />
 
                     </div>
                     <p className="homeArticleTwoSub col-4">Let me show you</p>
@@ -128,21 +153,21 @@ function Home() {
                 </div>
                 <div className="homeArticleTwo row mx-0" onClick={() => navigate('/how')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/pexels-rodnae-productions-6149306.jpg' alt='homeImage' />
+                        <img className="articleImage" src={articleThreeHeader} alt='homeImage' />
                     </div>
                     <p className="homeArticleTwoSub col-4">What to expect from the experience</p>
                     <p className="homeArticleTwoTitle col-12">How can a Doula serve you?</p>
                 </div>
                 <div className="homeArticleOne row mx-0" onClick={() => navigate('/why')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/pexels-rene-asmussen-325690.jpg' alt='homeImage' />
+                        <img className="articleImage" src={articleFourHeader} alt='homeImage' />
                     </div>
                     <p className="homeArticleTwoSub col-4">What even is the point?</p>
                     <p className="homeArticleTwoTitle col-12">Why would you use a doula? What are the benefits?</p>
                 </div>
                 <div className="homeArticleOne row mx-0" onClick={() => navigate('/register')}>
                     <div className="homeArticleTwoImage col-8">
-                        <img className="articleImage" src='/media/doula/pexels-freestocksorg-57529.jpg' alt='homeImage' />
+                        <img className="articleImage" src={articleFiveHeader} alt='homeImage' />
                     </div>
                     <p className="homeArticleTwoSub col-4">Join our community</p>
                     <p className="homeArticleTwoTitle col-12">Are you a doula, and want to join the Safehandsdoula community?</p>
