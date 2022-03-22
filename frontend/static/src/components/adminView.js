@@ -4,6 +4,7 @@ import AdminContactView from "./adminContactView";
 import AdminProfileView from "./adminProfileView";
 import {base_URL} from '../config/settings'
 import Spinner from 'react-bootstrap/Spinner'
+import Cookies from 'js-cookie'
 
 function AdminView() {
     // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
@@ -14,7 +15,11 @@ function AdminView() {
     useEffect(() => {
         const isProfileReported = async () => {
 
-            const response = await fetch(`${base_URL}/api/v1/accounts/admin/`).catch(handleError);
+            const response = await fetch(`${base_URL}/api/v1/accounts/admin/`, {
+                headers: {
+                    Authorization: `Token ${Cookies.get('Authorization')}`
+                }
+            }).catch(handleError);
             if (!response.ok) {
                 throw new Error('Netword response was not OK!')
             } else {
