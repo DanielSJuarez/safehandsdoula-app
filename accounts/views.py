@@ -4,6 +4,9 @@ from .models import Profile, DoulaProfile
 from rest_framework import generics
 from .serializers import DoulaProfileSerializer, ProfileSerializer, AdminSerializer
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
+from django.core.mail import send_mail
+
+# send_mail('Thank you for creating your account', 'Good Day, thank you for creating your account with safehandsdoula. This email serves as confirmation that your account has been successfully created. Feel free to interact with the safehandsdoula community. Have a wonderful rest of your day - Safehandsdoula Admin Team', 'safehandsdoula@gmail.com', ['juarezdsv@gmail.com'], fail_silently=False)
 
 # Create your views here.
 
@@ -16,6 +19,13 @@ class DoulaProfileListAPIView(generics.ListCreateAPIView):
         
     def get_queryset(self):
         user = self.request.user
+        send_mail(
+            'Thank you for creating your account',
+            'Good Day, thank you for creating your account with safehandsdoula. This email serves as confirmation that your account has been successfully created. Feel free to interact with the safehandsdoula community. Have a wonderful rest of your day - Safehandsdoula Admin Team',
+            'safehandsdoula@gmail.com',
+            ['juarezdsv@gmail.com'],
+            fail_silently=False,
+                )
         return DoulaProfile.objects.filter(user=user)
 
 class ReportProfileEditListAPIView(generics.UpdateAPIView):

@@ -189,7 +189,7 @@ MEDIA_URL = '/media/'
 # Email backend
 # https://docs.djangoproject.com/en/3.0/ref/settings/#email-backend
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
@@ -201,3 +201,13 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+
+SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_EMAIL_FROM = 'safehandsdoula@gmail.com'
