@@ -23,10 +23,7 @@ class ContactControlListAPIView(generics.RetrieveUpdateDestroyAPIView):
 class ContactDoulaListAPIView(generics.ListAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = ContactSerializer
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     return Contact.objects.filter(doula=user)
-
+  
     def get_queryset(self):
         '''
         This view should return a list of all contacts by the doula passed in the url

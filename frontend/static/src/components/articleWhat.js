@@ -5,7 +5,6 @@ import { base_URL } from '../config/settings'
 import Spinner from 'react-bootstrap/Spinner'
 
 function ArticleWhat() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError } = useOutletContext();
     const [article, setArticle] = useState(null)
 
@@ -26,7 +25,7 @@ function ArticleWhat() {
 
     if (!article) {
         return <div>Fetching article data....
-             <Spinner animation="border" size="sm"/>
+            <Spinner animation="border" size="sm" />
         </div>
     }
 

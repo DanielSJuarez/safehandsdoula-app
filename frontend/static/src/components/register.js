@@ -6,7 +6,6 @@ import Tooltip from 'react-bootstrap/Tooltip'
 import Overlay from 'react-bootstrap/Overlay'
 
 function Register() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { setAuth, navigate, createDoula, setCreateDoula, handleError } = useOutletContext();
     const [newState, setNewState] = useState({
         username: '',
@@ -43,12 +42,8 @@ function Register() {
 
         if (newState.password1.length < 8 || newState.password2.length < 8) {
             setShow(true)
-            console.log('hi')
-            // alert('Password is to short, password must be eight characters long')
         } else if (newState.password1 !== newState.password2) {
-            // alert('Passwords to not match, please try again')
             setDisplay(true)
-            console.log('what')
         }
 
         const options = {
@@ -77,7 +72,7 @@ function Register() {
                 password2: '',
             });
         }
-        console.log(createDoula)
+
         if (createDoula === true) {
             navigate('/create');
         } else {

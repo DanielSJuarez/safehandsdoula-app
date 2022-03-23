@@ -1,4 +1,3 @@
-import ArticleDetail from "./articleDetail";
 import { useState, useEffect } from 'react'
 import { useOutletContext } from "react-router-dom";
 import { base_URL } from '../config/settings'
@@ -6,9 +5,7 @@ import Spinner from 'react-bootstrap/Spinner'
 
 
 function ArticleWhy() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError } = useOutletContext();
-    const [article, setArticle] = useState(null)
     const [getImage, setGetImage] = useState(null)
 
     useEffect(() => {
@@ -20,9 +17,7 @@ function ArticleWhy() {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                console.log(data)
                 setGetImage(data[2].image)
-                // setArticle(data);
             }
         }
         getArticle();
@@ -34,22 +29,13 @@ function ArticleWhy() {
         </div>
     }
 
-    // const filterArticle = article.filter(article => (
-    //     article.catagory === 'WHY'
-    // ))
-
-    // const articleList = filterArticle.map(article => (
-    //     <ArticleDetail key={article.id} {...article} />
-    // ))
-
     return (
         <>
             <div className='container'>
                 <div className="articleHolder">
-                    {/* {articleList} */}
                     <article>
                         <div className="articleImageHolder">
-                            <img className="articleImage" src={getImage} alt='why'/>
+                            <img className="articleImage" src={getImage} alt='why' />
                         </div>
                         <h1 className='articleTitle'>Why</h1>
                         <hr />

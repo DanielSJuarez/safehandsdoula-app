@@ -1,9 +1,9 @@
 import { InlineWidget } from "react-calendly";
 
-function CalendlyWidget ({calendly}) {
+function CalendlyWidget({ calendly }) {
     return (
         <div>
-             <InlineWidget url={calendly}/>
+            <InlineWidget url={calendly} />
         </div>
     )
 }

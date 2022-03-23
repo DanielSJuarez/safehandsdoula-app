@@ -5,10 +5,9 @@ import { base_URL } from '../config/settings'
 import Spinner from 'react-bootstrap/Spinner'
 
 function ArticleHow() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError } = useOutletContext();
     const [article, setArticle] = useState(null)
-    // console.log(environment)
+
     useEffect(() => {
         const getArticle = async () => {
 
@@ -26,7 +25,7 @@ function ArticleHow() {
 
     if (!article) {
         return <div>Fetching article data....
-            <Spinner animation="border" size="sm"/>
+            <Spinner animation="border" size="sm" />
         </div>
     }
 

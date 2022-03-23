@@ -1,11 +1,11 @@
-function ArticleDetail ({title, image, text}) {
+function ArticleDetail({ title, image, text }) {
     return (
         <article>
             <div className="articleImageHolder">
-                <img className="articleImage" src={image} alt={title}/>
+                <img className="articleImage" src={image} alt={title} />
             </div>
             <h1 className='articleTitle'>{title}</h1>
-            <hr/>
+            <hr />
             <div className="articleText">{text}</div>
         </article>
     )

@@ -8,7 +8,6 @@ import Modal from 'react-bootstrap/Modal'
 
 
 function ProfileDetail() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError, preview, setPreview, setProfileImg } = useOutletContext();
     const [isEditing, setIsEditing] = useState(false)
     const [profile, setProfile] = useState(null);
@@ -175,7 +174,6 @@ function ProfileDetail() {
             throw new Error('Netword response was not OK!')
         } else {
             const data = await response.json();
-            // console.log(data.length)
 
             if (data.length > 0 && data[0].contact_status === 'CON') {
                 setIsChecked(true)
@@ -286,22 +284,6 @@ function ProfileDetail() {
         <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
     ))
 
-    // const contactNewFilter = contacts.filter(contact => (
-    //     contact.contact_status === 'NEW'
-    // ))
-
-    // const contactNewList = contactNewFilter.map((contact) => (
-    //     <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
-    // ))
-
-    // const contactContactedFilter = contacts.filter(contact => (
-    //     contact.contact_status === 'CON'
-    // ))
-
-    // const contactContactedList = contactContactedFilter.map((contact) => (
-    //     <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
-    // ))
-
     return (
         <>
             <div className='row mx-0'>
@@ -309,10 +291,6 @@ function ProfileDetail() {
                     <h2>Inbox</h2>
                     <p className='contactHead'>Messages</p>
                     {contactList}
-                    {/* <p className='contactHead'>Unread</p>
-                    {contactNewList}
-                    <p className='contactHead'>Read</p>
-                    {contactContactedList} */}
                 </div>
                 <div className='col-md-12 col-lg-9'>
                     <h2>Profile</h2>

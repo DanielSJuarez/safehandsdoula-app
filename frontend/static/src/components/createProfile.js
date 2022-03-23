@@ -5,7 +5,6 @@ import { base_URL } from '../config/settings'
 import Form from 'react-bootstrap/Form'
 
 function CreateProfile() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
     const { navigate, setCreateDoula, setIsDoula, preview, setPreview } = useOutletContext();
     const [addImage, setAddImage] = useState(new File([], ''));
     const [isName, setIsName] = useState('');
@@ -185,7 +184,7 @@ function CreateProfile() {
                         <input className='inputLabel' type='url' name='twitter' placeholder='twitter url' onChange={(e) => setTwitter(e.target.value)} value={twitter} />
                     </div>
                     <div className='col formField'>
-                        <label htmlFor='instagram'className='inputLabel'>Instagram</label>
+                        <label htmlFor='instagram' className='inputLabel'>Instagram</label>
                         <input className='inputLabel' type='url' name='instagram' placeholder='instagram url' onChange={(e) => setInstagram(e.target.value)} value={instagram} />
                     </div>
                     <div className='col formField'>

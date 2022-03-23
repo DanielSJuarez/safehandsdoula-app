@@ -4,26 +4,24 @@ import Form from 'react-bootstrap/Form'
 import { base_URL } from '../config/settings'
 import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookSquare , faTwitterSquare, faInstagramSquare, } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookSquare, faTwitterSquare, faInstagramSquare, } from '@fortawesome/free-brands-svg-icons'
 import { faComputer } from '@fortawesome/free-solid-svg-icons'
 
 function ProfileCrud({ name, about, services, why, website, image, facebook, twitter, instagram, isEditing, certification, started, setIsEditing, handleImage, editProfile, setNewCertification, setNewFacebook, setNewInstagram, setNewTwitter, setNewWebsite, setNewAbout, setNewIsName, setNewServices, setNewWhy, setNewStarted, newFacebook, newInstagram, newTwitter, newWebsite, newIsName, newAbout, newWhy, newServices, newStarted, newCertification, id, calendly, linked, setLinked, addImage, updateImage, removeImage, service_range, city, state, newCity, setNewCity, newRange, setNewRange, setNewCityState, isDisplay, setIsDisplay, display_calendly, setProfile, profile }) {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { preview, setPreview, profileImg, handleError } = useOutletContext();
     const [isImage, setIsImage] = useState(false)
     const [iconFaceBook, setIconFacebook] = useState(false)
     const [iconInstagram, setIconInstagram] = useState(false)
     const [iconTwitter, setIconTwitter] = useState(false)
     const [iconWeb, setIconWeb] = useState(false)
-    // console.log(isDisplay)
 
     useEffect(() => {
         const checkSocialStatus = async () => {
             if (facebook === '') {
                 setIconFacebook(true)
-            } 
+            }
 
-            if (instagram === ''){
+            if (instagram === '') {
                 setIconInstagram(true)
             }
 
@@ -122,7 +120,6 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
     const updateCalendly = (
         <div className='col loginField'>
             <p>Calendly: {calendly}</p>
-            {/* <input className='inputField' type='text' name='calendly' placeholder='calendly' value={calendly} /> */}
         </div>
     )
 
@@ -180,55 +177,22 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                 <label htmlFor='range' className="label">Service Range</label>
                 <p>{service_range}</p>
             </div>
-            {/* <div className='socials row'>
-                <label htmlFor='socials' className="label">My Socials</label>
-                <div className='col-3'>
-                    <label htmlFor='facebook'>Facebook</label>
-                    <a target='blank' href={facebook}>{facebook}</a>
-                </div>
-                <div className='col-3'>
-                    <label htmlFor='twitter'>Twitter</label>
-                    <a target='blank' href={twitter}>{twitter}</a>
-                </div>
-                <div className='col-3'>
-                    <label htmlFor='instagran'>Instagram</label>
-                    <a target='blank' href={instagram}>{instagram}</a>
-                </div>
-                <div className='col-3'>
-                    <label htmlFor='website'>Personal Website</label>
-                    <a target='blank' href={website}>{website}</a>
-                </div>
-            </div> */}
             <div className='socials row'>
                 <h3>My Socials</h3>
-                {/* <label htmlFor='socials'>My Social's</label> */}
                 <div className='col-1'>
-                    {/* <label htmlFor='facebook'>Facebook</label> */}
-                    <a style={iconFaceBook ? {display : 'none' } : {display: 'unset' }} target='blank' href={facebook}><FontAwesomeIcon icon={faFacebookSquare} className='icon'></FontAwesomeIcon></a>
+                    <a style={iconFaceBook ? { display: 'none' } : { display: 'unset' }} target='blank' href={facebook}><FontAwesomeIcon icon={faFacebookSquare} className='icon'></FontAwesomeIcon></a>
                 </div>
                 <div className='col-1'>
-                    {/* <label htmlFor='twitter'>Twitter</label> */}
-                    <a style={iconTwitter ? {display : 'none' } : {display: 'unset' }} target='blank' href={twitter}><FontAwesomeIcon icon={faTwitterSquare} className='icon'></FontAwesomeIcon></a>
+                    <a style={iconTwitter ? { display: 'none' } : { display: 'unset' }} target='blank' href={twitter}><FontAwesomeIcon icon={faTwitterSquare} className='icon'></FontAwesomeIcon></a>
                 </div>
                 <div className='col-1'>
-                    {/* <label htmlFor='instagran'>Instagram</label> */}
-                    <a style={iconInstagram ? {display : 'none' } : {display: 'unset' }} target='blank' href={instagram}><FontAwesomeIcon icon={faInstagramSquare} className='icon'></FontAwesomeIcon></a>
+                    <a style={iconInstagram ? { display: 'none' } : { display: 'unset' }} target='blank' href={instagram}><FontAwesomeIcon icon={faInstagramSquare} className='icon'></FontAwesomeIcon></a>
                 </div>
                 <div className='col-1'>
-                    {/* <label htmlFor='website'>Personal Website</label> */}
-                    <a style={iconWeb ? {display : 'none' } : {display: 'unset' }} target='blank' href={website}><FontAwesomeIcon icon={faComputer} className='icon'></FontAwesomeIcon></a>
+                    <a style={iconWeb ? { display: 'none' } : { display: 'unset' }} target='blank' href={website}><FontAwesomeIcon icon={faComputer} className='icon'></FontAwesomeIcon></a>
                 </div>
             </div>
             <hr />
-            {/* <label htmlFor='facebook' className='label'>Facebook</label>
-            <a target='blank' href={facebook}>{facebook}</a>
-            <label htmlFor='twitter' className='label'>Twitter</label>
-            <a target='blank' href={twitter}>{twitter}</a>
-            <label htmlFor='instagran' className='label'>Instagram</label>
-            <a target='blank' href={instagram}>{instagram}</a>
-            <label htmlFor='website' className='label'>Personal Website</label>
-            <a target='blank' href={website}>{website}</a>
-            <hr/> */}
             <label htmlFor='certification' className='label'>Certifications</label>
             <p>{certification}</p>
             <label htmlFor='about' className='label'>About Me</label>
@@ -240,15 +204,10 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
             <p>{calendly}</p>
             <div className='col doulacheckPlacholder'>
                 {linked ? contactChoice : noContactChoice}
-                {/* <label htmlFor='checkbox'>Display Calendly {isDisplay}</label>
-                <input className='doulaCheck' type='checkbox' onChange={() => displayStatus(id)} checked={isDisplay} /> */}
             </div>
-            {/* <CalendlyWidget calendly={calendly}/> */}
-            {/* <InlineWidget url={calendly} /> */}
             <button className='loginRegisterButton' onClick={() => setIsEditing(true)}>Edit Profile</button>
         </section>
     )
-    // console.log(linked)
 
     const editMode = (
         <>
@@ -354,7 +313,6 @@ function ProfileCrud({ name, about, services, why, website, image, facebook, twi
                     <div className='col formField'>
                         <label htmlFor='calendly' className='inputLabel'>Calandly Link</label>
                         {linked ? updateCalendly : addCalendly}
-                        {/* <a target='blank' href='https://auth.calendly.com/oauth/authorize?client_id=JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg&response_type=code&redirect_uri=https://safehandsdoula.com'>Link Calandly Account</a> */}
                     </div>
                     <div className='col formField'>
                         <label htmlFor='services' className='inputLabel'>My Services</label>

@@ -7,8 +7,7 @@ import Overlay from 'react-bootstrap/Overlay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 
-function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts, isChecked, setIsChecked, read, setRead }) {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser] = useOutletContext();
+function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts, isChecked, setIsChecked }) {
     const { handleError } = useOutletContext();
     const [show, setShow] = useState(false);
     const [display, setDisplay] = useState(false);
@@ -24,47 +23,6 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
         setContactDisplay(true)
     }
 
-    // const newContact = async (id) => {
-
-    // let contact = 'CON'
-
-    // if (contact_status === 'NEW') {
-    //     contact = 'CON'
-    // }
-
-    // const contactedStatus = {
-    //     contact_status: 'CON',
-    // }
-
-    // const options = {
-    //     method: 'PATCH',
-    //     headers: {
-    //         'Content-type': 'application/json',
-    //         'X-CSRFToken': Cookies.get('csrftoken'),
-    //     },
-    //     body: JSON.stringify(contactedStatus)
-    // }
-
-    // const response = await fetch(`${base_URL}/api/v1/doula/${pk}/contact/${id}/`, options);
-
-    // if (!response.ok) {
-    //     throw new Error('Network response was not OK');
-    // }
-
-    // const data = await response.json();
-
-    // setIsChecked(true)
-    // setRead('Mark as unread')
-
-    // const updateContact = contacts.map((contact) => {
-    //     if (contact.id === id) {
-    //         setContactDisplay(true)  
-    //         return data
-    //     }
-    // })
-    // setContacts(updateContact)  
-    // }
-
     const clickStatus = (
         <div className='col doulacheckPlacholder'>
             <button className='modalButton' ref={newTarget} type='button' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)} onClick={() => contact(id)}><FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon></button>
@@ -75,8 +33,6 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
                     </Tooltip>
                 )}
             </Overlay>
-            {/* <label htmlFor='checkbox'>{read}</label>
-                <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} /> */}
         </div>
     )
 
@@ -116,10 +72,8 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
 
         if (data.contact_status === 'CON') {
             setIsChecked(true)
-            // setRead('Mark as unread')
         } else if (data.contact_status === 'NEW') {
             setIsChecked(false)
-            // setRead('Mark as read')
         }
 
         const updateContact = contacts.map((contact) => {
@@ -156,10 +110,6 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
                 <p>{phone_number}</p>
             </div>
             {isChecked ? clickStatus : noStatus}
-            {/* <div className='col doulacheckPlacholder'>
-                <label htmlFor='checkbox'>{read}</label>
-                <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} />
-            </div> */}
             <hr />
         </div>
     )
@@ -192,27 +142,6 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
     )
 
     return (
-        // <div className="contact">
-        //     <h3>{name}</h3>
-        //     <p>{email}</p>
-        //     <p>{phone_number}</p>
-        //     <p>{question}</p>
-        //     <div className='col doulacheckPlacholder'>
-        //         <label htmlFor='checkbox'>{read}</label>
-        //         <input className='doulaCheck' type='checkbox' onChange={() => contact(id)} checked={isChecked} />
-        //     </div>
-        //     <button className='loginRegisterButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportContact(id)}>
-        //         Report
-        //     </button>
-        //     <Overlay target={target.current} show={show} placement="right">
-        //         {(props) => (
-        //             <Tooltip id="overlay-example" {...props}>
-        //                 Reported
-        //             </Tooltip>
-        //         )}
-        //     </Overlay>
-        //     <hr />
-        // </div>
         <div>
             {contactDisplay ? contactDetail : contactHead}
         </div>

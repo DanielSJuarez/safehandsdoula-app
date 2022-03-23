@@ -38,8 +38,7 @@ function Header(props) {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                // console.log('hi')
-                if (data.is_superuser == true) {
+                if (data.is_superuser === true) {
                     props.setIsDoula(true)
                     props.setIsSuperUser(true)
 
@@ -207,7 +206,7 @@ function Header(props) {
             </li>
         </ul>
     )
-  
+
     return (
         <nav>
             <div className='logo' onClick={() => props.navigate('/home')}>

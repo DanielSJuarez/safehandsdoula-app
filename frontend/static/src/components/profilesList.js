@@ -6,10 +6,8 @@ import { base_URL } from '../config/settings'
 import Spinner from 'react-bootstrap/Spinner'
 
 function ProfilesList() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
-    const {handleError, isSummary, setIsSummary} = useOutletContext();
+    const { handleError, isSummary, setIsSummary } = useOutletContext();
     const [profiles, setProfiles] = useState(null)
-    const [icon, setIcon] = useState(false)
     const [getId, setGetId] = useState('')
 
     useEffect(() => {
@@ -21,7 +19,6 @@ function ProfilesList() {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                console.log(data)
                 setProfiles(data);
             }
         }
@@ -30,7 +27,7 @@ function ProfilesList() {
 
     if (!profiles) {
         return <div>Fetching profile data....
-             <Spinner animation="border" size="sm"/>
+            <Spinner animation="border" size="sm" />
         </div>
     }
 
@@ -47,7 +44,7 @@ function ProfilesList() {
     ))
 
     const profileDetailHTML = profileFilter.map((profiles) => (
-        <ProfileView key={profiles.id} {...profiles} setIsSummary={setIsSummary}/>
+        <ProfileView key={profiles.id} {...profiles} setIsSummary={setIsSummary} />
     ))
 
     return (

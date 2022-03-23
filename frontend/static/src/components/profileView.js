@@ -7,14 +7,12 @@ import { base_URL } from '../config/settings'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Overlay from 'react-bootstrap/Overlay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookSquare , faTwitterSquare, faInstagramSquare, } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookSquare, faTwitterSquare, faInstagramSquare, } from '@fortawesome/free-brands-svg-icons'
 import { faComputer } from '@fortawesome/free-solid-svg-icons'
 
 
-function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, city, state, service_range, display_calendly}) {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
+function ProfileView({ image, name, started, facebook, twitter, instagram, website, about, services, why, certification, id, calendly, city, state, service_range, display_calendly }) {
     const { auth, handleError, setIsSummary } = useOutletContext();
-    // const [isAuthenicated, setIsAuthenicated] = useState(false)
     const [show, setShow] = useState(false);
     const [iconFaceBook, setIconFacebook] = useState(false)
     const [iconInstagram, setIconInstagram] = useState(false)
@@ -22,16 +20,13 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     const [iconWeb, setIconWeb] = useState(false)
     const target = useRef(null);
 
-    console.log(twitter)
-    console.log(facebook)
-
     useEffect(() => {
         const checkSocialStatus = async () => {
             if (facebook === '') {
                 setIconFacebook(true)
-            } 
+            }
 
-            if (instagram === ''){
+            if (instagram === '') {
                 setIconInstagram(true)
             }
 
@@ -65,28 +60,6 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
     const notIsLogin = (
         <p>Please <a href='/register'>create an account</a> or <a href='/login'>login</a> to contact this doula, or report this account</p>
     )
-
-    // const isNotCalendly = (
-    //     <div></div>
-    // )
-
-    // const isCalendly = (
-    //     <>
-    //         <div className='calendly'>
-    //             <InlineWidget url={calendly} />
-    //         </div>
-    //         <button className='loginRegisterButton report' ref={target} onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
-    //             Report
-    //         </button>
-    //         <Overlay target={target.current} show={show} placement="right">
-    //             {(props) => (
-    //                 <Tooltip id="overlay-example" {...props}>
-    //                     Reported
-    //                 </Tooltip>
-    //             )}
-    //         </Overlay>
-    //     </>
-    // )
 
     const displayAll = (
         <>
@@ -139,7 +112,6 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                     <h2>{name}</h2>
                 </div>
                 <div className="col-lg-5 intro">
-                    {/* <h2>{name}</h2> */}
                     <label htmlFor='started' className="label">Started</label>
                     <p>{started}</p>
                     <label htmlFor='started' className="label">City</label>
@@ -149,51 +121,25 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                     <label htmlFor='range' className="label">Service Range</label>
                     <p>{service_range}</p>
                 </div>
-                {/* <div className='col-sm-2 col-lg profileTopInfo'>
-                    <label htmlFor='name'>Name</label>
-                    <h2>{name}</h2>
-                </div>
-                <div className='col-sm-2 col-lg profileTopInfo'>
-                    <label htmlFor='city' className='label'>City</label>
-                    <p>{city}</p>
-                </div>
-                <div className='col-sm-2 col-lg profileTopInfo'>
-                    <label htmlFor='state' className='label'>State</label>
-                    <p>{state}</p>
-                </div>
-                <div className='col-lg-2 profileTopInfo'>
-                    <label htmlFor='serviceRange' className='label'>Service Range</label>
-                    <p>{service_range}</p>
-                </div>
-                <div className='col-sm-2 col-lg profileTopInfo'>
-                    <label htmlFor='started' className='label'>Started</label>
-                    <p>{started}</p>
-                </div> */}
             </div>
             <hr />
             <div className='socials row'>
                 <h3>My Socials</h3>
-                {/* <label htmlFor='socials'>My Social's</label> */}
                 <div className='col-1'>
-                    {/* <label htmlFor='facebook'>Facebook</label> */}
-                    <a style={iconFaceBook ? {display : 'none' } : {display: 'unset' }} target='blank' href={facebook}><FontAwesomeIcon icon={faFacebookSquare} className='icon'></FontAwesomeIcon></a>
+                    <a style={iconFaceBook ? { display: 'none' } : { display: 'unset' }} target='blank' href={facebook}><FontAwesomeIcon icon={faFacebookSquare} className='icon'></FontAwesomeIcon></a>
                 </div>
                 <div className='col-1'>
-                    {/* <label htmlFor='twitter'>Twitter</label> */}
-                    <a style={iconTwitter ? {display : 'none' } : {display: 'unset' }} target='blank' href={twitter}><FontAwesomeIcon icon={faTwitterSquare} className='icon'></FontAwesomeIcon></a>
+                    <a style={iconTwitter ? { display: 'none' } : { display: 'unset' }} target='blank' href={twitter}><FontAwesomeIcon icon={faTwitterSquare} className='icon'></FontAwesomeIcon></a>
                 </div>
                 <div className='col-1'>
-                    {/* <label htmlFor='instagran'>Instagram</label> */}
-                    <a style={iconInstagram ? {display : 'none' } : {display: 'unset' }} target='blank' href={instagram}><FontAwesomeIcon icon={faInstagramSquare} className='icon'></FontAwesomeIcon></a>
+                    <a style={iconInstagram ? { display: 'none' } : { display: 'unset' }} target='blank' href={instagram}><FontAwesomeIcon icon={faInstagramSquare} className='icon'></FontAwesomeIcon></a>
                 </div>
                 <div className='col-1'>
-                    {/* <label htmlFor='website'>Personal Website</label> */}
-                    <a style={iconWeb ? {display : 'none' } : {display: 'unset' }} target='blank' href={website}><FontAwesomeIcon icon={faComputer} className='icon'></FontAwesomeIcon></a>
+                    <a style={iconWeb ? { display: 'none' } : { display: 'unset' }} target='blank' href={website}><FontAwesomeIcon icon={faComputer} className='icon'></FontAwesomeIcon></a>
                 </div>
             </div>
             <hr />
             <div className='info'>
-                {/* <h3>Certifications</h3> */}
                 <label htmlFor='certification' className='label'>Certifications</label>
                 <p>{certification}</p>
             </div>
@@ -209,27 +155,11 @@ function ProfileView({ image, name, started, facebook, twitter, instagram, websi
                 <label htmlFor='why' className='label'>Why Me</label>
                 <p className='summary'>{why}</p>
             </div>
-            {/* <button onClick={() => setIsSummary(false)} className='loginRegisterButton'>Back to Doula's</button> */}
             <hr />
             <h3>Contact Me</h3>
             <div>
                 {auth ? display_calendly ? displayAll : isLogin : notIsLogin}
             </div>
-            {/* <div> */}
-            {/* {linked ? isCalendly : isNotCalendly} */}
-            {/* <button className='loginRegisterButton report' ref={target}  onMouseLeave={() => setShow(false)} onClick={() => reportProfile(id)}>
-                Report
-            </button>
-            <Overlay target={target.current} show={show} placement="right">
-                {(props) => (
-                    <Tooltip id="overlay-example" {...props}>
-                        Reported
-                    </Tooltip>
-                )}
-            </Overlay> */}
-            {/* </div> */}
-            {/* <button className='loginRegisterButton report' onClick={() => reportProfile(id)}>Report</button> */}
-
         </section>
     )
 }

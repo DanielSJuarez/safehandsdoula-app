@@ -12,13 +12,7 @@ client = Client()
 
 class ArticleTestModels(TestCase):
     def setUp(self):
-        # User = get_user_model()
-        # user = User.objects.create_user(
-        #     username = 'daniel',
-        #     email='daniel@example.com',
-        #     password='safepass1',
-        # )
-    
+       
         Article.objects.create(
             title = 'How Doula',
             text = 'How Doula do what they do',

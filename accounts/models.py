@@ -109,16 +109,6 @@ class Profile(models.Model):
         return self.user.username
 
 
-# class Contact(models.Model):
-#         doula = models.ForeignKey(DoulaProfile, on_delete=models.CASCADE)
-#         name = models.CharField(max_length=255)
-#         user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True) 
-#         email = models.EmailField()
-#         phone_number = models.CharField(max_length=255)
-#         question = models.TextField(blank=True)
-
-#         def __str__(self):
-#             return self.user.username
 
         
    

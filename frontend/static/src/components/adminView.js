@@ -2,12 +2,11 @@ import { useState, useEffect } from "react"
 import { useOutletContext } from "react-router-dom";
 import AdminContactView from "./adminContactView";
 import AdminProfileView from "./adminProfileView";
-import {base_URL} from '../config/settings'
+import { base_URL } from '../config/settings'
 import Spinner from 'react-bootstrap/Spinner'
 import Cookies from 'js-cookie'
 
 function AdminView() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError } = useOutletContext();
     const [reportedProfiles, setReportedProfiles] = useState(null);
     const [reportedContacts, setReportedContacts] = useState(null);
@@ -47,13 +46,13 @@ function AdminView() {
 
     if (!reportedContacts) {
         return <div>Fetching contact data....
-             <Spinner animation="border" size="sm"/>
+            <Spinner animation="border" size="sm" />
         </div>
     }
 
     if (!reportedProfiles) {
         return <div>Fetching profile data....
-             <Spinner animation="border" size="sm"/>
+            <Spinner animation="border" size="sm" />
         </div>
     }
 

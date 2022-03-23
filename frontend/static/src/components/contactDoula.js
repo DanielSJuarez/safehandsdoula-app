@@ -1,5 +1,4 @@
 import { useState, useRef } from "react"
-import { useOutletContext } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { base_URL } from '../config/settings'
 import Tooltip from 'react-bootstrap/Tooltip'
@@ -7,7 +6,6 @@ import Overlay from 'react-bootstrap/Overlay'
 
 
 function ContactDoula({ id }) {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser] = useOutletContext();
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -75,7 +73,6 @@ function ContactDoula({ id }) {
                 </div>
                 <div className='col loginField'>
                     <button className='loginRegisterButton' type='button' onClick={() => clear()}>Clear</button>
-                    {/* <button className='loginRegisterButton' type='submit'>Submit</button> */}
                     <button className='loginRegisterButton report' ref={target} onMouseLeave={() => setShow(false)}>Submit</button>
                     <Overlay target={target.current} show={show} placement="right">
                         {(props) => (

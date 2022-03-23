@@ -4,7 +4,6 @@ import Cookies from 'js-cookie';
 import { base_URL } from '../config/settings'
 
 function Home() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, , isSuperUser, setIsSuperUser] = useOutletContext();
     const { auth, navigate, setIsDoula, searchParams, handleError, setProfileImg } = useOutletContext();
     const [articleOneHeader, setArticleOneHeader] = useState(null)
     const [articleTwoHeader, setArticleTwoHeader] = useState(null)
@@ -32,7 +31,6 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        console.log(base_URL)
         let id = ''
         const isDoula = async () => {
 

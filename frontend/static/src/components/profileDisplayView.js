@@ -1,4 +1,4 @@
-function profilesDiplayView({ image, name, started, setGetId, id, setIsSummary, city, state, service_range}) {
+function profilesDiplayView({ image, name, started, setGetId, id, setIsSummary, city, state }) {
 
     const detail = (id) => {
         setIsSummary(true)

@@ -156,8 +156,6 @@ class CreateRetrieveDeleteContactTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
     def test_update_contact_url_not_doula(self):
-        # import pdb 
-        # pdb.set_trace()
         client.logout()
         client.login(username='sadie', password='safepass1')
         response = client.patch(

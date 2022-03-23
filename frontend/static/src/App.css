@@ -473,12 +473,7 @@ a:hover{
   .navLinks{
     padding: 3px;
     border-bottom: solid 1px #e0c2c0;
-    /* z-index:10; */
   }
-
-  /* .articleHolder{
-    margin-top: 200px;
-  } */
 
   .form{
     margin-top: 200px;
@@ -512,10 +507,6 @@ a:hover{
     font-size:40px
   }
 
-  /* .header{
-    margin-bottom: 175px;
-  } */
-
   .headImgHolder{
     display: none;
   }
@@ -535,10 +526,6 @@ a:hover{
 }
 
 @media (max-width: 768px) {
-  /* .navLinksBottom{
-    margin-bottom: 50px;
-  } */
-
   .articleHeader{
     position: relative;
     font-size: 20px;
@@ -548,10 +535,6 @@ a:hover{
   .cancel{
     margin-bottom: 5px;
   }
-
-  /* .header{
-    margin-bottom: 200px;
-  } */
 
   .logout{
     padding-top: 5px;

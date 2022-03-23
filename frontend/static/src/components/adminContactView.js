@@ -1,19 +1,18 @@
 import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
-import {base_URL} from '../config/settings'
+import { base_URL } from '../config/settings'
 import Modal from 'react-bootstrap/Modal'
 import { useState } from 'react';
 
 
 function AdminContactView({ name, email, phone_number, question, reported, id, setReportedContacts, reportedContacts }) {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary, isSuperUser, setIsSuperUser] = useOutletContext();
     const { handleError } = useOutletContext();
     const [show, setShow] = useState(false);
-    
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    
+
     const deleteContact = async (id) => {
 
         const options = {
@@ -64,20 +63,19 @@ function AdminContactView({ name, email, phone_number, question, reported, id, s
         setReportedContacts(updatedContactView)
     }
 
-return (
-    <>
-        <div className='profile'>
-            <h3>{name}</h3>
-            <p>{email}</p>
-            <p>{phone_number}</p>
-            <p>{question}</p>
-            <button className='modalButton' type="button" onClick={() => approveContact(id)}>Approve</button>
-            {/* <button type="button" onClick={() => deleteContact(id)}>Delete</button> */}
-            <button className='modalButton adminButton' type="button" onClick={handleShow}>Delete</button>
-        </div>
-        <hr />
+    return (
+        <>
+            <div className='profile'>
+                <h3>{name}</h3>
+                <p>{email}</p>
+                <p>{phone_number}</p>
+                <p>{question}</p>
+                <button className='modalButton' type="button" onClick={() => approveContact(id)}>Approve</button>
+                <button className='modalButton adminButton' type="button" onClick={handleShow}>Delete</button>
+            </div>
+            <hr />
 
-        <Modal
+            <Modal
                 show={show}
                 onHide={handleClose}
                 backdrop="static"
@@ -96,8 +94,8 @@ return (
                     <button className='modalButton' onClick={() => deleteContact(id)}>Confirm</button>
                 </Modal.Footer>
             </Modal>
-    </>
-)
+        </>
+    )
 }
 
 export default AdminContactView

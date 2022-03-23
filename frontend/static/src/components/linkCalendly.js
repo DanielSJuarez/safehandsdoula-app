@@ -3,8 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import { base_URL } from '../config/settings'
 
 function Calendly() {
-    // const [auth, setAuth, navigate, createDoula, setCreateDoula, setIsDoula, searchParams, handleError, preview, setPreview, profileImg, setProfileImg, isSummary, setIsSummary , isSuperUser, setIsSuperUser] = useOutletContext();
-    const {auth,  navigate , handleError, setProfileImg} = useOutletContext();
+    const { auth, navigate, handleError, setProfileImg } = useOutletContext();
 
     useEffect(() => {
         const isDoula = async () => {

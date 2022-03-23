@@ -13,11 +13,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('id', 'user')
 
-# class ContactSerializer(serializers.ModelSerializer):
-#     class Meta: 
-#         model = Contact
-#         fields = '__all__'
-
 class UserDetailsSerializer(UserDetailsSerializer):
     class Meta(UserDetailsSerializer.Meta):
         fields = UserDetailsSerializer.Meta.fields + ('is_superuser',)

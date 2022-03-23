@@ -2,7 +2,7 @@ from ast import IsNot
 from django.shortcuts import render
 from .models import Profile, DoulaProfile
 from rest_framework import generics
-from .serializers import DoulaProfileSerializer, ProfileSerializer, AdminSerializer
+from .serializers import DoulaProfileSerializer, AdminSerializer
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
 from django.core.mail import send_mail
 
@@ -59,15 +59,6 @@ class ProfileListAPIView(generics.ListAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     serializer_class = DoulaProfileSerializer
     queryset = DoulaProfile.objects.all()
-
-# class ContactListAPIView(generics.ListCreateAPIView):
-#     permission_classes = (IsAuthenticated,)
-#     serializer_class = ContactSerializer
-#     queryset = Contact.objects.all()
-
-#     def perform_create(self, serializer):
-#         serializer.save(user=self.request.user)
-
 
 class AdminProfileEditListAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminUser,)
