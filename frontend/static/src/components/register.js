@@ -100,7 +100,7 @@ function Register() {
 
     return (
         <>
-            <div className='loginPlacholder form'>
+            <div className='loginPlacholder'>
                 <form onSubmit={handleCreateSubmit}>
                     <div className='col loginField'>
                         <label htmlFor='username'>Username</label>

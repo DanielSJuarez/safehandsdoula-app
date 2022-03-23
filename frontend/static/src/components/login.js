@@ -67,7 +67,7 @@ function Login() {
 
     return (
         <>
-            <div className='loginPlacholder form'>
+            <div className='loginPlacholder'>
                 <form onSubmit={handleSubmit}>
                     <div className='col loginField'>
                         <label htmlFor='username'>Username</label>
