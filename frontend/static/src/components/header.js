@@ -169,13 +169,13 @@ function Header(props) {
             <li className='col-sm-12 headerIndex col-lg  mx-0'>
                 <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
-            <li className='col-sm-12 headerIndex  col-lg  mx-0'>
+            <li className='col-sm-12 headerIndex test col-lg  mx-0'>
                 <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}>Find a Doula</NavLink>
             </li>
-            <li className='col-sm-12 headerIndex col-lg  mx-0'>
+            <li className='col-sm-12 headerIndex test col-lg  mx-0'>
                 <Link className='navLinks' to='/login' onClick={() => setMenuSelected(false)}>Login</Link>
             </li>
-            <li className='col-sm-12 headerIndex col-lg mx-0'>
+            <li className='col-sm-12 headerIndex test col-lg mx-0'>
                 <Link className='navLinks' to='/register' onClick={() => setMenuSelected(false)}>Create Account</Link>
             </li>
         </ul>

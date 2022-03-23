@@ -73,6 +73,13 @@
   background-color: rgb(204, 204, 204);
 }
 
+#hi{
+  background-color: #dbb0a0;
+}
+/* .test{
+  background-color: #eab586;
+} */
+
 .loginRegisterButton{
   background-color: #b2481b;
   color: white;
