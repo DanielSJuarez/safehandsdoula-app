@@ -10,6 +10,7 @@
     <li>Netlify</li>
     <li>Calendly API</li>
     <li>Calendly Embed API</li>
+    <li>Send Grid</li>
  </ul>
 
  <h3>Third Party API Config</h3>
@@ -23,6 +24,14 @@
    </ul>
     <p>Connecting with the Calendly API will require Oauth 2.0. This means clone hosting for this project will require a DNS host with SSL certificate. Configuration using Netlify is a free option to do this. Calendly will require an Lastpass account to send an authorization code. You will need to provide your organization settings an a redirect url that the site shoudl direct to after linking. *Note this should taking into account site internal linking. Additionally, if testing on dev, a localhost redirect url will be required for testing. Once the authorization code is received, you can set up a link url that will provide an access token in the search params upon calendly user authorization is completed. From there a simple fetch request using this code and get specific information required. I wishing to use Calendly with React project use the link below</p>
     <a target='blank' herf='https://www.npmjs.com/package/react-calendly'>Calendly Docs</a>
+
+   <a target='blank' herf='https://docs.sendgrid.com/for-developers/sending-email/django'>Sendgrid Docs Part 1</a>
+   <a target='blank' herf='https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication'>Sendgrid Docs Part 2</a>
+
+   <p>Integrating with the Sendgrid api, require a send account set up. Then update the settings.py in your config app as shown in the documentation above. Logging into your Sendgrid account, go to api integration. You will choose domain authenication, and add all the prompted CNAME recordes to your appropriate hosting site running the application. </p>
+
+
+
    
   
 
