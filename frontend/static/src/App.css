@@ -339,7 +339,6 @@ a:hover{
 
 .contactHead{
   text-align: center;
-  /* font-weight: bold; */
   text-decoration: underline;
   margin-top: 20px;
   background-color: #57394a;
@@ -494,9 +493,14 @@ a:hover{
     border-bottom: solid 1px #e0c2c0;
   }
 
-  .form{
-    margin-top: 200px;
+  .contentLinks{
+    padding: 3px;
+    border-bottom: solid 1px #e0c2c0;
   }
+
+  /* .form{
+    margin-top: 200px;
+  } */
 
   .homeButton{
     margin-bottom: 3px;
@@ -566,6 +570,11 @@ a:hover{
 
   .inputLabel{
     width: 100%
+  }
+
+  .contentLinks{
+    padding: 3px;
+    border-bottom: solid 1px #e0c2c0;
   }
 
 .formPlacholder{

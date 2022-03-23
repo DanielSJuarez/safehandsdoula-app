@@ -162,9 +162,8 @@ function Header(props) {
             <li className='col-sm-12 headerIndex col-lg  mx-0'>
                 <NavLink to="/what" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
-            <li className='col-sm-12 col-lg  mx-0'>
+            <li className='col-sm-12 headerIndex col-lg  mx-0'>
                 <NavLink to="/how" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)} >How</NavLink>
-
             </li>
             <li className='col-sm-12 headerIndex col-lg  mx-0'>
                 <NavLink to="/why" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
