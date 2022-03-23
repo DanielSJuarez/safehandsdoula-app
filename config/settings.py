@@ -206,7 +206,7 @@ CORS_ALLOW_CREDENTIALS = True
 SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
 GMAIL_PASSWORD = os.environ['GMAIL_PASSWORD']
 
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'safehandsdoula@gmail.com' # this is exactly the value 'apikey'
 EMAIL_HOST_PASSWORD = 'GMAIL_PASSWORD'
 EMAIL_PORT = 587
