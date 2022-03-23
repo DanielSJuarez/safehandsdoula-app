@@ -39,7 +39,7 @@ function Home() {
                 throw new Error('Netword response was not OK!')
             } else {
                 const data = await response.json();
-                console.log(data)
+                
                 if (data.length > 0 && data[0].is_doula === true) {
                     setIsDoula(true)
                     id = data[0].id

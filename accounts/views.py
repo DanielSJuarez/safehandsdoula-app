@@ -17,13 +17,13 @@ class DoulaProfileListAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    send_mail(
-            'Thank you for creating your account',
-            'Good Day, thank you for creating your account with safehandsdoula. This email serves as confirmation that your account has been successfully created. Feel free to interact with the safehandsdoula community. Have a wonderful rest of your day - Safehandsdoula Admin Team',
-            'safehandsdoula@gmail.com',
-            ['juarezdsv@gmail.com'],
-            fail_silently=False,
-                )
+    # send_mail(
+    #         'Thank you for creating your account',
+    #         'Good Day, thank you for creating your account with safehandsdoula. This email serves as confirmation that your account has been successfully created. Feel free to interact with the safehandsdoula community. Have a wonderful rest of your day - Safehandsdoula Admin Team',
+    #         'safehandsdoula@gmail.com',
+    #         ['juarezdsv@gmail.com'],
+    #         fail_silently=False,
+    #             )
         
     def get_queryset(self):
         user = self.request.user
