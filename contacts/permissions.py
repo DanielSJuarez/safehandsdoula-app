@@ -1,4 +1,3 @@
-from ast import Delete
 from rest_framework import permissions
 
 class IsDoulaOrReadOnly(permissions.BasePermission):

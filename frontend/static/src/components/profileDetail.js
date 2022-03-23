@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { useOutletContext } from "react-router-dom";
 import { base_URL } from '../config/settings'
 import Modal from 'react-bootstrap/Modal'
+import Spinner from 'react-bootstrap/Spinner'
 
 
 function ProfileDetail() {
@@ -94,7 +95,6 @@ function ProfileDetail() {
 
         const updateProfile = profile.map((profile) => {
             if (profile.id === id) {
-                console.log(data)
                 return data
             }
         })
@@ -268,7 +268,9 @@ function ProfileDetail() {
     }, []);
 
     if (!profile) {
-        return <div>Fetching profile data....</div>
+        return <div>Fetching profile data...
+            <Spinner animation="border" size="sm" />
+        </div>
     }
 
     const profileDetail = profile.map((profileData) => (
@@ -277,7 +279,9 @@ function ProfileDetail() {
     ))
 
     if (!contacts) {
-        return <div>Fetching contact data....</div>
+        return <div>Fetching contact data...
+            <Spinner animation="border" size="sm" />
+        </div>
     }
 
     const contactList = contacts.map((contact) => (

@@ -12,8 +12,8 @@ class ContactListAPIView(generics.ListCreateAPIView):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 class ContactControlListAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsDoulaOrReadOnly,)

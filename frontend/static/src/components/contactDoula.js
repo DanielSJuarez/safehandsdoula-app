@@ -54,7 +54,7 @@ function ContactDoula({ id }) {
 
     return (
         <div className='loginPlacholder'>
-            <form onSubmit={send}>
+            <form onSubmit={send} onMouseLeave={() => setShow(false)}>
                 <div className='col loginField'>
                     <label htmlFor='name'>Name</label>
                     <input type='text' className='inputField' name='name' id='name' placeholder='name' onChange={(e) => setName(e.target.value)} required value={name} required />
@@ -73,7 +73,7 @@ function ContactDoula({ id }) {
                 </div>
                 <div className='col loginField'>
                     <button className='loginRegisterButton' type='button' onClick={() => clear()}>Clear</button>
-                    <button className='loginRegisterButton report' ref={target} onMouseLeave={() => setShow(false)}>Submit</button>
+                    <button className='loginRegisterButton report' ref={target} >Submit</button>
                     <Overlay target={target.current} show={show} placement="right">
                         {(props) => (
                             <Tooltip id="overlay-example" {...props}>

@@ -105,16 +105,16 @@ function Header(props) {
     const user = (
         <ul className='row header mx-0'>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/home" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
+                <NavLink to="/home" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
+                <NavLink to="/what" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/how" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
+                <NavLink to="/how" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
+                <NavLink to="/why" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
                 <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}>Find a Doula</NavLink>
@@ -128,16 +128,16 @@ function Header(props) {
     const doulaUser = (
         <ul className='row urr header mx-0'>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/home" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
+                <NavLink to="/home" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
+                <NavLink to="/what" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/how" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
+                <NavLink to="/how" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
+                <NavLink to="/why" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
                 <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}> Find a Doula</NavLink>
@@ -157,17 +157,17 @@ function Header(props) {
     const visitor = (
         <ul className='row header  mx-0' style={menuSelected ? { marginbottom: '200px' } : { marginbottom: '0px' }}>
             <li className='col-sm-12 headerIndex col-lg  mx-0'>
-                <NavLink to="/home" id='hi' className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
+                <NavLink to="/home"  className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg  mx-0'>
-                <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
+                <NavLink to="/what" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
             <li className='col-sm-12 col-lg  mx-0'>
-                <NavLink to="/how" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)} >How</NavLink>
+                <NavLink to="/how" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)} >How</NavLink>
 
             </li>
             <li className='col-sm-12 headerIndex col-lg  mx-0'>
-                <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
+                <NavLink to="/why" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
             <li className='col-sm-12 headerIndex test col-lg  mx-0'>
                 <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}>Find a Doula</NavLink>
@@ -184,16 +184,16 @@ function Header(props) {
     const adminUser = (
         <ul className='row header mx-0'>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/home" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
+                <NavLink to="/home" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
+                <NavLink to="/what" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/how" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
+                <NavLink to="/how" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>How</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
-                <NavLink to="/why" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
+                <NavLink to="/why" className='contentLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Why</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg mx-0'>
                 <NavLink to="/doula" className='navLinks' activeClassName="active" onClick={checkActive}>Find a Doula</NavLink>
