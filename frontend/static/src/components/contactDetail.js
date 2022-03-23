@@ -7,7 +7,7 @@ import Overlay from 'react-bootstrap/Overlay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 
-function ContactDetail({ name, email, question, phone_number, id, contact_status, pk, setContacts, contacts, isChecked, setIsChecked }) {
+function ContactDetail({ name, email, question, phone_number, id, pk, setContacts, contacts, read_status }) {
     const { handleError } = useOutletContext();
     const [show, setShow] = useState(false);
     const [display, setDisplay] = useState(false);
@@ -17,7 +17,7 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
 
 
     const changeStatus = async (id) => {
-        if (contactDisplay === false && isChecked === false) {
+        if (contactDisplay === false && read_status === false) {
             contact(id)
         }
         setContactDisplay(true)
@@ -31,14 +31,14 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
 
         let contact = ''
 
-        if (contact_status === 'NEW') {
-            contact = 'CON'
-        } else if (contact_status === 'CON') {
-            contact = 'NEW'
+        if (read_status === true) {
+            contact = false
+        } else if (read_status === false) {
+            contact = true
         }
 
         const contactedStatus = {
-            contact_status: contact,
+            read_status: contact,
         }
 
         const options = {
@@ -57,13 +57,7 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
         }
         const data = await response.json();
 
-        if (data.contact_status === 'CON') {
-            setIsChecked(true)
-        } else if (data.contact_status === 'NEW') {
-            setIsChecked(false)
-        }
         const updateContact = contacts.map((contact) => {
-            console.log(contacts)
             if (contact.id === id) {
                 return data
             } else {
@@ -105,20 +99,20 @@ function ContactDetail({ name, email, question, phone_number, id, contact_status
     )
 
     const contactHead = (
-        <div className="contact" style={isChecked ? { background: '#dbb0a0', } : { background: '#eab586' }}>
+        <div className="contact" style={read_status ? { background: '#dbb0a0', } : { background: '#eab586' }}>
             <div onClick={() => changeStatus(id)}>
                 <h3>{name}</h3>
                 <p>{email}</p>
                 <p>{phone_number}</p>
             </div>
-            {isChecked ? clickStatus : noStatus}
+            {read_status ? clickStatus : noStatus}
             <hr />
         </div>
     )
 
     const contactDetail = (
         <>
-            <div className="contact" style={isChecked ? { background: '#dbb0a0', } : { background: '#eab586' }}>
+            <div className="contact" style={read_status ? { background: '#dbb0a0', } : { background: '#eab586' }}>
                 <button className='backButton' type="button" onClick={() => setContactDisplay(false)}>&#8617;</button>
                 <h3>{name}</h3>
                 <div>

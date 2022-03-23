@@ -27,8 +27,6 @@ function ProfileDetail() {
     const [pk, setPk] = useState('')
     const [status, setStatus] = useState(null)
     const [activeButton, setActiveButton] = useState('')
-    const [isChecked, setIsChecked] = useState('')
-    const [read, setRead] = useState('')
     const [show, setShow] = useState(false);
     const [shown, setShown] = useState('')
     const [newRange, setNewRange] = useState(0);
@@ -174,14 +172,6 @@ function ProfileDetail() {
             throw new Error('Netword response was not OK!')
         } else {
             const data = await response.json();
-
-            if (data.length > 0 && data[0].contact_status === 'CON') {
-                setIsChecked(true)
-                setRead('Mark as unread')
-            } else if (data.length > 0 && data[0].contact_status === 'NEW') {
-                setIsChecked(false)
-                setRead('Mark as read')
-            }
             setContacts(data);
         }
     }
@@ -285,7 +275,7 @@ function ProfileDetail() {
     }
 
     const contactList = contacts.map((contact) => (
-        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk} isChecked={isChecked} setIsChecked={setIsChecked} read={read} setRead={setRead} />
+        <ContactDetail key={contact.id} {...contact} setContacts={setContacts} contacts={contacts} pk={pk}/>
     ))
 
     return (

@@ -7,6 +7,7 @@ import Overlay from 'react-bootstrap/Overlay'
 
 function Login() {
     const { setAuth, navigate, setIsDoula, handleError, setIsSuperUser } = useOutletContext();
+    const [error, setError] = useState('')
     const [state, setState] = useState({
         username: '',
         password: ''
@@ -32,6 +33,10 @@ function Login() {
         )
 
         if (!response.ok) {
+            const message = await response.json()
+            if (message.non_field_errors) {
+                setError(message.non_field_errors[0]);
+            }
             setShow(true)
             throw new Error('Network response not ok!');
         } else {
@@ -78,7 +83,7 @@ function Login() {
                         <Overlay target={target.current} show={show} placement="bottom-start">
                             {(props) => (
                                 <Tooltip id="overlay-example" {...props}>
-                                    Username or Password are incorrect
+                                    {error}
                                 </Tooltip>
                             )}
                         </Overlay>
