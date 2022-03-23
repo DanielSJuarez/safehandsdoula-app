@@ -63,8 +63,8 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.IsAuthenticated', 
-        'rest_framework.permissions.AllowAny', 
+        'rest_framework.permissions.IsAuthenticated', 
+        # 'rest_framework.permissions.AllowAny', 
     ],
     'DEFAULT_AUTHENICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthenitication',
@@ -202,13 +202,12 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-
 SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
 GMAIL_PASSWORD = os.environ['GMAIL_PASSWORD']
 
-EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'safehandsdoula@gmail.com' # this is exactly the value 'apikey'
-EMAIL_HOST_PASSWORD = 'GMAIL_PASSWORD'
+EMAIL_HOST_PASSWORD = GMAIL_PASSWORD
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_EMAIL_FROM = 'safehandsdoula@gmail.com'

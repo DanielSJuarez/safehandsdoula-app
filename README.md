@@ -28,7 +28,7 @@
    <a target='blank' herf='https://docs.sendgrid.com/for-developers/sending-email/django'>Sendgrid Docs Part 1</a>
    <a target='blank' herf='https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication'>Sendgrid Docs Part 2</a>
 
-   <p>Integrating with the Sendgrid api, require a send account set up. Then update the settings.py in your config app as shown in the documentation above. Logging into your Sendgrid account, go to api integration. You will choose domain authenication, and add all the prompted CNAME recordes to your appropriate hosting site running the application. </p>
+   <p>Integrating with the Sendgrid api, require a send account set up. Then update the settings.py in your config app as shown in the documentation above. Logging into your Sendgrid account, go to api integration. You will choose single address verification, and add all choosen email email, business and address settings</p>
 
 
 

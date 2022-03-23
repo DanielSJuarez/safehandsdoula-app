@@ -157,7 +157,7 @@ function Header(props) {
     const visitor = (
         <ul className='row header  mx-0' style={menuSelected ? { marginbottom: '200px' } : { marginbottom: '0px' }}>
             <li className='col-sm-12 headerIndex col-lg  mx-0'>
-                <NavLink to="/home" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
+                <NavLink to="/home" id='hi' className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>Home</NavLink>
             </li>
             <li className='col-sm-12 headerIndex col-lg  mx-0'>
                 <NavLink to="/what" className='navLinks' activeClassName="active" onClick={() => setMenuSelected(false)}>What</NavLink>

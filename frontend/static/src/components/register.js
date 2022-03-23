@@ -4,9 +4,11 @@ import { useOutletContext } from "react-router-dom";
 import { base_URL } from '../config/settings'
 import Tooltip from 'react-bootstrap/Tooltip'
 import Overlay from 'react-bootstrap/Overlay'
+import Spinner from 'react-bootstrap/Spinner'
 
 function Register() {
     const { setAuth, navigate, createDoula, setCreateDoula, handleError } = useOutletContext();
+    const [waiting, setWaiting] = useState(false)
     const [newState, setNewState] = useState({
         username: '',
         email: '',
@@ -28,6 +30,18 @@ function Register() {
         setDisplay(false)
     }
 
+    const noSpinner = (
+        <div className='col loginField'>
+            <button className='loginRegisterButton' onMouseLeave={() => overlay()} type='submit'>Create Account</button>
+        </div>
+    )
+
+    const spinner = (
+        <div className='col loginField'>Creating your account...
+             <Spinner animation="border" size="sm" />
+        </div>
+    )
+
     const newHandleInput = (event) => {
         const { name, value } = event.target;
 
@@ -46,6 +60,8 @@ function Register() {
             setDisplay(true)
         }
 
+        setWaiting(true)
+
         const options = {
             method: 'POST',
             headers: {
@@ -60,6 +76,7 @@ function Register() {
         )
 
         if (!response.ok) {
+            setWaiting(false)
             throw new Error('Network response not ok!');
         } else {
             const data = await response.json();
@@ -71,6 +88,7 @@ function Register() {
                 password1: '',
                 password2: '',
             });
+            setWaiting(true)
         }
 
         if (createDoula === true) {
@@ -118,8 +136,8 @@ function Register() {
                         <label htmlFor='checkbox'>Are you a doula?</label>
                         <input className='doulaCheck' type='checkbox' onChange={() => doula()} />
                     </div>
-                    <div className='col loginField'>
-                        <button className='loginRegisterButton' onMouseLeave={() => overlay()} type='submit'>Create Account</button>
+                    <div>
+                        {waiting ? spinner : noSpinner}
                     </div>
                 </form>
             </div>
