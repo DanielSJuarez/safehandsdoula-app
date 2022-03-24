@@ -4,6 +4,7 @@ from rest_framework import generics
 from .serializers import ContactSerializer, AdminSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .permissions import IsDoulaOrReadOnly
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -12,8 +13,15 @@ class ContactListAPIView(generics.ListCreateAPIView):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
 
-    # def perform_create(self, serializer):
-    #     serializer.save(user=self.request.user)
+    def perform_create(self, request, serializer):
+        send_mail(
+            'New message Received from safehandsdoula.com', 
+            "Good Day, you have received a new message about your services at safehandsdoula.com. Please login to view your message. Have a wonderful rest of your day - Safehandsdoula's Admin Team", 
+            'safehandsdoula@gmail.com', 
+            ['juarezdsv@gmail.com'], 
+            fail_silently=False
+        )
+        serializer.save(user=self.request.user)
 
 class ContactControlListAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsDoulaOrReadOnly,)
