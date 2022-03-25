@@ -39,11 +39,11 @@
 
 .loginField{
   text-align: center;
-  margin: 50px 0px
+  margin: 50px 0px;
 }
 
 .formField{
-  margin: 50px 25px
+  margin: 50px 25px;
 }
 
 .loginPlacholder{
@@ -92,7 +92,7 @@
 }
 
 .doulaCheck { 
-  margin: 20px 15px
+  margin: 20px 15px;
 }
 
 .pageSupport{
@@ -351,7 +351,7 @@ a:hover{
   text-decoration: underline;
   margin-top: 20px;
   background-color: #57394a;
-  color: white
+  color: white;
 }
 
 .intro{
@@ -361,7 +361,7 @@ a:hover{
 .editImage{
   height: 200px;
   width: 200px;
-  margin: 10px 
+  margin: 10px;
 }
 
 .account{
@@ -383,7 +383,7 @@ a:hover{
 .articleText{
   font-size: 20px;
   text-align: left;
-  animation: slide-left 2s
+  animation: slide-left 2s;
 }
 
 .messageATag{

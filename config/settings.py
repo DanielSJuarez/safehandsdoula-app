@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'safehandsdoula-app-dsj.herokuapp.com',
+    # 'safehandsdoula-app-dsj.herokuapp.com',
     'www.safehandsdoula.com',
     'api.safehandsdoula.com',
 ]
@@ -194,7 +194,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
-    'https://safehandsdoula-app-dsj.herokuapp.com',
+    # 'https://safehandsdoula-app-dsj.herokuapp.com',
     'https://www.safehandsdoula.com',
     'https://api.safehandsdoula.com',
     'http://api.safehandsdoula.com',

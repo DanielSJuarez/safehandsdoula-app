@@ -1,5 +1,7 @@
+from curses import doupdate
 from django.shortcuts import render
 from .models import Contact
+from accounts.models import DoulaProfile
 from rest_framework import generics
 from .serializers import ContactSerializer, AdminSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -13,13 +15,16 @@ class ContactListAPIView(generics.ListCreateAPIView):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
 
-    send_mail(
-            'New message Received from safehandsdoula.com', 
-            "Good Day, you have received a new message about your services at safehandsdoula.com. Please login to view your message. Have a wonderful rest of your day - Safehandsdoula's Admin Team", 
-            'safehandsdoula@gmail.com', 
-            ['juarezdsv@gmail.com'], 
-            fail_silently=False
-        )
+    def perform_create(self, request):
+        doula = self.kwargs['doula']
+        email_profile = DoulaProfile.objects.get(id = doula)
+        send_mail(
+                'New message Received from safehandsdoula.com', 
+                "Good Day, you have received a new message about your services at safehandsdoula.com. Please login to view your message. Have a wonderful rest of your day - Safehandsdoula's Admin Team", 
+                'safehandsdoula@gmail.com', 
+                [email_profile.user.email], 
+                fail_silently=False
+            )
 
 class ContactControlListAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsDoulaOrReadOnly,)

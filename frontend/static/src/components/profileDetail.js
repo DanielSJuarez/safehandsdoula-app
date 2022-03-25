@@ -281,7 +281,7 @@ function ProfileDetail() {
     return (
         <>
             <div className='row mx-0'>
-                <div className="col-md-12 col-lg-3 aat contactList">
+                <div className='col-md-12 col-lg-3 contactList'>
                     <h2>Inbox</h2>
                     <p className='contactHead'>Messages</p>
                     {contactList}
