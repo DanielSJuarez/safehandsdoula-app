@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'contacts.apps.ContactsConfig',
     'safehands.apps.SafehandsConfig',
     'frontend.apps.FrontendConfig',
-    'corsheaders',
+    # 'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -79,7 +79,7 @@ REST_AUTH_SERIALIZERS = {
 
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    # "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -191,16 +191,16 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:8000',
-    # 'https://safehandsdoula-app-dsj.herokuapp.com',
-    'https://www.safehandsdoula.com',
-    'https://api.safehandsdoula.com',
-    'http://api.safehandsdoula.com',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     'http://localhost:8000',
+#     # 'https://safehandsdoula-app-dsj.herokuapp.com',
+#     'https://www.safehandsdoula.com',
+#     'https://api.safehandsdoula.com',
+#     'http://api.safehandsdoula.com',
+# ]
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
 
 SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
 GMAIL_PASSWORD = os.environ['GMAIL_PASSWORD']
