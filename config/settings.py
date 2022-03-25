@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    # 'safehandsdoula-app-dsj.herokuapp.com',
+    'safehandsdoula-app-dsj.herokuapp.com',
     'www.safehandsdoula.com',
     'safehandsdoula.com',
 ]
