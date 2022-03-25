@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     'localhost',
     # 'safehandsdoula-app-dsj.herokuapp.com',
     'www.safehandsdoula.com',
-    'api.safehandsdoula.com',
+    'safehandsdoula.com',
 ]
 
 
