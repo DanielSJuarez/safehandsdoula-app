@@ -21,4 +21,4 @@ class Contact(models.Model):
         read_status = models.BooleanField(null=False, default=False)
 
         def __str__(self):
-            return self.user.username
+            return self.name
