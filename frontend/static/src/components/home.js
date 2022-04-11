@@ -56,9 +56,9 @@ function Home() {
 
             const data = new URLSearchParams(code);
             data.append('code', code);
-            data.append('client_id', 'JSdPVXJHqifv4b4gG72AIbwFffPxzlLG2D1RcfAJoIg');
-            data.append('client_secret', 'OhevgwurwaW6Werlv9o3WPYMvyJuEP7PZkxqVKRkPYY');
-            data.append('redirect_uri', 'https://safehandsdoula.com');
+            data.append('client_id', 'UTvsFK4siqWhllb81txrCJ7kdqyA9ayq6Jr10QUmZec');
+            data.append('client_secret', 'nFNB3IGLpLUQYOmtb4c_AZldv1NvuSTSVg_19ncy8kU');
+            data.append('redirect_uri', 'http://localhost:3000/');
             data.append('grant_type', 'authorization_code')
 
             const options = {

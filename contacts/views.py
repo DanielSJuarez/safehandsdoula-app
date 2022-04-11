@@ -15,7 +15,7 @@ class ContactListAPIView(generics.ListCreateAPIView):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
 
-    def perform_create(self, request):
+    def perform_create(self, serializer):
         doula = self.kwargs['doula']
         email_profile = DoulaProfile.objects.get(id = doula)
         send_mail(
@@ -25,6 +25,8 @@ class ContactListAPIView(generics.ListCreateAPIView):
                 [email_profile.user.email], 
                 fail_silently=False
             )
+        # print(dir(super().__self__))
+        return super().perform_create(serializer)
 
 class ContactControlListAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsDoulaOrReadOnly,)
